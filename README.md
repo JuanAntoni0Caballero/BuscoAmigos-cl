@@ -1,32 +1,34 @@
-# BuscoAmigos-cl
+# Plan routes
+## Base URL /plan
 
-Planning routes
-Base URL /planning
-
-| GET    | /getPlanning  | Planning list                 |   |   |
-|--------|---------------|-------------------------------|---|---|
-| POST   | /savePlanning | Create a new Planning         |   |   |
-| GET    | /:id          | Matching ID planning details  |   |   |
-| PUT    | /:id/edit     | Matching ID planning edition  |   |   |
-| Delete | /:id/delete   | Matching ID planning deletion |   |   |
-
-
-Auth routes
-Base URL /auth
-
-| GET    | /getPlanning  | Planning list                 |   |   |
-|--------|---------------|-------------------------------|---|---|
-| POST   | /savePlanning | Create a new Planning         |   |   |
-| GET    | /:id          | Matching ID planning details  |   |   |
-| PUT    | /:id/edit     | Matching ID planning edition  |   |   |
-| Delete | /:id/delete   | Matching ID planning deletion |   |   |
+| HHTPP Method | URLpath       | Description                   |
+|--------------|---------------|-------------------------------|
+| GET          | /getPlan      | Plan list                     |
+| POST         | /savePlan     | Create a new Plan             |
+| GET          | /:id          | Matching ID plan     details  |
+| PUT          | /:id/edit     | Matching ID plan     edition  |
+| Delete       | /:id/delete   | Matching ID plan     deletion |
 
 
-Client routes
+# Auth rout
+## Base URL /auth
 
-| GET    | /getPlanning  | Planning list                 |   |   |
-|--------|---------------|-------------------------------|---|---|
-| POST   | /savePlanning | Create a new Planning         |   |   |
-| GET    | /:id          | Matching ID planning details  |   |   |
-| PUT    | /:id/edit     | Matching ID planning edition  |   |   |
-| Delete | /:id/delete   | Matching ID planning deletion |   |   |
+| HHTPP Method | URLpath | Description       |
+|--------------|---------|-------------------|
+| POST         | /signup | Signup user       |
+| POST         | /login  | Loging user       |
+| GET          | /verify | Verify auth token |
+
+
+# Client routes
+
+| URL              | Description            | Protected |
+|------------------|------------------------|-----------|
+| /                | Home page              |           |
+| /plan            | Plan page              |           |
+| /details/:id     | Plan detail page       |           |
+| /login           | Login page             |           |
+| /register        | Register page          |           |
+| /create-plan     | New plan form page     | X         |
+| /profile         | User profile page      | X         |
+| *                | 404 page               |           |
