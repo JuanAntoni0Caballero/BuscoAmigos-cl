@@ -1,8 +1,8 @@
 import { useState, useContext } from "react"
 import { Form, Button } from "react-bootstrap"
 import { Link } from "react-router-dom"
-// import { AuthContext } from "../../contexts/auth.context"
-// import authService from "../../services/auth.services"
+import { AuthContext } from "../../context/auth.context"
+import authService from "../../service/auth.service"
 
 
 const LoginForm = () => {
@@ -12,30 +12,26 @@ const LoginForm = () => {
         password: ''
     })
 
-    // const { authenticateUser, user } = useContext(AuthContext)
-
     const handleInputChange = e => {
         const { value, name } = e.target
         setLoginData({ ...loginData, [name]: value })
     }
 
-    // const handleSubmit = e => {
+    const handleSubmit = e => {
 
-    //     e.preventDefault()
+        e.preventDefault()
 
-    //     authService
-    //         .login(loginData)
-    //         .then(({ data }) => {
-    //             localStorage.setItem('authToken', data.authToken)
-    //             authenticateUser()
-    //         })
-    //         .catch(err => console.log(err))
-    // }
+        authService
+            .login(loginData)
+            .then(({ data }) => {
+                localStorage.setItem('authToken', data.authToken)
+            })
+            .catch(err => console.log(err))
+    }
 
     return (
 
-        // <Form onSubmit={handleSubmit}>
-        <Form >
+        <Form onSubmit={handleSubmit}>
 
             <Form.Group className="mb-3" controlId="email">
                 <Form.Label>Email</Form.Label>
@@ -46,7 +42,7 @@ const LoginForm = () => {
                 <Form.Label>Contraseña</Form.Label>
                 <Form.Control type="password" value={loginData.password} onChange={handleInputChange} name="password" />
             </Form.Group>
-            <Link to='/sing-up'> Date de alta</Link>
+            <Link to='/signup'>Date de alta</Link>
 
             <div className="d-grid">
                 <Button variant="dark" type="submit">Acceder</Button>
