@@ -9,9 +9,9 @@ const AppRoutes = () => {
         <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<LoginForm />} />
+            <Route path="/plan" element={<PlanPage />} />
             {/* <Route path="/register" element={<RegisterPage />} /> */}
             {/* <Route path="/profile" element={<ProfilePage />} /> */}
-            <Route path="/plan" element={<PlanPage />} />
             {/* <Route path="/create-plan" element={<PLanForm />} /> */}
             {/* <Route path="/details:id" element={<PLanDetailsPage />} /> */}
             {/* <Route path="*" element={<p>404</p>} /> */}
