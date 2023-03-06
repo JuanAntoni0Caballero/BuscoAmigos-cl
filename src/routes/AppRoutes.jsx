@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom"
 import LoginForm from "../components/LoginForm/LoginForm"
 import HomePage from "../pages/HomePage/HomePage"
 import PlanPage from "../pages/PlanPage/PlanPage"
+import PlanDetailsPage from "../pages/PlanDetailsPage/PlanDetailsPage"
 
 
 const AppRoutes = () => {
@@ -11,6 +12,7 @@ const AppRoutes = () => {
             <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<LoginForm />} />
             <Route path="/plan" element={<PlanPage />} />
+            <Route path="/details/:plan_id" element={<PlanDetailsPage />} />
             {/* <Route path="/register" element={<RegisterPage />} /> */}
             {/* <Route path="/profile" element={<ProfilePage />} /> */}
             {/* <Route path="/inbox" element={<InboxPage />} /> */}
