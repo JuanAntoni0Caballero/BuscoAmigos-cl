@@ -9,7 +9,7 @@ class PlanService {
     }
 
     getPlan() {
-        return this.api.get('/getPlan')
+        return this.api.get('/getPlans')
     }
 
     savePlan(coasterData) {
