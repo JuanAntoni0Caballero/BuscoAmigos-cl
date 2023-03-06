@@ -9,15 +9,23 @@ class PlanService {
     }
 
     getPlan() {
-        return this.api.get('/getAllPlan')
+        return this.api.get('/getPlan')
+    }
+
+    savePlan(coasterData) {
+        return this.api.post('/savePlan', coasterData)
     }
 
     getOnePlan(coaster_id) {
         return this.api.get(`/getOnePlan/${coaster_id}`)
     }
 
-    savePlan(coasterData) {
-        return this.api.post('/savePlan', coasterData)
+    editPlan(coaster_id) {
+        return this.api.get(`/editPLan/${coaster_id}`)
+    }
+
+    deletePlan(coaster_id) {
+        return this.api.post(`/deletePlan/${coaster_id}`)
     }
 }
 

@@ -5,9 +5,19 @@
 |--------------|---------------|-------------------------------|
 | GET          | /getPlan      | Plan list                     |
 | POST         | /savePlan     | Create a new Plan             |
-| GET          | /:id          | Matching ID plan     details  |
-| PUT          | /:id/edit     | Matching ID plan     edition  |
+| GET          | /plan/:id     | Matching ID plan     details  |
+| PUT          | /plan/:id/edi | Matching ID plan     edition  |
 | Delete       | /:id/delete   | Matching ID plan     deletion |
+
+
+
+# User rout
+## Base URL /user
+
+| GET          | /:id          | Matching ID user     details  |
+| PUT          | /:id/edit     | Matching ID user     edition  |
+| Delete       | /:id/delete   | Matching ID plan     deletion |
+
 
 
 # Auth rout
@@ -31,4 +41,7 @@
 | /register        | Register page          |           |
 | /create-plan     | New plan form page     | X         |
 | /profile         | User profile page      | X         |
+| /inbox           | Inbox page  	        | X         |
+| /contact         | Contact page           |           |
+| /gift	           | Gift page 	            | X         |
 | *                | 404 page               |           |
