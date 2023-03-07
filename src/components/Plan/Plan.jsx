@@ -15,6 +15,7 @@ const Plan = () => {
             .catch(err => console.log(err))
     }, [])
 
+
     return (
 
         plan.map(elm => {
@@ -24,7 +25,6 @@ const Plan = () => {
             )
         })
 
-        /* {plan.map(elm => <h1>{elm.title}</h1>)} */
     )
 
 

@@ -1,13 +1,15 @@
 
-import { Nav, Navbar, NavDropdown, Container, Modal } from 'react-bootstrap'
-import { useState } from 'react'
-import LoginForm from '../LoginForm/LoginForm'
+import { useContext } from 'react'
+import { Nav, Navbar, Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import { AuthContext } from '../../context/auth.context'
 
 
 const Navigation = () => {
 
-    const [showModal, setShowModal] = useState(false)
+    const { user, logout } = useContext(AuthContext)
+
+    // const [showModal, setShowModal] = useState(false)
     // const [coasters, setCoasters] = useState([])
     // const [isLoading, setIsLoading] = useState(true)
 
@@ -28,10 +30,10 @@ const Navigation = () => {
     // }
 
 
-    const fireFinalActions = () => {
-        setShowModal(false)
-        // loadPanning()
-    }
+    // const fireFinalActions = () => {
+    //     setShowModal(false)
+    //     // loadPanning()
+    // }
 
     return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -48,11 +50,30 @@ const Navigation = () => {
                         <Link to='/create-plan'>
                             <Nav.Link as='span'>Crear plan</Nav.Link>
                         </Link>
-                        <Link to='/login'>
-                            <Nav.Link as='span'>LogIn</Nav.Link>
-                        </Link>
-                        <Link to='/signUp'>
-                            <Nav.Link as='span'>SignUp</Nav.Link>
+
+                        {
+                            user
+                                ?
+                                <>
+                                    <Link to='/'>
+                                        <Nav.Link onClick={logout} as='span'>LogOut</Nav.Link>
+                                    </Link>
+                                </>
+                                :
+                                <>
+                                    <Link to='/login'>
+                                        <Nav.Link as='span'>LogIn</Nav.Link>
+                                    </Link>
+                                    <Link to='/signUp'>
+                                        <Nav.Link as='span'>SignUp</Nav.Link>
+                                    </Link>
+                                </>
+                        }
+
+
+
+                        <Link to='/profile'>
+                            <Nav.Link as='span'>Profile</Nav.Link>
                         </Link>
                         <Link to='/profile'>
                             <Nav.Link as='span'>Profile</Nav.Link>

@@ -6,7 +6,8 @@ import PlanPage from "../pages/PlanPage/PlanPage"
 import SignupPage from "../pages/SignupPage/SignupPage"
 import PlanDetailsPage from "../pages/PlanDetailsPage/PlanDetailsPage"
 import NewPlanFrom from "../components/NewPlanFrom/NewPlanFrom"
-import ProfilePage from "../pages/ProfilePage/PofilePage"
+import ProfilePage from "../pages/ProfilePage/ProfilePage"
+
 
 
 const AppRoutes = () => {

@@ -23,13 +23,13 @@ const PlanDetails = () => {
     return (
 
         <Container>
-            <h1 className="mb-4">Detalles de{plan.title} </h1>
+            <h1 className="mb-4">Detalles de {plan.title} </h1>
             <hr />
 
             <Row>
 
                 <Col md={{ span: 6, offset: 1 }}>
-                    <h3>Description</h3>
+                    <h5>Description</h5>
                     <p>{plan.description}</p>
                     <hr />
 
