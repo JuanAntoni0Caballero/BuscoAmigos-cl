@@ -54,6 +54,9 @@ const Navigation = () => {
                         <Link to='/signUp'>
                             <Nav.Link as='span'>SignUp</Nav.Link>
                         </Link>
+                        <Link to='/profile'>
+                            <Nav.Link as='span'>Profile</Nav.Link>
+                        </Link>
                         {/* <NavDropdown title="User menu2" id="collasible-nav-dropdown">
                             <NavDropdown.Item href="#action/3.1">Log in</NavDropdown.Item>
                             <NavDropdown.Item href="#action/3.2">

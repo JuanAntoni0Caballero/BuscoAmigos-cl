@@ -21,11 +21,11 @@ class PlanService {
     }
 
     editPlan(plan_id) {
-        return this.api.get(`/editPlan/${plan_id}`)
+        return this.api.get(`/edit/${plan_id}`)
     }
 
     deletePlan(plan_id) {
-        return this.api.post(`/deletePlan/${plan_id}`)
+        return this.api.post(`/delete/${plan_id}`)
     }
 }
 
