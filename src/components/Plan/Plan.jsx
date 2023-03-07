@@ -20,7 +20,7 @@ const Plan = () => {
         plan.map(elm => {
 
             return (
-                <PlanCard plan={elm} />
+                <PlanCard key={elm._id} plan={elm} />
             )
         })
 

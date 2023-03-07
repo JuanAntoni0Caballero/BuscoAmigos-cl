@@ -9,11 +9,10 @@ function PlanCard({ plan }) {
 
         <Link to={`/details/${plan._id}`}>
             <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src="holder.js/100px180" />
+                <Card.Img variant="top" src={plan.typePlan.picture} />
                 <Card.Body>
                     <Card.Title>{plan.title}</Card.Title>
                     <p>{plan.destination}</p>
-                    <img src={plan.imageUrl} alt="image" />
                     <Card.Text>
                         {plan.description}
                     </Card.Text>
