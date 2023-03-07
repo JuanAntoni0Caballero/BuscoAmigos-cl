@@ -1,13 +1,26 @@
+import { Container, Row, Col } from 'react-bootstrap'
 import NewPlanFrom from "../../components/NewPlanFrom/NewPlanFrom"
 
-const { Container } = require("react-bootstrap")
 
 const NewPlanPage = () => {
 
 
     return (
         <Container>
-            <NewPlanFrom />
+
+            <Row>
+
+                <Col md={{ offset: 3, span: 6 }}>
+
+                    <h1>Crear un nuevo plan</h1>
+
+                    <hr />
+
+                    <NewPlanFrom />
+
+                </Col>
+            </Row>
+
         </Container>
     )
 }

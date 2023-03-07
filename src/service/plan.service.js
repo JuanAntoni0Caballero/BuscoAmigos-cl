@@ -24,6 +24,10 @@ class PlanService {
         return this.api.get('/getPlans')
     }
 
+    getTypePlan() {
+        return this.api.get('/getTypePlan')
+    }
+
     savePlan(planData) {
         return this.api.post('/savePlan', planData)
     }

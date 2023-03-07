@@ -7,7 +7,6 @@ import authService from "../../service/auth.service"
 
 const LoginForm = () => {
 
-    const navigate = useNavigate()
 
     const [loginData, setLoginData] = useState({
         email: '',
@@ -16,6 +15,7 @@ const LoginForm = () => {
 
 
     const { authenticateUser, user } = useContext(AuthContext)
+    const navigate = useNavigate()
 
     const handleInputChange = e => {
         const { value, name } = e.target
