@@ -5,6 +5,7 @@ import PlanPage from "../pages/PlanPage/PlanPage"
 import SignupPage from "../pages/SignupPage/SignupPage"
 import PlanDetailsPage from "../pages/PlanDetailsPage/PlanDetailsPage"
 import NewPlanFrom from "../components/NewPlanFrom/NewPlanFrom"
+import ProfilePage from "../pages/ProfilePage/ProfilePage"
 
 
 
@@ -18,7 +19,7 @@ const AppRoutes = () => {
             <Route path="/details/:plan_id" element={<PlanDetailsPage />} />
             {/* <Route path="/register" element={<RegisterPage />} /> */}
             <Route path="/signup" element={<SignupPage />} />
-            {/* <Route path="/profile" element={<ProfilePage />} /> */}
+            <Route path="/profile" element={<ProfilePage />} />
             {/* <Route path="/inbox" element={<InboxPage />} /> */}
             {/* <Route path="/contact" element={<ContactPage />} /> */}
             {/* <Route path="/gift" element={<GiftPage />} /> */}
