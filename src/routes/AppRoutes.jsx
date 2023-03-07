@@ -3,6 +3,8 @@ import LoginPage from "../pages/LoginPage/LoginPage"
 import HomePage from "../pages/HomePage/HomePage"
 import PlanPage from "../pages/PlanPage/PlanPage"
 import SignupPage from "../pages/SignupPage/SignupPage"
+import PlanDetailsPage from "../pages/PlanDetailsPage/PlanDetailsPage"
+import NewPlanFrom from "../components/NewPlanFrom/NewPlanFrom"
 
 
 
@@ -20,7 +22,7 @@ const AppRoutes = () => {
             {/* <Route path="/inbox" element={<InboxPage />} /> */}
             {/* <Route path="/contact" element={<ContactPage />} /> */}
             {/* <Route path="/gift" element={<GiftPage />} /> */}
-            {/* <Route path="/create-plan" element={<PLanForm />} /> */}
+            <Route path="/create-plan" element={<NewPlanFrom />} />
             {/* <Route path="/details:id" element={<PLanDetailsPage />} /> */}
             {/* <Route path="*" element={<p>404</p>} /> */}
         </Routes>
