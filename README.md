@@ -34,7 +34,8 @@
 |------------------|------------------------|-----------|
 | /                | Home page              |           |
 | /plan            | Plan page              |           |
-| /details/:id     | Plan detail page       |           |
+| /planDetails/:id | Plan detail page       |           |
+| /planEdit/:id    | Plan edit page         |           |
 | /login           | Login page             |           |
 | /signup          | Register page          |           |
 | /create-plan     | New plan form page     | X         |

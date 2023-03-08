@@ -20,7 +20,7 @@ const PlanDetails = () => {
 
     }, [])
 
-    console.log({ plan })
+    console.log(plan)
 
     return (
 
@@ -35,6 +35,10 @@ const PlanDetails = () => {
                     <p>{plan.description}</p>
                     <hr />
 
+                    <Link to={`/planEdit/${plan_id}`}>
+                        <Button as="figure" variant="dark">Editar</Button>
+                    </Link>
+
                     <Link to="/plan">
                         <Button as="figure" variant="dark">Volver atras</Button>
                     </Link>
@@ -44,9 +48,9 @@ const PlanDetails = () => {
                     <img src='plan.imageURL' style={{ width: '100%' }} />
                 </Col>
 
-            </Row>
+            </Row >
 
-        </Container>
+        </Container >
 
     )
 }

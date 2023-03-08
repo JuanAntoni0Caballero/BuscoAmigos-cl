@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Form, Button } from "react-bootstrap"
+import { Container, Row, Col, Form, Button } from "react-bootstrap"
 import { useNavigate } from 'react-router-dom'
 import planService from "../../service/plan.service"
 
@@ -11,6 +11,8 @@ const NewPlanFrom = () => {
         description: '',
         origin: '',
         destination: '',
+        date: '',
+        duration: '',
         typePlan: ''
     })
 
@@ -24,7 +26,11 @@ const NewPlanFrom = () => {
     const navigate = useNavigate()
 
     const handleInputChange = e => {
-        const { value, name } = e.target
+        let { value, name } = e.target
+
+        if (value < 0) {
+            value = 0
+        }
         setPlanData({ ...planData, [name]: value })
     }
 
@@ -47,7 +53,6 @@ const NewPlanFrom = () => {
     }
 
 
-
     return (
 
         <Form onSubmit={handleFormSubmit}>
@@ -57,15 +62,37 @@ const NewPlanFrom = () => {
                 <Form.Control type="text" value={planData.title} onChange={handleInputChange} name="title" />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="origin">
-                <Form.Label>Origen</Form.Label>
-                <Form.Control type="text" value={planData.origin} onChange={handleInputChange} name="origin" />
-            </Form.Group>
+            <Row>
+                <Col md={{ span: 6 }}>
+                    <Form.Group className="mb-3" controlId="origin">
+                        <Form.Label>Origen</Form.Label>
+                        <Form.Control type="text" value={planData.origin} onChange={handleInputChange} name="origin" />
+                    </Form.Group>
+                </Col>
 
-            <Form.Group className="mb-3" controlId="destination">
-                <Form.Label>Destino</Form.Label>
-                <Form.Control type="text" value={planData.destination} onChange={handleInputChange} name="destination" />
-            </Form.Group>
+                <Col md={{ span: 6 }}>
+                    <Form.Group className="mb-3" controlId="destination">
+                        <Form.Label>Destino</Form.Label>
+                        <Form.Control type="text" value={planData.destination} onChange={handleInputChange} name="destination" />
+                    </Form.Group>
+                </Col>
+            </Row>
+
+            <Row>
+                <Col md={{ span: 6 }}>
+                    <Form.Group className="mb-3" controlId="date">
+                        <Form.Label>Fecha de ida</Form.Label>
+                        <Form.Control type="date" value={planData.date} onChange={handleInputChange} name="date" />
+                    </Form.Group>
+                </Col>
+
+                <Col md={{ span: 6 }}>
+                    <Form.Group className="mb-3" controlId="duration">
+                        <Form.Label>Días de duración del viaje</Form.Label>
+                        <Form.Control type="number" value={planData.duration} onChange={handleInputChange} name="duration" />
+                    </Form.Group>
+                </Col>
+            </Row>
 
             <Form.Group className="mb-3" controlId="typePlan">
                 <Form.Label>Tipo de viaje</Form.Label>
@@ -80,7 +107,7 @@ const NewPlanFrom = () => {
 
             <Form.Group className="mb-3" controlId="description">
                 <Form.Label>Descripción</Form.Label>
-                <Form.Control type="text" value={planData.description} onChange={handleInputChange} name="description" />
+                <Form.Control as="textarea" rows={3} value={planData.description} onChange={handleInputChange} name="description" />
             </Form.Group>
 
             <div className="d-grid">
@@ -89,8 +116,6 @@ const NewPlanFrom = () => {
 
         </Form>
     )
-
-
 }
 
 export default NewPlanFrom

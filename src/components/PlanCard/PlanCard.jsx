@@ -7,7 +7,7 @@ function PlanCard({ plan }) {
 
     return (
 
-        <Link to={`/details/${plan._id}`}>
+        <Link to={`/planDetails/${plan._id}`}>
             <Card style={{ width: '18rem' }}>
                 <Card.Img variant="top" src={plan.typePlan.picture} />
                 <Card.Body>
