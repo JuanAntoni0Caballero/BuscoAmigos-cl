@@ -6,6 +6,7 @@ import PlanPage from "../pages/PlanPage/PlanPage"
 import PlanDetailsPage from "../pages/PlanDetailsPage/PlanDetailsPage"
 import NewPlanPage from "../pages/NewPlanPage/NewPlanPage"
 import ProfilePage from "../pages/ProfilePage/PofilePage"
+import EditUserForm from "../components/EditUserForm/EditUserForm"
 
 
 const AppRoutes = () => {
@@ -19,6 +20,7 @@ const AppRoutes = () => {
             <Route path="/create-plan" element={<NewPlanPage />} />
             <Route path="/planDetails/:plan_id" element={<PlanDetailsPage />} />
             <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/editUser/:user_id" element={<EditUserForm />} />
             {/* <Route path="/inbox" element={<InboxPage />} /> */}
             {/* <Route path="/contact" element={<ContactPage />} /> */}
             {/* <Route path="/gift" element={<GiftPage />} /> */}

@@ -20,7 +20,6 @@ const PlanDetails = () => {
 
     }, [])
 
-    console.log(plan)
 
     return (
 

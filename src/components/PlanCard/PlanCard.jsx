@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 
 
-function PlanCard({ plan }) {
+const PlanCard = ({ plan }) => {
 
     return (
 
