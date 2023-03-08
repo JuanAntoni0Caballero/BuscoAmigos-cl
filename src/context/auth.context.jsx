@@ -26,9 +26,6 @@ function AuthProviderWrapper(props) {
                 .catch(err => logout())
         }
 
-        else {
-            logout()
-        }
     }
 
     const logout = () => {

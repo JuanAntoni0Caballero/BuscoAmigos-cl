@@ -33,11 +33,12 @@ class UserService {
         return this.api.get(`/profile`)
     }
 
-    editUser(user_id) {
-        return this.api.get(`/editUser/${user_id}`)
+    editUser(userData) {
+        return this.api.put(`/editUser`, userData)
     }
+
     deleteUser(user_id) {
-        return this.api.post(`/deleteUser/${user_id}`)
+        return this.api.delete(`/deleteUser/${user_id}`)
     }
 }
 const userService = new UserService()

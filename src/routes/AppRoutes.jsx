@@ -7,6 +7,7 @@ import PlanDetailsPage from "../pages/PlanDetailsPage/PlanDetailsPage"
 import NewPlanPage from "../pages/NewPlanPage/NewPlanPage"
 import ProfilePage from "../pages/ProfilePage/PofilePage"
 import EditUserForm from "../components/EditUserForm/EditUserForm"
+import PrivateRoute from "./PrivateRoute"
 
 
 const AppRoutes = () => {
@@ -17,10 +18,18 @@ const AppRoutes = () => {
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/plan" element={<PlanPage />} />
-            <Route path="/create-plan" element={<NewPlanPage />} />
-            <Route path="/planDetails/:plan_id" element={<PlanDetailsPage />} />
-            <Route path="/profile" element={<ProfilePage />} />
-            <Route path="/editUser" element={<EditUserForm />} />
+
+
+            <Route element={<PrivateRoute />}>
+
+                <Route path="/create-plan" element={<NewPlanPage />} />
+                <Route path="/planDetails/:plan_id" element={<PlanDetailsPage />} />
+                <Route path="/profile" element={<ProfilePage />} />
+                <Route path="/editUser" element={<EditUserForm />} />
+
+            </Route>
+
+
             {/* <Route path="/inbox" element={<InboxPage />} /> */}
             {/* <Route path="/contact" element={<ContactPage />} /> */}
             {/* <Route path="/gift" element={<GiftPage />} /> */}

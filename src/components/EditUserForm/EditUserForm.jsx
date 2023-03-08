@@ -1,34 +1,55 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useState } from 'react'
 import userService from '../../service/user.service'
-import { Card, Container, Form, Button } from 'react-bootstrap'
-import { Link, useNavigate } from 'react-router-dom'
-import { useParams } from 'react-router-dom'
+import { Container, Form, Button } from 'react-bootstrap'
 import { AuthContext } from '../../context/auth.context'
 
 
 
 const EditUserForm = () => {
 
-    const navigate = useNavigate()
-    const { user } = useContext(AuthContext)
 
+    const { user, authenticateUser } = useContext(AuthContext)
+
+
+    const [userData, setUserData] = useState({
+        username: user.username,
+        email: user.email,
+        avatar: user.avatar
+    })
 
 
     const handleInputChange = e => {
         const { value, name } = e.target
-        user({ ...user, [name]: value })
+        setUserData({ ...userData, [name]: value })
     }
 
+
+    // const handleFormSubmit = e => {
+
+    //     e.preventDefault()
+
+    //     userService
+    //         .editUser(user._id, userData)
+    //         .then(({ data }) => {
+    //             setUserData(data)
+    //             navigate('/profile')
+    //         })
+    //         .catch(err => console.log(err))
+    // }
 
     const handleFormSubmit = e => {
 
         e.preventDefault()
-
         userService
-            .editUser(user._id)
-            .then(({ data }) => user(data))
+            .editUser(userData)
+            .then(({ data }) => {
+                localStorage.setItem('authToken', data.authToken)
+                authenticateUser()
+            })
             .catch(err => console.log(err))
     }
+
+
 
 
 
@@ -41,17 +62,17 @@ const EditUserForm = () => {
 
                 <Form.Group className="mb-3" controlId="email">
                     <Form.Label>Email</Form.Label>
-                    <Form.Control type="email" value={user.email} onChange={handleInputChange} name="email" />
+                    <Form.Control type="email" value={userData.email} onChange={handleInputChange} name="email" />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="username">
                     <Form.Label>Nombre de usuario</Form.Label>
-                    <Form.Control type="text" value={user.username} onChange={handleInputChange} name="username" />
+                    <Form.Control type="text" value={userData.username} onChange={handleInputChange} name="username" />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="avatar">
                     <Form.Label>Avatar</Form.Label>
-                    <Form.Control type="file" onChange={handleInputChange} name="avatar" />
+                    <Form.Control type="file" placevalueholder={userData.avatar} onChange={handleInputChange} name="avatar" />
                 </Form.Group>
 
                 <div className="d-grid">

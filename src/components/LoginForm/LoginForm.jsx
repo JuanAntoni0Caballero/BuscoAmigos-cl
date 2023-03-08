@@ -14,7 +14,7 @@ const LoginForm = () => {
     })
 
 
-    const { authenticateUser, user } = useContext(AuthContext)
+    const { authenticateUser } = useContext(AuthContext)
     const navigate = useNavigate()
 
     const handleInputChange = e => {
@@ -29,7 +29,6 @@ const LoginForm = () => {
         authService
             .login(loginData)
             .then(({ data }) => {
-                console.log(data)
                 localStorage.setItem('authToken', data.authToken)
                 authenticateUser()
             })
