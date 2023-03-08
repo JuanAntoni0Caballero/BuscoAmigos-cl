@@ -40,8 +40,8 @@ class PlanService {
         return this.api.post(`/delete/${plan_id}`)
     }
 
-    editPlan(plan_id) {
-        return this.api.put(`/editPlan/${plan_id}`)
+    editPlan(plan_id, planData) {
+        return this.api.put(`/editPlan/${plan_id}`, planData)
     }
 }
 

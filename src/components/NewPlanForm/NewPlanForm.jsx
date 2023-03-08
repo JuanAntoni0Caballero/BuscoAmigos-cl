@@ -16,21 +16,17 @@ const NewPlanForm = () => {
         typePlan: ''
     })
 
-    const [planTypes, setplanTypes] = useState(null)
-
     useEffect(() => {
         typeOfPlans()
     }, [])
-
 
     const navigate = useNavigate()
 
     const handleInputChange = e => {
         let { value, name } = e.target
 
-        if (value < 0) {
-            value = 0
-        }
+        if (value < 0) value = 0
+
         setPlanData({ ...planData, [name]: value })
     }
 
@@ -43,6 +39,8 @@ const NewPlanForm = () => {
             .then(() => navigate('/plan'))
             .catch(err => console.log(err))
     }
+
+    const [planTypes, setplanTypes] = useState(null)
 
     const typeOfPlans = () => {
 

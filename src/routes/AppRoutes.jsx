@@ -21,6 +21,7 @@ const AppRoutes = () => {
             <Route path="/create-plan" element={<NewPlanPage />} />
             <Route path="/planDetails/:plan_id" element={<PlanDetailsPage />} />
             <Route path="/planEdit/:plan_id" element={<PlanEditPage />} />
+            {/* <Route path="/planDelete/:plan_id" element={<PlanDeletePage />} /> */}
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/editUser/:user_id" element={<EditUserForm />} />
             {/* <Route path="/inbox" element={<InboxPage />} /> */}
