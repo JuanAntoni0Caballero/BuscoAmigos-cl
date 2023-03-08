@@ -1,21 +1,24 @@
 import { useState, useContext } from "react"
 import { Form, Button } from "react-bootstrap"
-import { Link, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { AuthContext } from "../../context/auth.context"
 import authService from "../../service/auth.service"
 
 
 const LoginForm = () => {
 
-
     const [loginData, setLoginData] = useState({
         email: '',
         password: ''
     })
 
+<<<<<<< HEAD
 
     const { authenticateUser } = useContext(AuthContext)
     const navigate = useNavigate()
+=======
+    const { authenticateUser, user } = useContext(AuthContext)
+>>>>>>> a4dc9b1e89087e75888dc716a684e3ea20278f60
 
     const handleInputChange = e => {
         const { value, name } = e.target
@@ -32,9 +35,9 @@ const LoginForm = () => {
                 localStorage.setItem('authToken', data.authToken)
                 authenticateUser()
             })
-
             .catch(err => console.log(err))
     }
+
 
     return (
 

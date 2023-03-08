@@ -1,5 +1,5 @@
 import { Container, Row, Col } from 'react-bootstrap'
-import NewPlanFrom from "../../components/NewPlanFrom/NewPlanFrom"
+import NewPlanFrom from "../../components/NewPlanForm/NewPlanForm"
 
 
 const NewPlanPage = () => {

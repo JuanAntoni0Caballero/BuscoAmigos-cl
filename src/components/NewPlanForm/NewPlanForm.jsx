@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react"
-import { Container, Row, Col, Form, Button } from "react-bootstrap"
+import { Row, Col, Form, Button } from "react-bootstrap"
 import { useNavigate } from 'react-router-dom'
 import planService from "../../service/plan.service"
 
 
-const NewPlanFrom = () => {
+const NewPlanForm = () => {
 
     const [planData, setPlanData] = useState({
         title: '',
@@ -16,21 +16,17 @@ const NewPlanFrom = () => {
         typePlan: ''
     })
 
-    const [planTypes, setplanTypes] = useState(null)
-
     useEffect(() => {
         typeOfPlans()
     }, [])
-
 
     const navigate = useNavigate()
 
     const handleInputChange = e => {
         let { value, name } = e.target
 
-        if (value < 0) {
-            value = 0
-        }
+        if (value < 0) value = 0
+
         setPlanData({ ...planData, [name]: value })
     }
 
@@ -43,6 +39,8 @@ const NewPlanFrom = () => {
             .then(() => navigate('/plan'))
             .catch(err => console.log(err))
     }
+
+    const [planTypes, setplanTypes] = useState(null)
 
     const typeOfPlans = () => {
 
@@ -118,4 +116,4 @@ const NewPlanFrom = () => {
     )
 }
 
-export default NewPlanFrom
+export default NewPlanForm

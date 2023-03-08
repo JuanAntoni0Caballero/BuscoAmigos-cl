@@ -31,20 +31,20 @@ class PlanService {
         return this.api.get('/getTypePlan')
     }
 
-    savePlan(planData) {
-        return this.api.post('/savePlan', planData)
-    }
-
     getOnePlan(plan_id) {
         return this.api.get(`/getOnePlan/${plan_id}`)
     }
 
-    editPlan(plan_id) {
-        return this.api.get(`/edit/${plan_id}`)
+    savePlan(planData) {
+        return this.api.post('/savePlan', planData)
     }
 
     deletePlan(plan_id) {
         return this.api.post(`/delete/${plan_id}`)
+    }
+
+    editPlan(plan_id, planData) {
+        return this.api.put(`/editPlan/${plan_id}`, planData)
     }
 }
 

@@ -4,15 +4,10 @@ import PlanDetails from "../../components/PlanDetails/PlanDetails"
 
 const PlanDetailsPage = () => {
 
-
-
-
-
     return (
         <Container>
             <PlanDetails />
         </Container>
-
     )
 }
 

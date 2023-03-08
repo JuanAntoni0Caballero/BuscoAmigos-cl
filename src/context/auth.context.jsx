@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import authService from './../service/auth.service'
+import { useNavigate } from "react-router-dom"
 
 
 const AuthContext = createContext()
@@ -10,6 +11,7 @@ function AuthProviderWrapper(props) {
     const [user, setUser] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
     const navigate = useNavigate()
+
 
     const authenticateUser = () => {
 
@@ -25,7 +27,6 @@ function AuthProviderWrapper(props) {
                 })
                 .catch(err => logout())
         }
-
     }
 
     const logout = () => {
