@@ -3,7 +3,7 @@
 | HHTPP Method | URLpath         | Description               |
 |--------------|-----------------|---------------------------|
 | GET          | /getPlan        | Plan list                 |
-| GET          | /details/:id    | Matching ID plan details  |
+| GET          | /getTypePlan    | Type plan list            |
 | GET          | /getOnePlan/:id | Matching ID plan details  |
 | POST         | /savePlan       | Create a new Plan         |
 | PUT          | /edit/:id       | Matching ID plan edition  |

@@ -1,8 +1,8 @@
 import { Container, Row, Col } from 'react-bootstrap'
-import EditPlanFrom from "../../components/EditPlanFrom/EditPlanFrom"
+import PlanEditFrom from "../../components/PlanEditForm/PlanEditForm"
 
 
-const EditPlanPage = () => {
+const PlanEditPage = () => {
 
 
     return (
@@ -16,7 +16,7 @@ const EditPlanPage = () => {
 
                     <hr />
 
-                    <EditPlanFrom />
+                    <PlanEditFrom />
 
                 </Col>
             </Row>
@@ -25,4 +25,4 @@ const EditPlanPage = () => {
     )
 }
 
-export default EditPlanPage
+export default PlanEditPage

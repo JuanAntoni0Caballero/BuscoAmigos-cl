@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react"
-import { Container, Row, Col, Form, Button } from "react-bootstrap"
+import { Row, Col, Form, Button } from "react-bootstrap"
 import { useNavigate } from 'react-router-dom'
 import planService from "../../service/plan.service"
 
 
-const NewPlanFrom = () => {
+const NewPlanForm = () => {
 
     const [planData, setPlanData] = useState({
         title: '',
@@ -118,4 +118,4 @@ const NewPlanFrom = () => {
     )
 }
 
-export default NewPlanFrom
+export default NewPlanForm

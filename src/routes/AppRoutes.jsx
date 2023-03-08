@@ -4,6 +4,7 @@ import HomePage from "../pages/HomePage/HomePage"
 import SignupPage from "../pages/SignupPage/SignupPage"
 import PlanPage from "../pages/PlanPage/PlanPage"
 import PlanDetailsPage from "../pages/PlanDetailsPage/PlanDetailsPage"
+import PlanEditPage from "../pages/PlanEditPage/PlanEditPage"
 import NewPlanPage from "../pages/NewPlanPage/NewPlanPage"
 import ProfilePage from "../pages/ProfilePage/PofilePage"
 import EditUserForm from "../components/EditUserForm/EditUserForm"
@@ -19,6 +20,7 @@ const AppRoutes = () => {
             <Route path="/plan" element={<PlanPage />} />
             <Route path="/create-plan" element={<NewPlanPage />} />
             <Route path="/planDetails/:plan_id" element={<PlanDetailsPage />} />
+            <Route path="/planEdit/:plan_id" element={<PlanEditPage />} />
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/editUser/:user_id" element={<EditUserForm />} />
             {/* <Route path="/inbox" element={<InboxPage />} /> */}
