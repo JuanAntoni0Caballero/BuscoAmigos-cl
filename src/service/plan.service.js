@@ -3,9 +3,12 @@ import axios from 'axios'
 class PlanService {
 
     constructor() {
+
+
         this.api = axios.create({
             baseURL: `${process.env.REACT_APP_API_URL}/plan`
         })
+        
 
         this.api.interceptors.request.use((config) => {
 

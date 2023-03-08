@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import userService from '../../service/user.service'
 import { Card, Container, Form, Button } from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom'
@@ -7,24 +7,16 @@ import { AuthContext } from '../../context/auth.context'
 
 
 
-
 const EditUserForm = () => {
 
     const navigate = useNavigate()
-
-    const [user, setUser] = useState({})
-
-    const { user_id } = useParams()
-
-
-    console.log('user_id', user_id)
-    console.log('user', user)
+    const { user } = useContext(AuthContext)
 
 
 
     const handleInputChange = e => {
         const { value, name } = e.target
-        setUser({ ...setUser, [name]: value })
+        user({ ...user, [name]: value })
     }
 
 
@@ -33,8 +25,8 @@ const EditUserForm = () => {
         e.preventDefault()
 
         userService
-            .getOneUser(user_id)
-            .then(({ data }) => setUser(data))
+            .editUser(user._id)
+            .then(({ data }) => user(data))
             .catch(err => console.log(err))
     }
 
@@ -54,12 +46,7 @@ const EditUserForm = () => {
 
                 <Form.Group className="mb-3" controlId="username">
                     <Form.Label>Nombre de usuario</Form.Label>
-                    <Form.Control type="text" onChange={handleInputChange} name="username" />
-                </Form.Group>
-
-                <Form.Group className="mb-3" controlId="password">
-                    <Form.Label>Contraseña</Form.Label>
-                    <Form.Control type="password" onChange={handleInputChange} name="password" />
+                    <Form.Control type="text" value={user.username} onChange={handleInputChange} name="username" />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="avatar">

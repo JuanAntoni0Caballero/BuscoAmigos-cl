@@ -29,9 +29,9 @@ const LoginForm = () => {
         authService
             .login(loginData)
             .then(({ data }) => {
+                console.log(data)
                 localStorage.setItem('authToken', data.authToken)
                 authenticateUser()
-                navigate('/profile')
             })
 
             .catch(err => console.log(err))

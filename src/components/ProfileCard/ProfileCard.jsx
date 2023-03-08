@@ -3,11 +3,10 @@ import userService from '../../service/user.service'
 import { Card, Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
+
 const ProfileCard = () => {
 
-
     const [user, setUser] = useState([])
-
 
     useEffect(() => {
         userService
@@ -29,7 +28,7 @@ const ProfileCard = () => {
                 </Card.Body>
             </Card>
 
-            <Link to={`/editUser`}>Edit Profile</Link>
+            <Link to={'/editUser'}>Edit Profile</Link>
             <Link to='/'>Menssages</Link>
 
 
