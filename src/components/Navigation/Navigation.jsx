@@ -69,12 +69,6 @@ const Navigation = () => {
                                     </Link>
                                 </>
                         }
-
-
-
-                        <Link to='/profile'>
-                            <Nav.Link as='span'>Profile</Nav.Link>
-                        </Link>
                         <Link to='/profile'>
                             <Nav.Link as='span'>Profile</Nav.Link>
                         </Link>

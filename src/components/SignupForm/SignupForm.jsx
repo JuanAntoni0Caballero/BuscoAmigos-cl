@@ -13,6 +13,7 @@ const SignupForm = () => {
         avatar: ''
     })
 
+
     const navigate = useNavigate()
 
     const handleInputChange = e => {
@@ -26,7 +27,7 @@ const SignupForm = () => {
 
         authService
             .signup(signupData)
-            .then(() => navigate('/login'))
+            .then(() => navigate('/profile'))
             .catch(err => console.log(err))
     }
 
