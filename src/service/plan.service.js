@@ -8,7 +8,7 @@ class PlanService {
         this.api = axios.create({
             baseURL: `${process.env.REACT_APP_API_URL}/plan`
         })
-        
+
 
         this.api.interceptors.request.use((config) => {
 
@@ -40,7 +40,7 @@ class PlanService {
     }
 
     deletePlan(plan_id) {
-        return this.api.post(`/delete/${plan_id}`)
+        return this.api.delete(`/deletePlan/${plan_id}`)
     }
 
     editPlan(plan_id, planData) {

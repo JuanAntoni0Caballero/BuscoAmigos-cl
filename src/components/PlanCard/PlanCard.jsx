@@ -1,4 +1,4 @@
-import { Button, Card } from 'react-bootstrap'
+import { Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 
 
@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 const PlanCard = ({ plan }) => {
 
     return (
+
 
         <Link to={`/planDetails/${plan._id}`}>
             <Card style={{ width: '18rem' }}>

@@ -40,7 +40,7 @@ const ProfileCard = () => {
 
             <Link to={'/editUser'}>Edit Profile</Link>
             <button onClick={handleDeleteProfile}>Delete Profile</button>
-            <Link to='/'>Menssages</Link>
+            <Link to='/inbox'>Menssages</Link>
 
 
 

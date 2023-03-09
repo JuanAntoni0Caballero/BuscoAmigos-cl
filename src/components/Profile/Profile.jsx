@@ -1,14 +1,20 @@
 
+import { Container } from 'react-bootstrap'
 import ProfileCard from '../ProfileCard/ProfileCard'
+import ProfilePost from '../ProfilePost/ProfilePost'
 
 
 const Profile = () => {
 
-    
+
 
 
     return (
-        <ProfileCard />
+
+        <Container>
+            <ProfileCard />
+        </Container>
+
     )
 
 

@@ -9,6 +9,7 @@ import PlanNewPage from "../pages/PlanNewPage/PlanNewPage"
 import ProfilePage from "../pages/ProfilePage/PofilePage"
 import EditUserForm from "../components/EditUserForm/EditUserForm"
 import PrivateRoute from "./PrivateRoute"
+import ProfilePost from "../components/ProfilePost/ProfilePost"
 
 
 const AppRoutes = () => {
@@ -29,12 +30,12 @@ const AppRoutes = () => {
                 <Route path="/profile" element={<ProfilePage />} />
                 <Route path="/editUser" element={<EditUserForm />} />
                 <Route path="/deleteUser" element={<HomePage />} />
+                <Route path="/inbox" element={<ProfilePost />} />
+
 
             </Route>
 
 
-            {/* <Route path="/planDelete/:plan_id" element={<PlanDeletePage />} /> */}
-            {/* <Route path="/inbox" element={<InboxPage />} /> */}
             {/* <Route path="/contact" element={<ContactPage />} /> */}
             {/* <Route path="/gift" element={<GiftPage />} /> */}
             {/* <Route path="*" element={<p>404</p>} /> */}

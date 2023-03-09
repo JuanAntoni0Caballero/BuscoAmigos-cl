@@ -20,7 +20,7 @@ const PlanDetails = () => {
             .then(({ data }) => setPlan(data))
             .catch(err => console.log(err))
 
-    }, [])
+    }, [plan_id])
 
 
 
@@ -28,7 +28,8 @@ const PlanDetails = () => {
 
         e.preventDefault()
 
-        return planService
+
+        planService
             .deletePlan(plan_id)
             .then(() => navigate('/plan'))
             .catch(err => console.log(err))
@@ -38,32 +39,32 @@ const PlanDetails = () => {
     return (
 
         <Container>
-            <h1 className="mb-4">Detalles de {plan.title} </h1>
+            <h1 className="mb-4">{plan.title} </h1>
             <hr />
 
             <Row>
 
                 <Col md={{ span: 6, offset: 1 }}>
-                    <h5>Description</h5>
+                    <h6>Description</h6>
                     <p>{plan.description}</p>
                     <hr />
 
                     <Link to={`/planEdit/${plan_id}`}>
-                        <Button as="figure" variant="dark">Editar</Button>
+                        <Button as="figure" variant="dark">Edit</Button>
                     </Link>
 
                     <Link to='/plan'>
-                        <Button as="figure" onClick={handleDeletePlan} variant="dark">delete</Button>
+                        <Button as="figure" onClick={handleDeletePlan} variant="dark">Delete</Button>
 
                     </Link>
 
                     <Link to="/plan">
-                        <Button as="figure" variant="dark">Volver atras</Button>
+                        <Button as="figure" variant="dark">Go back</Button>
                     </Link>
                 </Col>
 
                 <Col md={{ span: 4 }}>
-                    <img src='plan.imageURL' style={{ width: '100%' }} />
+                    <img src={plan.typePlan} style={{ width: '100%' }} alt='PlanImg' />
                 </Col>
 
             </Row >
