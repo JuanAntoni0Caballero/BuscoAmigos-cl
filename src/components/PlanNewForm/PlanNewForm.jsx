@@ -2,9 +2,12 @@ import { useEffect, useState } from "react"
 import { Row, Col, Form, Button } from "react-bootstrap"
 import { useNavigate } from 'react-router-dom'
 import planService from "../../service/plan.service"
+import FormError from "../FormError/FormError"
 
 
 const PlanNewForm = () => {
+
+    const [planTypes, setplanTypes] = useState(null)
 
     const [planData, setPlanData] = useState({
         title: '',
@@ -19,6 +22,21 @@ const PlanNewForm = () => {
     useEffect(() => {
         typeOfPlans()
     }, [])
+
+    const typeOfPlans = () => {
+
+        planService
+            .getTypePlan()
+            .then(({ data }) => {
+                setplanTypes(data)
+                const firstPlan = data[0]._id
+                setPlanData({ ...planData, typePlan: firstPlan })
+            })
+            .catch(err => console.log(err))
+    }
+
+    const [errors, setErrors] = useState([])
+
 
     const navigate = useNavigate()
 
@@ -37,17 +55,7 @@ const PlanNewForm = () => {
         planService
             .savePlan(planData)
             .then(() => navigate('/plan'))
-            .catch(err => console.log(err))
-    }
-
-    const [planTypes, setplanTypes] = useState(null)
-
-    const typeOfPlans = () => {
-
-        planService
-            .getTypePlan()
-            .then(type => setplanTypes(type.data))
-            .catch(err => console.log(err))
+            .catch(err => setErrors(err.response.data.errorMessages))
     }
 
 
@@ -107,6 +115,8 @@ const PlanNewForm = () => {
                 <Form.Label>Descripción</Form.Label>
                 <Form.Control as="textarea" rows={3} value={planData.description} onChange={handleInputChange} name="description" />
             </Form.Group>
+
+            {errors.length > 0 && <FormError>{errors.map(elm => <p key={elm._id}>{elm}</p>)}</FormError>}
 
             <div className="d-grid">
                 <Button variant="dark" type="submit">Guardar</Button>

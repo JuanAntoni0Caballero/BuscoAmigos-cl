@@ -3,6 +3,7 @@ import { Form, Button } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import { AuthContext } from "../../context/auth.context"
 import authService from "../../service/auth.service"
+import FormError from "../FormError/FormError"
 
 
 const LoginForm = () => {
@@ -11,6 +12,8 @@ const LoginForm = () => {
         email: '',
         password: ''
     })
+
+    const [errors, setErrors] = useState([])
 
     const { authenticateUser, user } = useContext(AuthContext)
 
@@ -29,7 +32,9 @@ const LoginForm = () => {
                 localStorage.setItem('authToken', data.authToken)
                 authenticateUser()
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                setErrors([err.response.data.errorMessages])
+            })
     }
 
 
@@ -46,6 +51,9 @@ const LoginForm = () => {
                 <Form.Label>Contraseña</Form.Label>
                 <Form.Control type="password" value={loginData.password} onChange={handleInputChange} name="password" />
             </Form.Group>
+
+            {errors?.length > 0 && <FormError>{errors.map(elm => <p key={elm._id}>{elm}</p>)}</FormError>}
+
             <Link to='/signup'>Date de alta</Link>
 
             <div className="d-grid">

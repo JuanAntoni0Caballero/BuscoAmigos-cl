@@ -10,6 +10,7 @@ import ProfilePage from "../pages/ProfilePage/PofilePage"
 import EditUserForm from "../components/EditUserForm/EditUserForm"
 import PrivateRoute from "./PrivateRoute"
 import ProfilePost from "../components/ProfilePost/ProfilePost"
+import PlanSearchForm from "../components/PlanSearchForm/PlanSearchForm"
 
 
 const AppRoutes = () => {
@@ -20,6 +21,7 @@ const AppRoutes = () => {
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/plan" element={<PlanListPage />} />
+            <Route path="/planing" element={<PlanSearchForm />} />
 
 
             <Route element={<PrivateRoute />}>

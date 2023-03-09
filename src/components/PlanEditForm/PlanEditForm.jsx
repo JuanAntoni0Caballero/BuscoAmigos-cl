@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { Container, Row, Col, Form, Button } from "react-bootstrap"
 import { useNavigate, useParams } from 'react-router-dom'
 import planService from "../../service/plan.service"
+import FormError from "../FormError/FormError"
 
 
 const PlanEditForm = () => {
@@ -15,6 +16,8 @@ const PlanEditForm = () => {
         duration: '',
         typePlan: ''
     })
+
+    const [errors, setErrors] = useState([])
 
     useEffect(() => {
         typeOfPlans()
@@ -47,7 +50,7 @@ const PlanEditForm = () => {
         planService
             .editPlan(plan_id, plan)
             .then(() => navigate(`/plan`))
-            .catch(err => console.log(err))
+            .catch(err => setErrors(err.response.data.errorMessages))
     }
 
     const [planTypes, setplanTypes] = useState(null)
@@ -119,6 +122,8 @@ const PlanEditForm = () => {
                     <Form.Label>Descripción</Form.Label>
                     <Form.Control as="textarea" rows={3} value={plan.description} onChange={handleInputChange} name="description" />
                 </Form.Group>
+
+                {errors.length > 0 && <FormError>{errors.map(elm => <p key={elm._id}>{elm}</p>)}</FormError>}
 
                 <div className="d-grid">
                     <Button variant="dark" type="submit">Guardar</Button>
