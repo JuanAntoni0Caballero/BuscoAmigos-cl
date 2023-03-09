@@ -13,7 +13,6 @@ const SignupForm = () => {
         password: ''
     })
 
-
     const navigate = useNavigate()
 
     const handleInputChange = e => {
@@ -41,7 +40,6 @@ const SignupForm = () => {
             .uploadimage(formData)
             .then(({ data }) => {
                 setSignupData({ ...signupData, avatar: data.cloudinary_url })
-                console.log(signupData)
             })
             .catch(err => console.log(err))
     }

@@ -1,8 +1,8 @@
 import { Container, Row, Col } from 'react-bootstrap'
-import NewPlanFrom from "../../components/NewPlanForm/NewPlanForm"
+import PlanNewForm from "../../components/PlanNewForm/PlanNewForm"
 
 
-const NewPlanPage = () => {
+const PlanNewPage = () => {
 
 
     return (
@@ -16,7 +16,7 @@ const NewPlanPage = () => {
 
                     <hr />
 
-                    <NewPlanFrom />
+                    <PlanNewForm />
 
                 </Col>
             </Row>
@@ -25,4 +25,4 @@ const NewPlanPage = () => {
     )
 }
 
-export default NewPlanPage
+export default PlanNewPage

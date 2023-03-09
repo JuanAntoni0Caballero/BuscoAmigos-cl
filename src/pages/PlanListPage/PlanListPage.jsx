@@ -1,5 +1,5 @@
 import { Container } from "react-bootstrap"
-import Plan from "../../components/Plan/Plan"
+import PlanList from "../../components/PlanList/PlanList"
 
 
 const PlanPage = ({ plan }) => {
@@ -10,7 +10,7 @@ const PlanPage = ({ plan }) => {
         <Container>
             <h1>Listado de Planes</h1>
             <hr />
-            <Plan plan={plan} />
+            <PlanList plan={plan} />
         </Container>
     )
 }
