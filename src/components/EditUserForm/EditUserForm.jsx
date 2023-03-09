@@ -24,19 +24,6 @@ const EditUserForm = () => {
     }
 
 
-    // const handleFormSubmit = e => {
-
-    //     e.preventDefault()
-
-    //     userService
-    //         .editUser(user._id, userData)
-    //         .then(({ data }) => {
-    //             setUserData(data)
-    //             navigate('/profile')
-    //         })
-    //         .catch(err => console.log(err))
-    // }
-
     const handleFormSubmit = e => {
 
         e.preventDefault()
@@ -48,9 +35,6 @@ const EditUserForm = () => {
             })
             .catch(err => console.log(err))
     }
-
-
-
 
 
     return (
@@ -72,7 +56,7 @@ const EditUserForm = () => {
 
                 <Form.Group className="mb-3" controlId="avatar">
                     <Form.Label>Avatar</Form.Label>
-                    <Form.Control type="file" placevalueholder={userData.avatar} onChange={handleInputChange} name="avatar" />
+                    <Form.Control type="file" value={userData.avatar} onChange={handleInputChange} name="avatar" />
                 </Form.Group>
 
                 <div className="d-grid">

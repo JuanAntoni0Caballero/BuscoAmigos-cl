@@ -28,6 +28,7 @@ const AppRoutes = () => {
                 <Route path="/planEdit/:plan_id" element={<PlanEditPage />} />
                 <Route path="/profile" element={<ProfilePage />} />
                 <Route path="/editUser" element={<EditUserForm />} />
+                <Route path="/deleteUser" element={<HomePage />} />
 
             </Route>
 

@@ -3,11 +3,13 @@ import { useEffect, useState } from "react"
 import { useParams, Link } from "react-router-dom"
 import { Container, Row, Col, Button } from "react-bootstrap"
 import planService from "../../service/plan.service"
+import { useNavigate } from "react-router-dom"
 
 
 const PlanDetails = () => {
 
     const [plan, setPlan] = useState({})
+    const navigate = useNavigate()
 
 
     const { plan_id } = useParams()
@@ -19,6 +21,18 @@ const PlanDetails = () => {
             .catch(err => console.log(err))
 
     }, [])
+
+
+
+    const handleDeletePlan = e => {
+
+        e.preventDefault()
+
+        return planService
+            .deletePlan(plan_id)
+            .then(() => navigate('/plan'))
+            .catch(err => console.log(err))
+    }
 
 
     return (
@@ -36,6 +50,11 @@ const PlanDetails = () => {
 
                     <Link to={`/planEdit/${plan_id}`}>
                         <Button as="figure" variant="dark">Editar</Button>
+                    </Link>
+
+                    <Link to='/plan'>
+                        <Button as="figure" onClick={handleDeletePlan} variant="dark">delete</Button>
+
                     </Link>
 
                     <Link to="/plan">

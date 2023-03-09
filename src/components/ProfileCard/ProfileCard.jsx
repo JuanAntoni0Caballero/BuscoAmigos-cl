@@ -7,10 +7,21 @@ import { AuthContext } from '../../context/auth.context'
 
 const ProfileCard = () => {
 
-    const { user: userContext } = useContext(AuthContext)
+    const { user: userContext, logout } = useContext(AuthContext)
     const [user, setUser] = useState(userContext)
 
 
+    const handleDeleteProfile = e => {
+
+        e.preventDefault()
+
+        return userService
+            .deleteUser()
+            .then(() => {
+                logout()
+            })
+            .catch(err => console.log(err))
+    }
 
 
     return (
@@ -26,6 +37,7 @@ const ProfileCard = () => {
             </Card>
 
             <Link to={'/editUser'}>Edit Profile</Link>
+            <button onClick={handleDeleteProfile}>Delete Profile</button>
             <Link to='/'>Menssages</Link>
 
 

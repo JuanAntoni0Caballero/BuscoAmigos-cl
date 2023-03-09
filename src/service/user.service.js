@@ -37,8 +37,8 @@ class UserService {
         return this.api.put(`/editUser`, userData)
     }
 
-    deleteUser(user_id) {
-        return this.api.delete(`/deleteUser/${user_id}`)
+    deleteUser() {
+        return this.api.delete(`/deleteUser`)
     }
 }
 const userService = new UserService()
