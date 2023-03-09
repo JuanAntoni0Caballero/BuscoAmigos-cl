@@ -1,5 +1,6 @@
 import { Container, Row, Col, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import PlanSearchForm from '../../components/PlanSearchForm/PlanSearchForm'
 
 
 const HomePage = () => {
@@ -13,10 +14,8 @@ const HomePage = () => {
 
                     <h1>Busco Amigos</h1>
                     <hr />
-                    <p>Siiiuuuuuuu</p>
-                    {/* <Link to="/galeria">
-                        <Button variant="dark">Ir a la galería</Button>
-                    </Link> */}
+
+                    <PlanSearchForm />
 
                 </Col>
 

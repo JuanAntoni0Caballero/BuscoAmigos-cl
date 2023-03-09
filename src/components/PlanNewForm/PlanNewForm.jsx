@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import planService from "../../service/plan.service"
 
 
-const NewPlanForm = () => {
+const PlanNewForm = () => {
 
     const [planData, setPlanData] = useState({
         title: '',
@@ -116,4 +116,4 @@ const NewPlanForm = () => {
     )
 }
 
-export default NewPlanForm
+export default PlanNewForm

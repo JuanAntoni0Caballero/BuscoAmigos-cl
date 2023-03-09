@@ -12,13 +12,7 @@ const LoginForm = () => {
         password: ''
     })
 
-<<<<<<< HEAD
-
-    const { authenticateUser } = useContext(AuthContext)
-    const navigate = useNavigate()
-=======
     const { authenticateUser, user } = useContext(AuthContext)
->>>>>>> a4dc9b1e89087e75888dc716a684e3ea20278f60
 
     const handleInputChange = e => {
         const { value, name } = e.target

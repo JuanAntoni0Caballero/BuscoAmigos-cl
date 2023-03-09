@@ -18,17 +18,17 @@ const ProfileCard = () => {
         <Container>
 
             <Card style={{ width: '18rem' }}>
+                <Card.Img variant="top" src={user.avatar} />
                 <Card.Body>
                     <Card.Title>{user.username}</Card.Title>
-                    <p>{user.email}</p>
-                    <img src={user.avatar} alt="image" />
+                    <Card.Text>
+                        {user.email}
+                    </Card.Text>
                 </Card.Body>
             </Card>
 
-            <Link to={'/editUser'}>Edit Profile</Link>
-            <Link to='/'>Menssages</Link>
-
-
+            <Link to='/editUser'>Edit Profile</Link>
+            <Link to='/profile'>Menssages</Link>
 
         </Container>
     )
