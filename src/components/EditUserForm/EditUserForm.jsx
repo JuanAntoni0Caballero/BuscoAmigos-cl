@@ -4,7 +4,7 @@ import { Container, Form, Button } from 'react-bootstrap'
 import userService from '../../service/user.service'
 import uploadServices from "../../service/upload.service"
 import { AuthContext } from '../../context/auth.context'
-
+import FormError from '../FormError/FormError'
 
 
 const EditUserForm = () => {
@@ -18,6 +18,7 @@ const EditUserForm = () => {
     })
 
     const [loadinImage, setLoadingImage] = useState(false)
+    const [errors, setErrors] = useState([])
 
     const handleInputChange = e => {
         const { value, name } = e.target
@@ -34,7 +35,7 @@ const EditUserForm = () => {
                 localStorage.setItem('authToken', data.authToken)
                 authenticateUser()
             })
-            .catch(err => console.log(err))
+            .catch(err => setErrors(err.response.data.errorMessages))
     }
 
     const handleFileUpload = e => {
@@ -80,6 +81,8 @@ const EditUserForm = () => {
                     <Form.Label>Nombre de usuario</Form.Label>
                     <Form.Control type="text" value={userData.username} onChange={handleInputChange} name="username" />
                 </Form.Group>
+
+                {errors.length > 0 && <FormError>{errors.map(elm => <p key={elm._id}>{elm}</p>)}</FormError>}
 
                 <div className="d-grid">
                     <Button variant="dark" type="submit" disabled={loadinImage}>{loadinImage ? 'Cargando imagen...' : 'Guardar cambios'}</Button>

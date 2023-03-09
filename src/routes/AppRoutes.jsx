@@ -9,6 +9,7 @@ import PlanNewPage from "../pages/PlanNewPage/PlanNewPage"
 import ProfilePage from "../pages/ProfilePage/PofilePage"
 import EditUserForm from "../components/EditUserForm/EditUserForm"
 import PrivateRoute from "./PrivateRoute"
+import PlanSearchForm from "../components/PlanSearchForm/PlanSearchForm"
 
 
 const AppRoutes = () => {
@@ -19,6 +20,7 @@ const AppRoutes = () => {
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/plan" element={<PlanListPage />} />
+            <Route path="/planing" element={<PlanSearchForm />} />
 
 
             <Route element={<PrivateRoute />}>
@@ -33,7 +35,6 @@ const AppRoutes = () => {
             </Route>
 
 
-            {/* <Route path="/planDelete/:plan_id" element={<PlanDeletePage />} /> */}
             {/* <Route path="/inbox" element={<InboxPage />} /> */}
             {/* <Route path="/contact" element={<ContactPage />} /> */}
             {/* <Route path="/gift" element={<GiftPage />} /> */}
