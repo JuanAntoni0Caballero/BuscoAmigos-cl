@@ -20,21 +20,23 @@ class MessageService {
 
             return config
         })
-
     }
 
-    getMessage() {
-        return this.api.get('/getMessage')
+    getConversation() {
+        return this.api.get('/getConversation')
+    }
+
+    getMessages() {
+        return this.api.get('/getMessages')
     }
 
     saveMessage(messageData) {
         return this.api.post('/saveMessage', messageData)
     }
 
-
-    // deleteMessage(message_id) {
-    //     return this.api.delete(`/deleteMessage/${message_id}`)
-    // }
+    deleteMessage(message_id) {
+        return this.api.delete(`/deleteMessage/${message_id}`)
+    }
 
 }
 

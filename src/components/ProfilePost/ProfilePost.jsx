@@ -3,15 +3,18 @@ import Button from 'react-bootstrap/Button'
 import Offcanvas from 'react-bootstrap/Offcanvas'
 import { Form } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import messageService from '../../service/message.service'
 
 const ProfilePost = () => {
 
 
+    const [show, setShow] = useState(false)
 
-    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false)
+    const handleShow = () => setShow(true)
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+
+
 
     return (
 

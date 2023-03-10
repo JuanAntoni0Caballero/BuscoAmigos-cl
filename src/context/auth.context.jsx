@@ -11,7 +11,6 @@ function AuthProviderWrapper(props) {
     const [isLoading, setIsLoading] = useState(true)
     const navigate = useNavigate()
 
-
     const authenticateUser = () => {
 
         const token = localStorage.getItem('authToken')
@@ -44,6 +43,8 @@ function AuthProviderWrapper(props) {
             {props.children}
         </AuthContext.Provider>
     )
+
+
 }
 
 export { AuthContext, AuthProviderWrapper }

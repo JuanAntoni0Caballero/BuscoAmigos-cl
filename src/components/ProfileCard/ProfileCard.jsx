@@ -23,9 +23,7 @@ const ProfileCard = () => {
             .catch(err => console.log(err))
     }
 
-
     return (
-
         <Container>
 
             <Card style={{ width: '18rem' }}>
