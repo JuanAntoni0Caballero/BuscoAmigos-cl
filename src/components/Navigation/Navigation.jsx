@@ -44,9 +44,6 @@ const Navigation = () => {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
-                        <Link to='/plan'>
-                            <Nav.Link as='span'>Buscador de planes</Nav.Link>
-                        </Link>
                         <Link to='/create-plan'>
                             <Nav.Link as='span'>Crear plan</Nav.Link>
                         </Link>
