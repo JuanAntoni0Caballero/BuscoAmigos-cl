@@ -9,6 +9,11 @@ const PlanNewForm = () => {
 
     const [planTypes, setplanTypes] = useState(null)
 
+    const navigate = useNavigate()
+
+    const [errors, setErrors] = useState([])
+
+
     const [planData, setPlanData] = useState({
         title: '',
         description: '',
@@ -19,9 +24,11 @@ const PlanNewForm = () => {
         typePlan: ''
     })
 
+
     useEffect(() => {
         loadPlanTypes()
     }, [])
+
 
     const loadPlanTypes = () => {
 
@@ -35,10 +42,6 @@ const PlanNewForm = () => {
             .catch(err => console.log(err))
     }
 
-    const [errors, setErrors] = useState([])
-
-
-    const navigate = useNavigate()
 
     const handleInputChange = e => {
         let { value, name } = e.target

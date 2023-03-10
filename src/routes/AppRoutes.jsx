@@ -30,6 +30,8 @@ const AppRoutes = () => {
                 <Route path="/editUser" element={<EditUserPage />} />
                 <Route path="/deleteUser" element={<HomePage />} />
                 <Route path="/inbox" element={<ProfilePost />} />
+                <Route path="/inbox/:receiver" element={<ProfilePost />} />
+
 
             </Route>
 

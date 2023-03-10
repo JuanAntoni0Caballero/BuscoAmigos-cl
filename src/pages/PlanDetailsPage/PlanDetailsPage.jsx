@@ -1,8 +1,13 @@
 import { Container, Row, Col, Button } from "react-bootstrap"
 import { useEffect, useState } from "react"
 import { useParams, Link } from "react-router-dom"
-import planService from "../../service/plan.service"
+import planService from "../../services/plan.service"
 import { useNavigate } from "react-router-dom"
+import conversationService from '../../services/conversation.service'
+import { AuthContext } from '../../contexts/auth.context'
+import { useContext } from "react"
+
+
 
 
 const PlanDetailsPage = () => {
@@ -12,6 +17,18 @@ const PlanDetailsPage = () => {
     const navigate = useNavigate()
 
     const { plan_id } = useParams()
+
+    const [errors, setErrors] = useState([])
+
+
+    const { user: userContext } = useContext(AuthContext)
+    const [user, setUser] = useState(userContext)
+
+
+
+
+
+
 
     useEffect(() => {
         planService
@@ -30,6 +47,43 @@ const PlanDetailsPage = () => {
             .then(() => navigate('/plan'))
             .catch(err => console.log(err))
     }
+
+
+
+
+
+
+
+
+
+
+    const [conversationData, setConversationData] = useState({
+        message: '',
+        members: []
+
+    })
+
+
+    const createConversation = e => {
+
+        e.preventDefault()
+
+        conversationService
+            .createConversation(plan.owner)
+            .then(() => navigate('/inbox'))
+            .catch(err => setErrors(err.response.data.errorMessages))
+    }
+
+
+
+
+
+
+
+
+
+
+
 
 
     return (
@@ -56,6 +110,9 @@ const PlanDetailsPage = () => {
 
                     <Link to="/plan">
                         <Button as="figure" variant="dark">Go back</Button>
+                    </Link>
+                    <Link to={`/inbox/${plan.owner}`}>
+                        <Button onClick={createConversation} as="figure" variant="dark">Contact with creator</Button>
                     </Link>
                 </Col>
 

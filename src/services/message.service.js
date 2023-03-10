@@ -6,7 +6,7 @@ class MessageService {
 
 
         this.api = axios.create({
-            baseURL: `${process.env.REACT_APP_API_URL}/message`
+            baseURL: `${process.env.REACT_APP_API_URL}/messages`
         })
 
 
@@ -22,9 +22,6 @@ class MessageService {
         })
     }
 
-    getConversation() {
-        return this.api.get('/getConversation')
-    }
 
     getMessages() {
         return this.api.get('/getMessages')

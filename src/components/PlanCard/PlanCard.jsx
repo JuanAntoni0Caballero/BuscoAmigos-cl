@@ -7,7 +7,6 @@ const PlanCard = ({ _id, typePlan, title, destination, description }) => {
 
     return (
 
-
         <Link to={`/planDetails/${_id}`}>
             <Card style={{ width: '18rem' }}>
                 <Card.Img variant="top" src={typePlan.picture} />
