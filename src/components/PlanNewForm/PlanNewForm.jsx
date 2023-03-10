@@ -94,7 +94,7 @@ const PlanNewForm = () => {
 
                 <Col md={{ span: 6 }}>
                     <Form.Group className="mb-3" controlId="duration">
-                        <Form.Label>Días de duración del viaje</Form.Label>
+                        <Form.Label>Días de duración</Form.Label>
                         <Form.Control type="number" value={planData.duration} onChange={handleInputChange} name="duration" />
                     </Form.Group>
                 </Col>

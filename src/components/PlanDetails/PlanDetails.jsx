@@ -9,8 +9,8 @@ import { useNavigate } from "react-router-dom"
 const PlanDetails = () => {
 
     const [plan, setPlan] = useState({})
-    const navigate = useNavigate()
 
+    const navigate = useNavigate()
 
     const { plan_id } = useParams()
 
@@ -22,12 +22,9 @@ const PlanDetails = () => {
 
     }, [plan_id])
 
-
-
     const handleDeletePlan = e => {
 
         e.preventDefault()
-
 
         planService
             .deletePlan(plan_id)
