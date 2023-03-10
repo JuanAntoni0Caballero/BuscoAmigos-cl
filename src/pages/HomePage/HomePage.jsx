@@ -1,5 +1,4 @@
-import { Container, Row, Col, Button } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Container } from 'react-bootstrap'
 import PlanSearchForm from '../../components/PlanSearchForm/PlanSearchForm'
 
 
@@ -8,18 +7,10 @@ const HomePage = () => {
     return (
         <Container className="Home">
 
-            <Row>
+            <h1>Busco Amigos</h1>
+            <hr />
 
-                <Col md={{ span: 10, offset: 1 }}>
-
-                    <h1>Busco Amigos</h1>
-                    <hr />
-
-                    <PlanSearchForm />
-
-                </Col>
-
-            </Row>
+            <PlanSearchForm />
 
         </Container>
     )
