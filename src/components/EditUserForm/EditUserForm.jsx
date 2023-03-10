@@ -1,9 +1,9 @@
 import { useContext, useState } from 'react'
 import { Link } from "react-router-dom"
 import { Container, Form, Button } from 'react-bootstrap'
-import userService from '../../service/user.service'
-import uploadServices from "../../service/upload.service"
-import { AuthContext } from '../../context/auth.context'
+import userService from '../../services/user.service'
+import uploadServices from "../../services/upload.service"
+import { AuthContext } from '../../contexts/auth.context'
 import FormError from '../FormError/FormError'
 
 

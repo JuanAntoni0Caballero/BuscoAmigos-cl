@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { Container, Row, Col, Form, Button } from "react-bootstrap"
 import { useNavigate, useParams } from 'react-router-dom'
-import planService from "../../service/plan.service"
+import planService from "../../services/plan.service"
 import FormError from "../FormError/FormError"
 
 
@@ -24,7 +24,7 @@ const PlanEditForm = () => {
     const { plan_id } = useParams()
 
     useEffect(() => {
-        typeOfPlans()
+        loadPlanTypes()
     }, [])
 
     useEffect(() => {
@@ -32,7 +32,6 @@ const PlanEditForm = () => {
             .getOnePlan(plan_id)
             .then(({ data }) => setPlan(data))
             .catch(err => console.log(err))
-
     }, [])
 
     const handleInputChange = e => {
@@ -53,7 +52,7 @@ const PlanEditForm = () => {
             .catch(err => setErrors(err.response.data.errorMessages))
     }
 
-    const typeOfPlans = () => {
+    const loadPlanTypes = () => {
 
         planService
             .getTypePlan()

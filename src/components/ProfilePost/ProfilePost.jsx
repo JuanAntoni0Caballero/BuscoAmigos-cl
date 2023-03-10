@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button'
 import Offcanvas from 'react-bootstrap/Offcanvas'
 import { Form } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import messageService from '../../service/message.service'
+import messageService from '../../services/message.service'
 
 const ProfilePost = () => {
 

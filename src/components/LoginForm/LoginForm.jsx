@@ -1,8 +1,8 @@
 import { useState, useContext } from "react"
 import { Form, Button } from "react-bootstrap"
 import { Link } from "react-router-dom"
-import { AuthContext } from "../../context/auth.context"
-import authService from "../../service/auth.service"
+import { AuthContext } from "../../contexts/auth.context"
+import authService from "../../services/auth.service"
 import FormError from "../FormError/FormError"
 
 

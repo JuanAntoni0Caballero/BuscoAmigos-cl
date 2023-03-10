@@ -1,8 +1,8 @@
 import { Container } from "react-bootstrap"
-import PlanList from "../../components/PlanList/PlanList"
+import PlansList from "../../components/PlanList/PlansList"
 
 
-const PlanPage = ({ plan }) => {
+const PlanPage = () => {
 
 
 
@@ -10,7 +10,7 @@ const PlanPage = ({ plan }) => {
         <Container>
             <h1>Listado de Planes</h1>
             <hr />
-            <PlanList plan={plan} />
+            <PlansList />
         </Container>
     )
 }

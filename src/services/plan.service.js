@@ -23,7 +23,7 @@ class PlanService {
 
     }
 
-    getPlan() {
+    getPlans() {
         return this.api.get('/getPlans')
     }
 

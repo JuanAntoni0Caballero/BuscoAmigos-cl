@@ -1,8 +1,8 @@
 import { useState } from "react"
 import { Form, Button } from "react-bootstrap"
 import { useNavigate } from 'react-router-dom'
-import authService from "../../service/auth.service"
-import uploadServices from "../../service/upload.service"
+import authService from "../../services/auth.service"
+import uploadServices from "../../services/upload.service"
 import FormError from "../FormError/FormError"
 
 
@@ -26,7 +26,6 @@ const SignupForm = () => {
     const handleFormSubmit = e => {
 
         e.preventDefault()
-        console.log(signupData)
 
         authService
             .signup(signupData)

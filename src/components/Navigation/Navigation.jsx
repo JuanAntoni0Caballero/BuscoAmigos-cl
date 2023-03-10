@@ -2,7 +2,7 @@
 import { useContext } from 'react'
 import { Nav, Navbar, Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import { AuthContext } from '../../context/auth.context'
+import { AuthContext } from '../../contexts/auth.context'
 
 
 const Navigation = () => {

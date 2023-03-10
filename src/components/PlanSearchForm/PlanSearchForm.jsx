@@ -14,6 +14,7 @@ const PlanSearchForm = () => {
         duration: '',
         typePlan: ''
     })
+
     const [planTypes, setplanTypes] = useState(null)
 
     const handleInputChange = e => {

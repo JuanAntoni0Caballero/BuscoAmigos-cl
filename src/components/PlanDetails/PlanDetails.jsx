@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react"
 import { useParams, Link } from "react-router-dom"
 import { Container, Row, Col, Button } from "react-bootstrap"
-import planService from "../../service/plan.service"
+import planService from "../../services/plan.service"
 import { useNavigate } from "react-router-dom"
 
 

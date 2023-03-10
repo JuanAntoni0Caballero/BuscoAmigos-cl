@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { Row, Col, Form, Button } from "react-bootstrap"
 import { useNavigate } from 'react-router-dom'
-import planService from "../../service/plan.service"
+import planService from "../../services/plan.service"
 import FormError from "../FormError/FormError"
 
 
@@ -20,16 +20,16 @@ const PlanNewForm = () => {
     })
 
     useEffect(() => {
-        typeOfPlans()
+        loadPlanTypes()
     }, [])
 
-    const typeOfPlans = () => {
+    const loadPlanTypes = () => {
 
         planService
             .getTypePlan()
             .then(({ data }) => {
                 setplanTypes(data)
-                const firstPlan = data[0]._id
+                const { _id: firstPlan } = data[0]
                 setPlanData({ ...planData, typePlan: firstPlan })
             })
             .catch(err => console.log(err))
