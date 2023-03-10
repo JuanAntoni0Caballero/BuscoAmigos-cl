@@ -16,16 +16,16 @@ const PlanEditForm = () => {
         duration: '',
         typePlan: ''
     })
-
+    const [planTypes, setplanTypes] = useState(null)
     const [errors, setErrors] = useState([])
-
-    useEffect(() => {
-        typeOfPlans()
-    }, [])
 
     const navigate = useNavigate()
 
     const { plan_id } = useParams()
+
+    useEffect(() => {
+        typeOfPlans()
+    }, [])
 
     useEffect(() => {
         planService
@@ -53,8 +53,6 @@ const PlanEditForm = () => {
             .catch(err => setErrors(err.response.data.errorMessages))
     }
 
-    const [planTypes, setplanTypes] = useState(null)
-
     const typeOfPlans = () => {
 
         planService
@@ -63,10 +61,10 @@ const PlanEditForm = () => {
             .catch(err => console.log(err))
     }
 
+
     return (
 
         <Container>
-
 
             <Form onSubmit={handleFormSubmit}>
 
@@ -101,7 +99,7 @@ const PlanEditForm = () => {
 
                     <Col md={{ span: 6 }}>
                         <Form.Group className="mb-3" controlId="duration">
-                            <Form.Label>Días de duración del viaje</Form.Label>
+                            <Form.Label>Días de duración</Form.Label>
                             <Form.Control type="number" value={plan.duration} onChange={handleInputChange} name="duration" />
                         </Form.Group>
                     </Col>

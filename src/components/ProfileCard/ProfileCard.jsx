@@ -8,8 +8,8 @@ import { AuthContext } from '../../context/auth.context'
 const ProfileCard = () => {
 
     const { user: userContext, logout } = useContext(AuthContext)
-    const [user, setUser] = useState(userContext)
 
+    const [user, setUser] = useState(userContext)
 
     const handleDeleteProfile = e => {
 
@@ -17,9 +17,7 @@ const ProfileCard = () => {
 
         return userService
             .deleteUser()
-            .then(() => {
-                logout()
-            })
+            .then(() => logout())
             .catch(err => console.log(err))
     }
 

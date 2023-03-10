@@ -10,7 +10,7 @@ const HomePage = () => {
 
             <Row>
 
-                <Col md={{ span: 8, offset: 2 }}>
+                <Col md={{ span: 10, offset: 1 }}>
 
                     <h1>Busco Amigos</h1>
                     <hr />
