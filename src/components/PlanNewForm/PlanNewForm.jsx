@@ -8,7 +8,7 @@ import FormError from "../FormError/FormError"
 const PlanNewForm = () => {
 
     const [planTypes, setplanTypes] = useState(null)
-
+    const [errors, setErrors] = useState([])
     const [planData, setPlanData] = useState({
         title: '',
         description: '',
@@ -23,6 +23,8 @@ const PlanNewForm = () => {
         loadPlanTypes()
     }, [])
 
+    const navigate = useNavigate()
+
     const loadPlanTypes = () => {
 
         planService
@@ -34,11 +36,6 @@ const PlanNewForm = () => {
             })
             .catch(err => console.log(err))
     }
-
-    const [errors, setErrors] = useState([])
-
-
-    const navigate = useNavigate()
 
     const handleInputChange = e => {
         let { value, name } = e.target

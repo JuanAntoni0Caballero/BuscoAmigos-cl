@@ -1,14 +1,13 @@
 import { Route, Routes } from "react-router-dom"
+import PrivateRoute from "./PrivateRoute"
 import LoginPage from "../pages/LoginPage/LoginPage"
 import HomePage from "../pages/HomePage/HomePage"
 import SignupPage from "../pages/SignupPage/SignupPage"
-import PlanListPage from "../pages/PlanListPage/PlanListPage"
 import PlanDetailsPage from "../pages/PlanDetailsPage/PlanDetailsPage"
 import PlanEditPage from "../pages/PlanEditPage/PlanEditPage"
 import PlanNewPage from "../pages/PlanNewPage/PlanNewPage"
 import ProfilePage from "../pages/ProfilePage/PofilePage"
 import EditUserPage from "../pages/EditUserPage/EditUserPage"
-import PrivateRoute from "./PrivateRoute"
 import ProfilePost from "../components/ProfilePost/ProfilePost"
 
 
@@ -19,7 +18,6 @@ const AppRoutes = () => {
             <Route path="/" element={<HomePage />} />
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/login" element={<LoginPage />} />
-            <Route path="/plan" element={<PlanListPage />} />
 
             <Route element={<PrivateRoute />}>
 

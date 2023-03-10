@@ -22,7 +22,7 @@ const LoginForm = () => {
         setLoginData({ ...loginData, [name]: value })
     }
 
-    const handleSubmit = e => {
+    const handleFormSubmit = e => {
 
         e.preventDefault()
 
@@ -40,7 +40,7 @@ const LoginForm = () => {
 
     return (
 
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleFormSubmit}>
 
             <Form.Group className="mb-3" controlId="email">
                 <Form.Label>Email</Form.Label>

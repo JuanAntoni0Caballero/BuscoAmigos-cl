@@ -1,8 +1,8 @@
 import { Container, Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { useContext, useState } from 'react'
-import userService from '../../service/user.service'
-import { AuthContext } from '../../context/auth.context'
+import userService from '../../services/user.service'
+import { AuthContext } from '../../contexts/auth.context'
 
 
 const ProfilePage = () => {
