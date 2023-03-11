@@ -29,8 +29,6 @@ const PlanNewForm = () => {
         loadPlanTypes()
     }, [])
 
-    const navigate = useNavigate()
-
     const loadPlanTypes = () => {
 
         planService
