@@ -12,7 +12,7 @@ class ConversationService {
 
         this.api.interceptors.request.use((config) => {
 
-            const storedToken = localStorage.getItem("authToken");
+            const storedToken = localStorage.getItem("authToken")
 
             if (storedToken) {
                 config.headers = { Authorization: `Bearer ${storedToken}` }
@@ -23,14 +23,13 @@ class ConversationService {
     }
 
 
-    getConversation() {
-        return this.api.get('/getConversation')
+    getConversation(conversation_id) {
+        return this.api.get(`/getConversation/${conversation_id}`)
     }
 
     createConversation(receiver_id) {
         return this.api.post(`/createConversation/${receiver_id}`)
     }
-
 
     deleteConversation(conversation_id) {
         return this.api.delete(`/conversationMessage/${conversation_id}`)

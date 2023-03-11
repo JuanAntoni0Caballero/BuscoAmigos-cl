@@ -13,29 +13,19 @@ import { useContext } from "react"
 const PlanDetailsPage = () => {
 
     const [plan, setPlan] = useState({})
+    const [errors, setErrors] = useState([])
+    const [conversationData, setConversationData] = useState({
+        message: '',
+        members: []
+    })
+
+    const { user } = useContext(AuthContext)
+    const { plan_id } = useParams()
 
     const navigate = useNavigate()
 
-    const { plan_id } = useParams()
-
-    const [errors, setErrors] = useState([])
-
-
-    const { user: userContext } = useContext(AuthContext)
-    const [user, setUser] = useState(userContext)
-
-
-
-
-
-
-
     useEffect(() => {
-        planService
-            .getOnePlan(plan_id)
-            .then(({ data }) => setPlan(data))
-            .catch(err => console.log(err))
-
+        loadPlanData()
     }, [plan_id])
 
     const handleDeletePlan = e => {
@@ -48,42 +38,22 @@ const PlanDetailsPage = () => {
             .catch(err => console.log(err))
     }
 
+    const loadPlanData = () => {
 
-
-
-
-
-
-
-
-
-    const [conversationData, setConversationData] = useState({
-        message: '',
-        members: []
-
-    })
-
-
+        planService
+            .getOnePlan(plan_id)
+            .then(({ data }) => setPlan(data))
+            .catch(err => console.log(err))
+    }
     const createConversation = e => {
-
-        e.preventDefault()
 
         conversationService
             .createConversation(plan.owner)
-            .then(() => navigate('/inbox'))
+            .then(({ data }) => {
+                navigate(`/inbox/${data._id}`)
+            })
             .catch(err => setErrors(err.response.data.errorMessages))
     }
-
-
-
-
-
-
-
-
-
-
-
 
 
     return (
@@ -91,12 +61,21 @@ const PlanDetailsPage = () => {
         <Container>
             <h1 className="mb-4">{plan.title} </h1>
             <hr />
-
             <Row>
 
                 <Col md={{ span: 6, offset: 1 }}>
                     <h6>Description</h6>
                     <p>{plan.description}</p>
+                    <h6>Origen</h6>
+                    <p>{plan.origin}</p>
+                    <h6>Destino</h6>
+                    <p>{plan.destination}</p>
+                    <h6>Fecha</h6>
+                    <p>{plan.date}</p>
+                    <h6>Duración</h6>
+                    <p>{plan.duration}</p>
+                    <h6>ID</h6>
+                    <p>{plan._id}</p>
                     <hr />
 
                     <Link to={`/planEdit/${plan_id}`}>
@@ -111,7 +90,8 @@ const PlanDetailsPage = () => {
                     <Link to="/plan">
                         <Button as="figure" variant="dark">Go back</Button>
                     </Link>
-                    <Link to={`/inbox/${plan.owner}`}>
+
+                    <Link >
                         <Button onClick={createConversation} as="figure" variant="dark">Contact with creator</Button>
                     </Link>
                 </Col>
