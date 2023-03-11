@@ -23,15 +23,10 @@ const PlanEditForm = () => {
 
     const { plan_id } = useParams()
 
-    useEffect(() => {
-        loadPlanTypes()
-    }, [])
 
     useEffect(() => {
-        planService
-            .getOnePlan(plan_id)
-            .then(({ data }) => setPlan(data))
-            .catch(err => console.log(err))
+        loadPlanTypes()
+        loadPlanData()
     }, [])
 
     const handleInputChange = e => {
@@ -57,6 +52,14 @@ const PlanEditForm = () => {
         planService
             .getTypePlan()
             .then(type => setplanTypes(type.data))
+            .catch(err => console.log(err))
+    }
+
+    const loadPlanData = () => {
+
+        planService
+            .getOnePlan(plan_id)
+            .then(({ data }) => setPlan(data))
             .catch(err => console.log(err))
     }
 

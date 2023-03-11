@@ -23,6 +23,7 @@ const PlanSearchForm = ({ getPlans }) => {
         loadPlanTypes()
         loadOriginsPlans()
         loadDestinationPlans()
+        loadPlans()
     }, [])
 
     const loadPlanTypes = () => {
@@ -46,6 +47,14 @@ const PlanSearchForm = ({ getPlans }) => {
         planService
             .getDestinationPlan()
             .then(({ data }) => setDestinationPlan(data))
+            .catch(err => console.log(err))
+    }
+
+    const loadPlans = () => {
+
+        planService
+            .getPlans(planData)
+            .then(({ data }) => getPlans(data))
             .catch(err => console.log(err))
     }
 

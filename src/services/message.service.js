@@ -12,7 +12,7 @@ class MessageService {
 
         this.api.interceptors.request.use((config) => {
 
-            const storedToken = localStorage.getItem("authToken");
+            const storedToken = localStorage.getItem("authToken")
 
             if (storedToken) {
                 config.headers = { Authorization: `Bearer ${storedToken}` }
@@ -27,8 +27,9 @@ class MessageService {
         return this.api.get('/getMessages')
     }
 
-    saveMessage(messageData) {
-        return this.api.post('/saveMessage', messageData)
+    createMessage(conversation_id, content) {
+        console.log(content)
+        return this.api.post(`/createMessage/${conversation_id}`, content)
     }
 
     deleteMessage(message_id) {

@@ -29,6 +29,7 @@ const PlanNewForm = () => {
         loadPlanTypes()
     }, [])
 
+
     const loadPlanTypes = () => {
 
         planService
@@ -55,8 +56,8 @@ const PlanNewForm = () => {
         e.preventDefault()
 
         planService
-            .savePlan(planData)
-            .then(() => navigate('/plan'))
+            .createPlan(planData)
+            .then(() => navigate(`/`))              // <== pendiente de arreglar redireccion
             .catch(err => setErrors(err.response.data.errorMessages))
     }
 
