@@ -8,8 +8,6 @@ import { AuthContext } from '../../contexts/auth.context'
 import { useContext } from "react"
 
 
-
-
 const PlanDetailsPage = () => {
 
     const [plan, setPlan] = useState({})
@@ -30,8 +28,6 @@ const PlanDetailsPage = () => {
 
     const handleDeletePlan = e => {
 
-        e.preventDefault()
-
         planService
             .deletePlan(plan_id)
             .then(() => navigate('/plan'))
@@ -45,10 +41,11 @@ const PlanDetailsPage = () => {
             .then(({ data }) => setPlan(data))
             .catch(err => console.log(err))
     }
+
     const createConversation = e => {
 
         conversationService
-            .createConversation(plan.owner)
+            .createConversation( plan_id)
             .then(({ data }) => {
                 navigate(`/inbox/${data._id}`)
             })
@@ -74,9 +71,8 @@ const PlanDetailsPage = () => {
                     <p>{plan.date}</p>
                     <h6>Duración</h6>
                     <p>{plan.duration}</p>
-                    <h6>ID</h6>
-                    <p>{plan._id}</p>
                     <hr />
+
 
                     <Link to={`/planEdit/${plan_id}`}>
                         <Button as="figure" variant="dark">Edit</Button>
@@ -84,7 +80,6 @@ const PlanDetailsPage = () => {
 
                     <Link to='/plan'>
                         <Button as="figure" onClick={handleDeletePlan} variant="dark">Delete</Button>
-
                     </Link>
 
                     <Link to="/plan">
@@ -97,7 +92,7 @@ const PlanDetailsPage = () => {
                 </Col>
 
                 <Col md={{ span: 4 }}>
-                    <img src={plan.typePlan} style={{ width: '100%' }} alt='PlanImg' />
+                    <img src={plan.typePlan?.picture} style={{ width: '100%' }} alt='PlanImg' />
                 </Col>
 
             </Row >

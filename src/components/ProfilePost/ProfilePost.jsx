@@ -65,6 +65,7 @@ const ProfilePost = () => {
     }
 
 
+
     return (
 
 
@@ -88,20 +89,17 @@ const ProfilePost = () => {
 
                                 if (user._id == elm.owner._id) {
                                     return (
-                                        <>
-                                            <p key={elm._id}
-                                                style={{ color: 'green', wordBreak: 'break-all' }}>{user.username}</p>
+                                        <div key={elm._id}>
+                                            <p style={{ color: 'green', wordBreak: 'break-all' }}>{user.username}</p>
                                             <p>{elm.content}</p>
-                                        </>)
+                                        </div>)
                                 }
                                 else {
                                     return (
-                                        <>
-
-                                            <p key={elm._id}
-                                                style={{ color: 'red', wordBreak: 'break-all' }}>{elm.owner.username}</p>
+                                        <div key={elm._id}>
+                                            <p style={{ color: 'red', wordBreak: 'break-all' }}>{elm.owner.username}</p>
                                             <p> {elm.content}</p>
-                                        </>
+                                        </div>
                                     )
                                 }
                             })

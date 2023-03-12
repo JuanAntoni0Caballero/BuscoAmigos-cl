@@ -28,7 +28,6 @@ class MessageService {
     }
 
     createMessage(conversation_id, content) {
-        console.log(content)
         return this.api.post(`/createMessage/${conversation_id}`, content)
     }
 

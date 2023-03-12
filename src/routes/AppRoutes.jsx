@@ -9,6 +9,7 @@ import PlanNewPage from "../pages/PlanNewPage/PlanNewPage"
 import ProfilePage from "../pages/ProfilePage/PofilePage"
 import EditUserPage from "../pages/EditUserPage/EditUserPage"
 import ProfilePost from "../components/ProfilePost/ProfilePost"
+import ImboxPage from "../pages/InboxPage/Inbox.Page"
 
 
 const AppRoutes = () => {
@@ -27,7 +28,7 @@ const AppRoutes = () => {
                 <Route path="/profile" element={<ProfilePage />} />
                 <Route path="/editUser" element={<EditUserPage />} />
                 <Route path="/deleteUser" element={<HomePage />} />
-                <Route path="/inbox" element={<ProfilePost />} />
+                <Route path="/inbox" element={<ImboxPage />} />
                 <Route path="/inbox/:conversation_id" element={<ProfilePost />} />
 
 

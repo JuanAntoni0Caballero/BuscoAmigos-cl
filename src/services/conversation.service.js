@@ -27,8 +27,12 @@ class ConversationService {
         return this.api.get(`/getConversation/${conversation_id}`)
     }
 
-    createConversation(receiver_id) {
-        return this.api.post(`/createConversation/${receiver_id}`)
+    getAllConversations() {
+        return this.api.get(`/getAllConversations`)
+    }
+
+    createConversation(plan_id) {
+        return this.api.post(`/createConversation/${plan_id}`)
     }
 
     deleteConversation(conversation_id) {

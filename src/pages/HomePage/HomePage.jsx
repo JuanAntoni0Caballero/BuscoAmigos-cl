@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react'
-import { Container } from 'react-bootstrap'
+import { Container, Row, Col } from 'react-bootstrap'
 import PlanSearchForm from '../../components/PlanSearchForm/PlanSearchForm'
 import PlanCard from "../../components/PlanCard/PlanCard"
-
 
 const HomePage = () => {
 
@@ -14,17 +13,27 @@ const HomePage = () => {
 
 
     return (
+
         <Container className="Home">
 
             <h1>Busco Amigos</h1>
             <hr />
 
-            <PlanSearchForm getPlans={getPlans} />
+            <Row>
 
-            {plansFounded.length >= 1
-                ? plansFounded.map(elm => <PlanCard key={elm._id} {...elm} />)
-                : <p>No matches....</p>
-            }
+                <PlanSearchForm getPlans={getPlans} />
+
+                {plansFounded.length >= 1
+                    ? plansFounded.map(elm => (
+                        <Col md={3} key={elm._id}>
+                            <PlanCard {...elm} />
+                        </Col>
+                    ))
+                    : <p>No matches....</p>
+                }
+
+            </Row>
+
 
         </Container >
     )

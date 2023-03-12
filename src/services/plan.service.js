@@ -39,8 +39,8 @@ class PlanService {
         return this.api.get('/getTypePlan')
     }
 
-    getOnePlan(plan_id) {
-        return this.api.get(`/getOnePlan/${plan_id}`)
+    getOnePlan(plan_id, typePlan) {
+        return this.api.get(`/getOnePlan/${plan_id}`, typePlan)
     }
 
     createPlan(planData) {
