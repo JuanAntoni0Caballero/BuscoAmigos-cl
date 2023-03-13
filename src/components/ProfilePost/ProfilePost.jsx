@@ -23,7 +23,6 @@ const ProfilePost = () => {
 
     const { conversation_id } = useParams()
 
-
     const handleClose = () => setShow(false)
     const handleShow = () => setShow(true)
 
@@ -55,7 +54,7 @@ const ProfilePost = () => {
         }
     }
 
-    const createNewMessage = e => {
+    const createNewMessage = () => {
 
         messageService
             .createMessage(conversation_id, messageData)
@@ -67,7 +66,6 @@ const ProfilePost = () => {
     return (
 
         <Container>
-
 
             <Button variant="success" onClick={handleShow}>
                 {conversation._id}
