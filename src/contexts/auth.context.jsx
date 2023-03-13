@@ -21,7 +21,7 @@ function AuthProviderWrapper(props) {
                 .then(({ data }) => {
                     setUser(data)
                     setIsLoading(false)
-                    navigate('/profile')
+                    // navigate('/profile')
                 })
                 .catch(err => logout())
         }

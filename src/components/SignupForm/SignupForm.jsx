@@ -1,12 +1,11 @@
 import { useState } from "react"
 import { Form, Button } from "react-bootstrap"
-import { useNavigate } from 'react-router-dom'
 import authService from "../../services/auth.service"
 import uploadServices from "../../services/upload.service"
 import FormError from "../FormError/FormError"
 
 
-const SignupForm = () => {
+const SignupForm = ({ setShowSingUpModal, setShowLoginModal }) => {
 
     const [signupData, setSignupData] = useState({
         username: '',
@@ -16,7 +15,6 @@ const SignupForm = () => {
 
     const [errors, setErrors] = useState([])
 
-    const navigate = useNavigate()
 
     const handleInputChange = e => {
         const { value, name } = e.target
@@ -29,7 +27,10 @@ const SignupForm = () => {
 
         authService
             .signup(signupData)
-            .then(() => navigate('/login'))
+            .then(() => {
+                setShowSingUpModal(false)
+                setShowLoginModal(true)
+            })
             .catch(err => setErrors(err.response.data.errorMessages))
     }
 

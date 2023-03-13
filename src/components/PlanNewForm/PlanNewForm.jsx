@@ -5,7 +5,7 @@ import planService from "../../services/plan.service"
 import FormError from "../FormError/FormError"
 
 
-const PlanNewForm = () => {
+const PlanNewForm = ({ setShowCreatePlanModal }) => {
 
     const [planTypes, setplanTypes] = useState(null)
 
@@ -53,13 +53,24 @@ const PlanNewForm = () => {
 
     const handleFormSubmit = e => {
 
+
         e.preventDefault()
 
         planService
             .createPlan(planData)
-            .then(() => navigate(`/`))              // <== pendiente de arreglar redireccion
+            .then(({ data }) => {
+                setShowCreatePlanModal(false)
+                navigate(`/planDetails/${data._id}`)
+            })
+
             .catch(err => setErrors(err.response.data.errorMessages))
+
+
     }
+
+
+
+
 
 
     return (
