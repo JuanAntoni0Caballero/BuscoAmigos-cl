@@ -5,11 +5,13 @@ import userService from '../../services/user.service'
 import uploadServices from "../../services/upload.service"
 import { AuthContext } from '../../contexts/auth.context'
 import FormError from '../FormError/FormError'
-
+import { useNavigate } from 'react-router-dom'
 
 const EditUserForm = () => {
 
     const { user, authenticateUser } = useContext(AuthContext)
+
+    const navigate = useNavigate()
 
     const [userData, setUserData] = useState({
         username: user.username,
@@ -34,6 +36,7 @@ const EditUserForm = () => {
             .then(({ data }) => {
                 localStorage.setItem('authToken', data.authToken)
                 authenticateUser()
+                navigate('/profile')
             })
             .catch(err => setErrors(err.response.data.errorMessages))
     }

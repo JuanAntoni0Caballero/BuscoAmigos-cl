@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import { useNavigate } from 'react-router-dom'
 import { Container, Row, Col, Form, Button } from "react-bootstrap"
 import planService from "../../services/plan.service"
 
@@ -56,7 +55,6 @@ const PlanSearchForm = ({ getPlans }) => {
             .getRandomPlans()
             .then(({ data }) => {
                 getPlans(data)
-                console.log('EEEH', data)
             })
             .catch(err => console.log(err))
     }

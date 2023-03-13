@@ -9,8 +9,10 @@ import { AuthContext } from '../../contexts/auth.context'
 const ProfilePage = () => {
 
     const { user: userContext, logout } = useContext(AuthContext)
-
     const [user, setUser] = useState(userContext)
+
+
+
 
     const handleDeleteProfile = e => {
 
@@ -40,10 +42,13 @@ const ProfilePage = () => {
                 </Card.Body>
             </Card>
 
-            <Link to={'/editUser'}>Edit Profile</Link>
-            <button onClick={handleDeleteProfile}>Delete Profile</button>
-            <Link to='/inbox'>Messages</Link>
+            <Container>
 
+                <Link to={'/editUser'}>Edit Profile</Link>
+                <Link to='/inbox'>Messages</Link>
+                <Link onClick={handleDeleteProfile}> Delete Profile </Link>
+
+            </Container>
 
 
         </Container>

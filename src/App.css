@@ -1,3 +1,9 @@
+nav img {
+    width: 40px;
+    border-radius: 10px;
+    margin: 0 20px;
+}
+
 a {
     text-decoration: none;
     color: inherit;
