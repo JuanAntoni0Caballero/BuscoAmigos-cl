@@ -52,7 +52,7 @@ const ImboxPage = () => {
                                 conversationStyle = { backgroundColor: 'green' }
                             }
 
-                            if (member2._id == user._id) {
+                            if (member2._id === user._id) {
                                 conversationUser = member1.username
                             } else {
                                 conversationUser = member2.username

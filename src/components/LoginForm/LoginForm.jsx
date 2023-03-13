@@ -12,6 +12,7 @@ const LoginForm = ({ setShowLoginModal }) => {
         email: '',
         password: ''
     })
+    
 
     const [errors, setErrors] = useState([])
 

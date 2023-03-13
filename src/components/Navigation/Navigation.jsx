@@ -50,15 +50,27 @@ const Navigation = () => {
 
 
     return (
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+        <Navbar className="me-auto" collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container>
                 <Link to='/'>
                     <Navbar.Brand as='span'>BUSCO AMIGOS</Navbar.Brand>
                 </Link>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                <Navbar.Collapse id="responsive-navbar-nav">
+                <Navbar.Collapse className="me-auto" id="responsive-navbar-nav">
                     <Nav className="me-auto">
 
+                    </Nav>
+                    <Nav >
+
+                        {
+                            user
+                            &&
+                            <>
+                                <Navbar.Text>{user.username}</Navbar.Text>
+
+                                <img src={user.avatar} alt="" />
+                            </>
+                        }
 
                         <NavDropdown title="Menu" className='dropdown' id="collasible-nav-dropdown">
 
@@ -86,7 +98,6 @@ const Navigation = () => {
 
                                     </>
                                     :
-
                                     <>
 
                                         <NavDropdown.Item >
@@ -102,10 +113,7 @@ const Navigation = () => {
                                             </Link>
                                         </NavDropdown.Item>
 
-
                                         <NavDropdown.Divider />
-
-
 
                                         <NavDropdown.Item >
                                             <Link to='/'>
@@ -116,18 +124,7 @@ const Navigation = () => {
                                     </>
                             }
 
-
-
                         </NavDropdown>
-
-
-
-
-
-
-
-
-
 
                         <Modal show={showLogInModal} onHide={() => setShowLoginModal(false)}>
                             <Modal.Header closeButton> <Modal.Title> LogIn</Modal.Title></Modal.Header>
@@ -150,14 +147,6 @@ const Navigation = () => {
                             </Modal.Body>
                         </Modal>
 
-
-                    </Nav>
-                    <Nav>
-                        <Link to="/contact">
-                            <Nav.Link as='span'>Contacto</Nav.Link>
-                        </Link>
-
-                        <Nav.Link href="#memes">Regalos</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
