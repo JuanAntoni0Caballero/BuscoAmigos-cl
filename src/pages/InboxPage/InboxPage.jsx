@@ -79,8 +79,3 @@ const ImboxPage = () => {
 }
 
 export default ImboxPage
-
-
-
-
-

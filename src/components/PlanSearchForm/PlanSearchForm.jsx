@@ -4,7 +4,6 @@ import { Container, Row, Col, Form, Button } from "react-bootstrap"
 import planService from "../../services/plan.service"
 
 
-
 const PlanSearchForm = ({ getPlans }) => {
 
     const [originPlan, setOriginPlan] = useState([])
@@ -56,7 +55,6 @@ const PlanSearchForm = ({ getPlans }) => {
             .getRandomPlans()
             .then(({ data }) => {
                 getPlans(data)
-                console.log('EEEH', data)
             })
             .catch(err => console.log(err))
     }
@@ -73,7 +71,7 @@ const PlanSearchForm = ({ getPlans }) => {
         e.preventDefault()
 
         planService
-            .getPlans(planData)
+            .getAllPlans(planData)
             .then(({ data }) => getPlans(data))
             .catch(err => console.log(err))
     }
@@ -130,13 +128,13 @@ const PlanSearchForm = ({ getPlans }) => {
                     <Col md={{ span: 2 }}>
                         <Form.Group className="mb-3" controlId="date">
                             <Form.Label>Fecha de ida</Form.Label>
-                            <Form.Control type="date" value={planData.date} onChange={handleInputChange} name="date" />
+                            <Form.Control type="date" value={planData.date} onChange={handleInputChange} name="date" min={new Date().toISOString().split("T")[0]} />
                         </Form.Group>
                     </Col>
 
                     <Col md={{ span: 1 }}>
                         <Form.Group className="mb-3" controlId="duration">
-                            <Form.Label>Días</Form.Label>
+                            <Form.Label>Noches</Form.Label>
                             <Form.Control type="number" value={planData.duration} onChange={handleInputChange} name="duration" />
                         </Form.Group>
                     </Col>

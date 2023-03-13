@@ -23,8 +23,12 @@ class PlanService {
 
     }
 
-    getPlans({ origin, destination, date, duration, typePlan }) {
+    getAllPlans({ origin, destination, date, duration, typePlan }) {
         return this.api.get(`/getPlans?origin=${origin}&destination=${destination}&date=${date}&duration=${duration}&typePlan=${typePlan}`)
+    }
+
+    getMyPlans() {
+        return this.api.get(`/getMyPlans`)
     }
 
     getRandomPlans() {

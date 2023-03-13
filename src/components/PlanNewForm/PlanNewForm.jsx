@@ -8,12 +8,7 @@ import FormError from "../FormError/FormError"
 const PlanNewForm = ({ setShowCreatePlanModal }) => {
 
     const [planTypes, setplanTypes] = useState(null)
-
-    const navigate = useNavigate()
-
     const [errors, setErrors] = useState([])
-
-
     const [planData, setPlanData] = useState({
         title: '',
         description: '',
@@ -24,11 +19,11 @@ const PlanNewForm = ({ setShowCreatePlanModal }) => {
         typePlan: ''
     })
 
-
     useEffect(() => {
         loadPlanTypes()
     }, [])
 
+    const navigate = useNavigate()
 
     const loadPlanTypes = () => {
 
@@ -42,7 +37,6 @@ const PlanNewForm = ({ setShowCreatePlanModal }) => {
             .catch(err => console.log(err))
     }
 
-
     const handleInputChange = e => {
         let { value, name } = e.target
 
@@ -53,7 +47,6 @@ const PlanNewForm = ({ setShowCreatePlanModal }) => {
 
     const handleFormSubmit = e => {
 
-
         e.preventDefault()
 
         planService
@@ -62,15 +55,8 @@ const PlanNewForm = ({ setShowCreatePlanModal }) => {
                 setShowCreatePlanModal(false)
                 navigate(`/planDetails/${data._id}`)
             })
-
             .catch(err => setErrors(err.response.data.errorMessages))
-
-
     }
-
-
-
-
 
 
     return (
@@ -108,7 +94,7 @@ const PlanNewForm = ({ setShowCreatePlanModal }) => {
 
                 <Col md={{ span: 6 }}>
                     <Form.Group className="mb-3" controlId="duration">
-                        <Form.Label>Días de duración</Form.Label>
+                        <Form.Label>Noches</Form.Label>
                         <Form.Control type="number" value={planData.duration} onChange={handleInputChange} name="duration" />
                     </Form.Group>
                 </Col>
