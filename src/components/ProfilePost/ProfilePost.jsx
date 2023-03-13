@@ -38,7 +38,9 @@ const ProfilePost = () => {
 
         conversationService
             .getConversation(conversation_id)
-            .then(({ data }) => setConversation(data))
+            .then(({ data }) => {
+                setConversation(data)
+            })
             .catch(err => console.log(err))
     }
 
@@ -65,11 +67,18 @@ const ProfilePost = () => {
     }
 
 
-
     return (
 
-
         <Container>
+
+            {
+                //conversation.messages.some(elm => !elm.read)
+                // const algunNoLeido = conversation.messages.some((mensaje) => !mensaje.leido);
+                //             const botonClassName = algunNoLeido ? "verde" : "negro";
+                //             return <button className={botonClassName}>Botón</button>;
+            }
+
+
 
             <Button variant="success" onClick={handleShow}>
                 {conversation._id}
@@ -87,7 +96,8 @@ const ProfilePost = () => {
                         {
                             conversation.messages?.map(elm => {
 
-                                if (user._id == elm.owner._id) {
+                                if (user._id === elm.owner._id) {
+
                                     return (
                                         <div key={elm._id}>
                                             <p style={{ color: 'green', wordBreak: 'break-all' }}>{user.username}</p>

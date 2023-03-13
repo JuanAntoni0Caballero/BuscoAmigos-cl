@@ -10,6 +10,8 @@ import ProfilePage from "../pages/ProfilePage/PofilePage"
 import EditUserPage from "../pages/EditUserPage/EditUserPage"
 import ProfilePost from "../components/ProfilePost/ProfilePost"
 import ImboxPage from "../pages/InboxPage/Inbox.Page"
+import ContactPage from "../pages/ContactPage/ContactPage"
+
 
 
 const AppRoutes = () => {
@@ -19,6 +21,7 @@ const AppRoutes = () => {
             <Route path="/" element={<HomePage />} />
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/login" element={<LoginPage />} />
+            <Route path="/contact" element={<ContactPage />} />
 
             <Route element={<PrivateRoute />}>
 
@@ -35,7 +38,6 @@ const AppRoutes = () => {
             </Route>
 
 
-            {/* <Route path="/contact" element={<ContactPage />} /> */}
             {/* <Route path="/gift" element={<GiftPage />} /> */}
             {/* <Route path="*" element={<p>404</p>} /> */}
         </Routes>

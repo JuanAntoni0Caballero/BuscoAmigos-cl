@@ -92,7 +92,10 @@ const Navigation = () => {
 
                     </Nav>
                     <Nav>
-                        <Nav.Link href="#deets">Contacto</Nav.Link>
+                        <Link to="/contact">
+                            <Nav.Link as='span'>Contacto</Nav.Link>
+                        </Link>
+
                         <Nav.Link eventKey={2} href="#memes">Regalos</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
