@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react'
 import Offcanvas from 'react-bootstrap/Offcanvas'
 import { Form, FloatingLabel, Button, Container } from 'react-bootstrap'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import FormError from '../FormError/FormError'
 import { AuthContext } from '../../contexts/auth.context'
 import userService from '../../services/user.service'
@@ -24,8 +24,6 @@ const ProfilePost = () => {
     const [errors, setErrors] = useState([])
 
     const { conversation_id } = useParams()
-
-    const navigate = useNavigate()
 
     const handleClose = () => setShow(false)
     const handleShow = () => setShow(true)
@@ -58,7 +56,7 @@ const ProfilePost = () => {
         }
     }
 
-    const createNewMessage = e => {
+    const createNewMessage = () => {
 
         messageService
             .createMessage(conversation_id, messageData)
@@ -70,15 +68,6 @@ const ProfilePost = () => {
     return (
 
         <Container>
-
-            {
-                //conversation.messages.some(elm => !elm.read)
-                // const algunNoLeido = conversation.messages.some((mensaje) => !mensaje.leido);
-                //             const botonClassName = algunNoLeido ? "verde" : "negro";
-                //             return <button className={botonClassName}>Botón</button>;
-            }
-
-
 
             <Button variant="success" onClick={handleShow}>
                 {conversation._id}

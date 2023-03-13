@@ -23,7 +23,7 @@ const PlanSearchForm = ({ getPlans }) => {
         loadPlanTypes()
         loadOriginsPlans()
         loadDestinationPlans()
-        loadPlans()
+        loadRandomPlans()
     }, [])
 
     const loadPlanTypes = () => {
@@ -50,11 +50,14 @@ const PlanSearchForm = ({ getPlans }) => {
             .catch(err => console.log(err))
     }
 
-    const loadPlans = () => {
+    const loadRandomPlans = () => {
 
         planService
-            .getPlans(planData)
-            .then(({ data }) => getPlans(data))
+            .getRandomPlans()
+            .then(({ data }) => {
+                getPlans(data)
+                console.log('EEEH', data)
+            })
             .catch(err => console.log(err))
     }
 
