@@ -21,8 +21,6 @@ const PlanDetailsPage = () => {
     // })
     const { user } = useContext(AuthContext)
 
-
-
     const { plan_id } = useParams()
 
     const navigate = useNavigate()
@@ -132,7 +130,7 @@ const PlanDetailsPage = () => {
                 </Col>
 
                 <Col md={{ span: 4 }}>
-                    <img src={plan.typePlan?.picture} style={{ width: '100%' }} alt='PlanImg' />
+                    <img src={plan.image} style={{ width: '100%' }} alt='PlanImg' />
                 </Col>
 
             </Row >

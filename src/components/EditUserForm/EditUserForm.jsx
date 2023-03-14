@@ -18,9 +18,8 @@ const EditUserForm = () => {
         email: user.email,
         avatar: user.avatar
     })
-
-    const [loadinImage, setLoadingImage] = useState(false)
     const [errors, setErrors] = useState([])
+    const [loadinImage, setLoadingImage] = useState(false)
 
     const handleInputChange = e => {
         const { value, name } = e.target

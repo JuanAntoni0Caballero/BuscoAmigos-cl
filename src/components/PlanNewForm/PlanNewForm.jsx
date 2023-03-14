@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react"
 import { Row, Col, Form, Button } from "react-bootstrap"
 import { useNavigate } from 'react-router-dom'
 import planService from "../../services/plan.service"
+import uploadServices from "../../services/upload.service"
 import FormError from "../FormError/FormError"
 
 
@@ -16,6 +17,7 @@ const PlanNewForm = ({ setShowCreatePlanModal }) => {
         destination: '',
         date: '',
         duration: '0',
+        image: '',
         typePlan: ''
     })
 
@@ -48,9 +50,20 @@ const PlanNewForm = ({ setShowCreatePlanModal }) => {
         setPlanData({ ...planData, [name]: value })
     }
 
+
     const handleFormSubmit = e => {
 
         e.preventDefault()
+
+        console.log('la imagen', planData.image)
+        if (!planData.image) {
+            planTypes.map(elm => {
+                if (elm._id == planData.typePlan) {
+                    setPlanData({ ...planData, image: elm.picture })
+                    console.log('POS ME IMPRIMO', elm.picture)
+                }
+            })
+        }
 
         planService
             .createPlan(planData)
@@ -59,6 +72,19 @@ const PlanNewForm = ({ setShowCreatePlanModal }) => {
                 navigate(`/planDetails/${data._id}`)
             })
             .catch(err => setErrors(err.response.data.errorMessages))
+    }
+
+    const handleFileUpload = e => {
+
+        const formData = new FormData()
+        formData.append('imageData', e.target.files[0])
+
+        uploadServices
+            .uploadimage(formData)
+            .then(({ data }) => {
+                setPlanData({ ...planData, image: data.cloudinary_url })
+            })
+            .catch(err => console.log(err))
     }
 
 
@@ -103,16 +129,27 @@ const PlanNewForm = ({ setShowCreatePlanModal }) => {
                 </Col>
             </Row>
 
-            <Form.Group className="mb-3" controlId="typePlan">
-                <Form.Label>Tipo de viaje</Form.Label>
-                <Form.Select value={planData.typePlan} onChange={handleInputChange} name="typePlan">
-                    {
-                        planTypes?.map(elm => {
-                            return <option key={elm._id} value={elm._id}>{elm.typePlan}</option>
-                        })
-                    }
-                </Form.Select>
-            </Form.Group>
+            <Row>
+                <Col md={{ span: 6 }}>
+                    <Form.Group className="mb-3" controlId="typePlan">
+                        <Form.Label>Tipo de viaje</Form.Label>
+                        <Form.Select value={planData.typePlan} onChange={handleInputChange} name="typePlan">
+                            {
+                                planTypes?.map(elm => {
+                                    return <option key={elm._id} value={elm._id}>{elm.typePlan}</option>
+                                })
+                            }
+                        </Form.Select>
+                    </Form.Group>
+                </Col>
+
+                <Col md={{ span: 6 }}>
+                    <Form.Group className="mb-3" controlId="image">
+                        <Form.Label>Imagen</Form.Label>
+                        <Form.Control type="file" onChange={handleFileUpload} />
+                    </Form.Group>
+                </Col>
+            </Row>
 
             <Form.Group className="mb-3" controlId="description">
                 <Form.Label>Descripción</Form.Label>
