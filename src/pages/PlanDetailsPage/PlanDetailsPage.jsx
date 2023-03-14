@@ -1,20 +1,28 @@
 import { Container, Row, Col, Button } from "react-bootstrap"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useContext } from "react"
+import { AuthContext } from '../../contexts/auth.context'
 import { useParams, Link } from "react-router-dom"
 import planService from "../../services/plan.service"
 import { useNavigate } from "react-router-dom"
 import conversationService from '../../services/conversation.service'
+import Loader from "../../components/Loader/Loader"
+import { Modal } from "react-bootstrap"
+import InboxPage from '../InboxPage/InboxPage'
 
 
 const PlanDetailsPage = () => {
+
+
 
     const [plan, setPlan] = useState({})
     // const [conversationData, setConversationData] = useState({
     //     message: '',
     //     members: []
     // })
+    const { user } = useContext(AuthContext)
 
-    // const { user } = useContext(AuthContext)
+
+
     const { plan_id } = useParams()
 
     const navigate = useNavigate()
@@ -22,6 +30,13 @@ const PlanDetailsPage = () => {
     useEffect(() => {
         loadPlanData()
     }, [plan_id])
+
+
+    if (!user || !plan) {
+        return <Loader />
+    }
+
+    console.log('EL USER ==>', user)
 
     const handleDeletePlan = e => {
 
@@ -41,13 +56,18 @@ const PlanDetailsPage = () => {
 
     const createConversation = e => {
 
+
         conversationService
             .createConversation(plan_id)
-            .then(({ data }) => {
-                navigate(`/inbox/${data._id}`)
-            })
+
+            // .then(({ data }) => {
+            //     navigate(`/inbox/${data._id}`)
+            // })
             .catch(err => console.log(err))
     }
+
+
+
 
 
     return (
@@ -71,21 +91,44 @@ const PlanDetailsPage = () => {
                     <hr />
 
 
-                    <Link to={`/planEdit/${plan_id}`}>
-                        <Button as="figure" variant="dark">Edit</Button>
-                    </Link>
 
-                    <Link to='/plan'>
-                        <Button as="figure" onClick={handleDeletePlan} variant="dark">Delete</Button>
-                    </Link>
+                    {
 
-                    <Link to="/plan">
-                        <Button as="figure" variant="dark">Go back</Button>
-                    </Link>
+                        user._id === plan?.owner || user.role === 'ADMIN'
 
-                    <Link >
-                        <Button onClick={createConversation} as="figure" variant="dark">Contact with creator</Button>
-                    </Link>
+                            ?
+
+                            <>
+                                <Link to={`/planEdit/${plan_id}`}>
+                                    <Button as="figure" variant="dark">Edit</Button>
+                                </Link>
+
+                                <Link to='/plan'>
+                                    <Button as="figure" onClick={handleDeletePlan} variant="dark">Delete</Button>
+                                </Link>
+
+                                <Link to="/plan">
+                                    <Button as="figure" variant="dark">Go back</Button>
+                                </Link>
+
+                            </>
+
+                            :
+                            <>
+
+                                <Link to="/plan">
+                                    <Button as="figure" variant="dark">Go back</Button>
+                                </Link>
+
+                                <Link >
+                                    <Button onClick={createConversation} as="figure" variant="dark">Contact with creator</Button>
+                                </Link>
+
+
+                            </>
+                    },
+
+
                 </Col>
 
                 <Col md={{ span: 4 }}>
