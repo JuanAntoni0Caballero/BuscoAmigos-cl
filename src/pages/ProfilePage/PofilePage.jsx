@@ -1,9 +1,8 @@
-import { Container, Card } from 'react-bootstrap'
+import { Container, Card, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { useContext, useState } from 'react'
 import userService from '../../services/user.service'
 import { AuthContext } from '../../contexts/auth.context'
-
 
 
 const ProfilePage = () => {
@@ -19,6 +18,7 @@ const ProfilePage = () => {
             .then(() => logout())
             .catch(err => console.log(err))
     }
+
 
 
     return (
@@ -38,10 +38,23 @@ const ProfilePage = () => {
                 </Card.Body>
             </Card>
 
-            <Link to={'/editUser'}>Edit Profile</Link>
-            <button onClick={handleDeleteProfile}>Delete Profile</button>
-            <Link to='/inbox'>Messages</Link>
-            <Link to='/myPlans'>Mis planes</Link>
+            <Link to={`/editUser`}>
+                <Button as="figure" variant="dark">Edit Profile</Button>
+            </Link>
+
+            <Link to='/plan'>
+                <Button as="figure" onClick={handleDeleteProfile} variant="dark">Delete Profile</Button>
+            </Link>
+
+            <Link to='/inbox'>
+                <Button as="figure" variant="dark">Messages</Button>
+            </Link>
+
+            <Link to='/myPlans'>
+                <Button as="figure" variant="dark">Mis planes</Button>
+            </Link>
+
+
 
         </Container>
     )

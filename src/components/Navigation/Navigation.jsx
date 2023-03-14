@@ -147,7 +147,7 @@ const Navigation = () => {
                             </Modal.Body>
                         </Modal>
 
-                    </Nav>
+                        2                    </Nav>
                 </Navbar.Collapse>
             </Container>
         </Navbar>
