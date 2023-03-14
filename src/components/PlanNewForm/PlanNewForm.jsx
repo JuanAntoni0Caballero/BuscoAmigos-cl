@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { Row, Col, Form, Button } from "react-bootstrap"
 import { useNavigate } from 'react-router-dom'
 import planService from "../../services/plan.service"
@@ -15,11 +15,14 @@ const PlanNewForm = ({ setShowCreatePlanModal }) => {
         origin: '',
         destination: '',
         date: '',
-        duration: '',
+        duration: '0',
         typePlan: ''
     })
 
+    const titleRef = useRef(null)
+
     useEffect(() => {
+        titleRef.current.focus()
         loadPlanTypes()
     }, [])
 
@@ -65,7 +68,7 @@ const PlanNewForm = ({ setShowCreatePlanModal }) => {
 
             <Form.Group className="mb-3" controlId="title">
                 <Form.Label>Título</Form.Label>
-                <Form.Control type="text" value={planData.title} onChange={handleInputChange} name="title" />
+                <Form.Control type="text" value={planData.title} onChange={handleInputChange} name="title" ref={titleRef} />
             </Form.Group>
 
             <Row>
@@ -88,7 +91,7 @@ const PlanNewForm = ({ setShowCreatePlanModal }) => {
                 <Col md={{ span: 6 }}>
                     <Form.Group className="mb-3" controlId="date">
                         <Form.Label>Fecha de ida</Form.Label>
-                        <Form.Control type="date" value={planData.date} onChange={handleInputChange} name="date" />
+                        <Form.Control type="date" value={planData.date} onChange={handleInputChange} name="date" min={new Date().toISOString().split("T")[0]} />
                     </Form.Group>
                 </Col>
 

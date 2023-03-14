@@ -65,7 +65,7 @@ const ImboxPage = () => {
                                     <td>{conversationUser}</td>
                                     <td>
                                         <Link key={_id} to={`/inbox/${_id}`}>
-                                            <Button as="figure" variant="dark">Mensajes</Button>
+                                            <Button style={conversationStyle} as="figure" variant="dark">Mensajes</Button>
                                         </Link>
                                     </td>
                                 </tr>

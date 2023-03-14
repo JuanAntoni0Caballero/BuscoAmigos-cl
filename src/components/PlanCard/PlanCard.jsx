@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 
 
-const PlanCard = ({ _id, typePlan, title, destination, description }) => {
+const PlanCard = ({ _id, title, origin, destination, date, duration, typePlan, description }) => {
 
     return (
 
@@ -12,10 +12,8 @@ const PlanCard = ({ _id, typePlan, title, destination, description }) => {
                 <Card.Img variant="top" src={typePlan.picture} />
                 <Card.Body>
                     <Card.Title>{title}</Card.Title>
-                    <p>{destination}</p>
-                    <Card.Text>
-                        {description}
-                    </Card.Text>
+                    <p>{origin} ~ {destination}</p>
+                    <p>{date} ~ {duration} noches</p>
                 </Card.Body>
             </Card>
         </Link>

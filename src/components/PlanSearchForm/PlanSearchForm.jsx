@@ -8,7 +8,7 @@ const PlanSearchForm = ({ getPlans }) => {
     const [originPlan, setOriginPlan] = useState([])
     const [destinationPlan, setDestinationPlan] = useState([])
     const [planTypes, setPlanTypes] = useState([])
-
+    const [planSort, setPlanSort] = useState('sortOrigin=1')
     const [planData, setPlanData] = useState({
         origin: '',
         destination: '',
@@ -66,11 +66,17 @@ const PlanSearchForm = ({ getPlans }) => {
         setPlanData({ ...planData, [name]: value })
     }
 
+    const handleInputSortChange = e => {
+        let { value } = e.target
+
+        setPlanSort(value)
+    }
+
     const handleFormSubmit = e => {
         e.preventDefault()
 
         planService
-            .getAllPlans(planData)
+            .getAllPlans(planData, planSort)
             .then(({ data }) => getPlans(data))
             .catch(err => console.log(err))
     }
@@ -135,6 +141,24 @@ const PlanSearchForm = ({ getPlans }) => {
                         <Form.Group className="mb-3" controlId="duration">
                             <Form.Label>Noches</Form.Label>
                             <Form.Control type="number" value={planData.duration} onChange={handleInputChange} name="duration" />
+                        </Form.Group>
+                    </Col>
+                </Row>
+
+                <Row>
+                    <Col md={{ span: 3 }}>
+                        <Form.Group className="mb-3" controlId="sort">
+                            <Form.Label>Ordenar por:</Form.Label>
+                            <Form.Select value={planSort} onChange={handleInputSortChange} name="sort" >
+                                <option value='sortOrigin=1'>Origen ascendente</option>
+                                <option value='sortOrigin=%2D1'>Origen descendente</option>
+                                <option value='sortDestination=1'>Destino ascendente</option>
+                                <option value='sortDestination=%2D1'>Destino descendente</option>
+                                <option value='sortDate=1'>Fecha ascendente</option>
+                                <option value='sortDate=%2D1'>Fecha descendente</option>
+                                <option value='sortDuration=1'>Noches ascendente</option>
+                                <option value='sortDuration=%2D1'>Noches descendente</option>
+                            </Form.Select>
                         </Form.Group>
                     </Col>
                 </Row>

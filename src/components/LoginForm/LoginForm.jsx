@@ -1,22 +1,25 @@
-import { useState, useContext } from "react"
+import { useState, useContext, useRef, useEffect } from "react"
 import { Form, Button } from "react-bootstrap"
 import { AuthContext } from "../../contexts/auth.context"
 import authService from "../../services/auth.service"
 import FormError from "../FormError/FormError"
 
+
 const LoginForm = ({ setShowLoginModal }) => {
-
-
 
     const [loginData, setLoginData] = useState({
         email: '',
         password: ''
     })
-    
-
     const [errors, setErrors] = useState([])
 
     const { authenticateUser } = useContext(AuthContext)
+
+    const emailRef = useRef(null)
+
+    useEffect(() => {
+        emailRef.current.focus()
+    }, [])
 
     const handleInputChange = e => {
         const { value, name } = e.target
@@ -46,7 +49,7 @@ const LoginForm = ({ setShowLoginModal }) => {
 
             <Form.Group className="mb-3" controlId="email">
                 <Form.Label>Email</Form.Label>
-                <Form.Control type="email" value={loginData.email} onChange={handleInputChange} name="email" />
+                <Form.Control type="email" value={loginData.email} onChange={handleInputChange} name="email" ref={emailRef} />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="password">
@@ -55,9 +58,6 @@ const LoginForm = ({ setShowLoginModal }) => {
             </Form.Group>
 
             {errors?.length > 0 && <FormError>{errors.map(elm => <p key={elm._id}>{elm}</p>)}</FormError>}
-
-
-
 
             <div className="d-grid">
                 <Button variant="dark" type="submit">Acceder</Button>

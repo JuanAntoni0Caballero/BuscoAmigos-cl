@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { Form, Button } from "react-bootstrap"
 import authService from "../../services/auth.service"
 import uploadServices from "../../services/upload.service"
@@ -15,6 +15,11 @@ const SignupForm = ({ setShowSingUpModal, setShowLoginModal }) => {
 
     const [errors, setErrors] = useState([])
 
+    const emailRef = useRef(null)
+
+    useEffect(() => {
+        emailRef.current.focus()
+    }, [])
 
     const handleInputChange = e => {
         const { value, name } = e.target
@@ -54,7 +59,7 @@ const SignupForm = ({ setShowSingUpModal, setShowLoginModal }) => {
 
             <Form.Group className="mb-3" controlId="email">
                 <Form.Label>Email</Form.Label>
-                <Form.Control type="email" value={signupData.email} onChange={handleInputChange} name="email" />
+                <Form.Control type="email" value={signupData.email} onChange={handleInputChange} name="email" ref={emailRef} />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="username">
