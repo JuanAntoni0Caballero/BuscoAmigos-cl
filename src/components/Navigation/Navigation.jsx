@@ -6,6 +6,7 @@ import { AuthContext } from '../../contexts/auth.context'
 import LoginForm from '../LoginForm/LoginForm'
 import SignupForm from '../SignupForm/SignupForm'
 import PlanNewForm from '../PlanNewForm/PlanNewForm'
+import Profile from '../Profile/Pofile'
 // import planService from '../../services/plan.service'
 
 
@@ -15,8 +16,7 @@ const Navigation = () => {
     const [showLogInModal, setShowLoginModal] = useState(false)
     const [showSingUpModal, setShowSingUpModal] = useState(false)
     const [showCreatePlanModal, setShowCreatePlanModal] = useState(false)
-
-
+    const [showProfileModal, setShowProfileModal] = useState(false)
 
     const { user, logout } = useContext(AuthContext)
 
@@ -44,6 +44,7 @@ const Navigation = () => {
         setShowLoginModal(false)
         setShowSingUpModal(false)
         setShowCreatePlanModal(false)
+        setShowProfileModal(false)
         // loadPanning()
     }
 
@@ -57,18 +58,20 @@ const Navigation = () => {
                 </Link>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse className="me-auto" id="responsive-navbar-nav">
-                    <Nav className="me-auto">
+                    {/* <Nav className="me-auto">
 
-                    </Nav>
+                    </Nav> */}
                     <Nav >
-
                         {
                             user
                             &&
                             <>
                                 <Navbar.Text>{user.username}</Navbar.Text>
-
-                                <img src={user.avatar} alt="" />
+                                <Link>
+                                    <Nav.Link onClick={() => setShowProfileModal(true)} as='span'>
+                                        <img src={user.avatar} alt="Avatar" />
+                                    </Nav.Link>
+                                </Link>
                             </>
                         }
 
@@ -147,7 +150,14 @@ const Navigation = () => {
                             </Modal.Body>
                         </Modal>
 
-                        2                    </Nav>
+                        <Modal size="lg" centered show={showProfileModal} onHide={() => setShowProfileModal(false)}>
+                            <Modal.Header closeButton> <Modal.Title>Perfil</Modal.Title></Modal.Header>
+                            <Modal.Body >
+                                <PlanNewForm setShowProfileModal={setShowProfileModal} fireFinalActions={fireFinalActions} />
+                            </Modal.Body>
+                        </Modal>
+
+                    </Nav>
                 </Navbar.Collapse>
             </Container>
         </Navbar>

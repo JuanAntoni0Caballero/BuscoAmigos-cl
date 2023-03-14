@@ -154,7 +154,7 @@ const PlanDetailsPage = () => {
                     </Col>
 
                     <Col md={{ span: 4 }}>
-                        <img src={plan.typePlan?.picture} style={{ width: '100%' }} alt='PlanImg' />
+                        <img src={plan.image} style={{ width: '100%' }} alt='PlanImg' />
                     </Col>
                 </Row >
 
@@ -205,7 +205,7 @@ const PlanDetailsPage = () => {
 
                 {errors.length > 0 && <FormError>{errors.map(elm => <p key={elm._id}>{elm}</p>)}</FormError>}
 
-            </Offcanvas>
+            </Offcanvas >
 
         </>
     )
