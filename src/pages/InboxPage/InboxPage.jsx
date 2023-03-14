@@ -24,7 +24,7 @@ const ImboxPage = () => {
             .then(({ data }) => setConversation(data))
             .catch(err => console.log(err))
     }
-    console.log(conversation)
+
 
     return (
         <>

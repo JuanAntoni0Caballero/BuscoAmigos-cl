@@ -77,7 +77,7 @@ const ProfilePost = () => {
                 </Offcanvas.Header>
                 <Offcanvas.Body>
 
-                    <h3>Masage</h3>
+                    <h3>Messages</h3>
 
                     <div>
                         {
@@ -111,6 +111,8 @@ const ProfilePost = () => {
                     </FloatingLabel>
 
                 </Offcanvas.Body>
+
+
 
                 {errors.length > 0 && <FormError>{errors.map(elm => <p key={elm._id}>{elm}</p>)}</FormError>}
 
