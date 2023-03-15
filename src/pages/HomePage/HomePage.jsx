@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 import PlanSearchForm from '../../components/PlanSearchForm/PlanSearchForm'
 import PlanCard from "../../components/PlanCard/PlanCard"
+import './HomePage.css'
 
 const HomePage = () => {
 
@@ -16,16 +17,14 @@ const HomePage = () => {
 
         <Container className="Home">
 
-            <h1>Busco Amigos</h1>
-            <hr />
+            <Row className='SearchForm'>
+                <PlanSearchForm getPlans={getPlans} />
+            </Row>
 
             <Row>
-
-                <PlanSearchForm getPlans={getPlans} />
-
                 {plansFounded.length >= 1
                     ? plansFounded.map(elm => (
-                        <Col md={3} key={elm._id}>
+                        <Col md={6} lg={4} xxl={3} className='CardPlanCol' key={elm._id}>
                             <PlanCard {...elm} />
                         </Col>
                     ))

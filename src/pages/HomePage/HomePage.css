@@ -1,0 +1,9 @@
+.Home {
+    margin-top: 30px;
+}
+
+.SearchForm {
+    width: 100%;
+    background: rgb(236, 217, 11);
+    background: linear-gradient(180deg, rgba(236, 217, 11, 1) 7%, rgba(223, 219, 41, 1) 34%, rgba(255, 255, 255, 1) 100%);
+}

@@ -7,6 +7,7 @@ import LoginForm from '../LoginForm/LoginForm'
 import SignupForm from '../SignupForm/SignupForm'
 import PlanNewForm from '../PlanNewForm/PlanNewForm'
 import ProfilePage from '../../pages/ProfilePage/PofilePage'
+import './Navigation.css'
 
 
 const Navigation = () => {
@@ -32,7 +33,9 @@ const Navigation = () => {
         <Navbar className="me-auto" collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container>
                 <Link to='/'>
-                    <Navbar.Brand as='span'>BUSCO AMIGOS</Navbar.Brand>
+                    <Navbar.Brand as='span' className='navTitle'>BUSCO
+                        <img src="../../../../images/icon-transp-yellow.png" alt="" />
+                        AMIGOS</Navbar.Brand>
                 </Link>
 
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />

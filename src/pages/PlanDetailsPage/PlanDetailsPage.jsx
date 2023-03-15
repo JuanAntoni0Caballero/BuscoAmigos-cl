@@ -97,32 +97,33 @@ const PlanDetailsPage = () => {
                         <p>{plan.duration}</p>
                         <hr />
 
+                        <Link to={`/`}>
+                            <Button as="figure" variant="dark">Inicio</Button>
+                        </Link>
+
                         {
-                            user._id === plan?.owner || user.role === 'ADMIN'
-                                ?
-                                <>
-                                    <Link >
-                                        <Button onClick={() => setShowEditPlanModal(true)} as="figure" variant="dark">Editar</Button>
-                                    </Link>
+                            user && (user._id === plan?.owner || user.role === 'ADMIN')
+                            &&
+                            <>
+                                <Link >
+                                    <Button onClick={() => setShowEditPlanModal(true)} as="figure" variant="dark">Editar</Button>
+                                </Link>
 
-                                    <Link>
-                                        <Button as="figure" onClick={handleShowDelete} variant="dark">Borrar</Button>
-                                    </Link>
+                                <Link>
+                                    <Button as="figure" onClick={handleShowDelete} variant="dark">Borrar</Button>
+                                </Link>
 
-                                    <Link onClick={handleShow}>
-                                        <Button as="figure" variant="dark">Inicio</Button>
-                                    </Link>
-                                </>
-                                :
-                                <>
-                                    <Link onClick={handleShow}>
-                                        <Button as="figure" variant="dark" >Contactar</Button>
-                                    </Link>
+                            </>
+                        }
+                        {
+                            user && (user._id !== plan?.owner)
+                            &&
+                            <>
+                                <Link onClick={handleShow}>
+                                    <Button as="figure" variant="dark">Contactar</Button>
+                                </Link>
 
-                                    <Link onClick={handleShow}>
-                                        <Button as="figure" variant="dark">Inicio</Button>
-                                    </Link>
-                                </>
+                            </>
                         }
                     </Col >
 
@@ -143,11 +144,11 @@ const PlanDetailsPage = () => {
                 </Modal.Header>
                 <Modal.Body>¿Estás seguro de que lo quieres eliminar?</Modal.Body>
                 <Modal.Footer>
-                    <Button variant="dark" onClick={handleCloseDelete}>
-                        Cerrar
-                    </Button>
                     <Button variant="dark" onClick={handleDeletePlan} >
                         Borrar
+                    </Button>
+                    <Button variant="dark" onClick={handleCloseDelete}>
+                        Cerrar
                     </Button>
                 </Modal.Footer>
             </Modal>

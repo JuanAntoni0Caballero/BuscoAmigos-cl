@@ -1,0 +1,9 @@
+.navTitle {
+    color: rgba(255, 236, 89, 0.801);
+}
+
+.navTitle img {
+    width: 60px;
+    padding: 0;
+    margin: 0 5px;
+}

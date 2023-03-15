@@ -26,7 +26,6 @@ const AppRoutes = () => {
                 <Route path="/editUser" element={<EditUserPage />} />
                 <Route path="/deleteUser" element={<HomePage />} />
                 <Route path="/inbox" element={<ImboxPage />} />
-                {/* <Route path="/inbox/:conversation_id" element={<ProfilePost />} /> */}
                 <Route path="/myPlans" element={<MyPlansPage />} />
 
 
