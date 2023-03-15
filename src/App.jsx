@@ -12,6 +12,8 @@ import Footer from './components/Footer/Footer'
 const App = () => {
   // const { themeValue } = useContext(ThemeContext)
 
+  
+
   return (
     <div className='App'>
 

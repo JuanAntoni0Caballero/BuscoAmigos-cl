@@ -46,7 +46,7 @@ const PlanEditForm = () => {
 
         planService
             .editPlan(plan_id, plan)
-            .then(() => navigate(`/planDetails/${plan_id}`))
+            .then(() => navigate(`/myPlans`))
             .catch(err => setErrors(err.response.data.errorMessages))
     }
 

@@ -1,4 +1,4 @@
-import { Container, Row, Col, Button, Offcanvas, Form, FloatingLabel } from "react-bootstrap"
+import { Container, Row, Col, Button, Offcanvas, Form, FloatingLabel, Modal } from "react-bootstrap"
 import { useEffect, useState, useContext } from "react"
 import { AuthContext } from '../../contexts/auth.context'
 import { useParams, Link } from "react-router-dom"
@@ -9,6 +9,7 @@ import Loader from "../../components/Loader/Loader"
 import FormError from "../../components/FormError/FormError"
 import messageService from "../../services/message.service"
 import PruebaMessages from "../../components/ProfilePost/PruebaMessages"
+import PlanEditForm from '../../components/PlanEditForm/PlanEditForm'
 
 
 const PlanDetailsPage = () => {
@@ -17,6 +18,16 @@ const PlanDetailsPage = () => {
     const [plan, setPlan] = useState({})
 
     const { user } = useContext(AuthContext)
+
+
+    const [showEditPlanModal, setShowEditPlanModal] = useState(false)
+
+
+
+    const [showDeleteModal, setShowDeleteModal] = useState(false)
+
+    const handleCloseDelete = () => setShowDeleteModal(false)
+    const handleShowDelete = () => setShowDeleteModal(true)
 
 
     const { plan_id } = useParams()
@@ -30,14 +41,22 @@ const PlanDetailsPage = () => {
 
     const [conversation, setConversation] = useState({})
 
-    const [show, setShow] = useState(false)
     const [errors, setErrors] = useState([])
+    const [show, setShow] = useState(false)
+
+
 
     const handleClose = () => setShow(false)
     const handleShow = () => {
         createConversation()
         setShow(true)
     }
+
+    const fireFinalActions = () => {
+        setShowEditPlanModal(false)
+
+    }
+
 
     useEffect(() => {
         loadPlanData()
@@ -128,12 +147,12 @@ const PlanDetailsPage = () => {
                             user._id === plan?.owner || user.role === 'ADMIN'
                                 ?
                                 <>
-                                    <Link to={`/planEdit/${plan_id}`}>
-                                        <Button as="figure" variant="dark">Edit</Button>
+                                    <Link >
+                                        <Button onClick={() => setShowEditPlanModal(true)} as="figure" variant="dark">Edit</Button>
                                     </Link>
 
-                                    <Link to='/plan'>
-                                        <Button as="figure" onClick={handleDeletePlan} variant="dark">Delete</Button>
+                                    <Link>
+                                        <Button as="figure" onClick={handleShowDelete} variant="dark">Delete</Button>
                                     </Link>
 
                                     <Link to="/plan">
@@ -206,6 +225,31 @@ const PlanDetailsPage = () => {
                 {errors.length > 0 && <FormError>{errors.map(elm => <p key={elm._id}>{elm}</p>)}</FormError>}
 
             </Offcanvas >
+
+
+
+            <Modal show={showDeleteModal} onHide={handleCloseDelete}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Confirmacion de eliminación</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>¿Estás seguro de que lo quieres eliminar?</Modal.Body>
+                <Modal.Footer>
+                    <Button variant="dark" onClick={handleCloseDelete}>
+                        Close
+                    </Button>
+                    <Button variant="dark" onClick={handleDeletePlan} >
+                        Delete
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+
+
+            <Modal size="lg" centered show={showEditPlanModal} onHide={() => setShowEditPlanModal(false)}>
+                <Modal.Header closeButton> <Modal.Title>Edit Plan</Modal.Title></Modal.Header>
+                <Modal.Body>
+                    <PlanEditForm setShowEditPlanModal={setShowEditPlanModal} fireFinalActions={fireFinalActions} />
+                </Modal.Body>
+            </Modal>
 
         </>
     )

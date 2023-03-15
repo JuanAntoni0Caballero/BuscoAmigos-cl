@@ -21,7 +21,10 @@ const ImboxPage = () => {
 
         conversationService
             .getAllConversations()
-            .then(({ data }) => setConversation(data))
+            .then(({ data }) => {
+                console.log('LA DATA ==>', data)
+                setConversation(data)
+            })
             .catch(err => console.log(err))
     }
 

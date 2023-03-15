@@ -6,7 +6,6 @@ import { AuthContext } from '../../contexts/auth.context'
 import LoginForm from '../LoginForm/LoginForm'
 import SignupForm from '../SignupForm/SignupForm'
 import PlanNewForm from '../PlanNewForm/PlanNewForm'
-import Profile from '../Profile/Pofile'
 // import planService from '../../services/plan.service'
 
 

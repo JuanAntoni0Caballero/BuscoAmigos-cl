@@ -51,6 +51,8 @@ const MyPlansPage = () => {
                             return (
                                 <Container>
 
+                                    < h6 > Título</h6>
+                                    <p>{elm.title}</p>
                                     < h6 > Description</h6>
                                     <p>{elm.description}</p>
                                     <h6>Origen</h6>

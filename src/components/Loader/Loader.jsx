@@ -1,8 +1,10 @@
+import { Spinner } from "react-bootstrap"
+
+
 const Loader = () => {
 
     return (
-        // <h1>Loading....</h1>
-        <span className="loader"></span>
+        <Spinner animation="grow" variant="warning" />
     )
 }
 
