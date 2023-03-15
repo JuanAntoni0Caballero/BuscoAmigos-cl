@@ -150,10 +150,10 @@ const Navigation = () => {
                             </Modal.Body>
                         </Modal>
 
-                        <Modal size="lg" centered show={showProfileModal} onHide={() => setShowProfileModal(false)}>
-                            <Modal.Header closeButton> <Modal.Title>Perfil</Modal.Title></Modal.Header>
+                        <Modal show={showProfileModal} onHide={() => setShowProfileModal(false)}>
+                            <Modal.Header closeButton> <Modal.Title>Mi perfil</Modal.Title></Modal.Header>
                             <Modal.Body >
-                                <PlanNewForm setShowProfileModal={setShowProfileModal} fireFinalActions={fireFinalActions} />
+                                <Profile setShowProfileModal={setShowProfileModal} fireFinalActions={fireFinalActions} />
                             </Modal.Body>
                         </Modal>
 

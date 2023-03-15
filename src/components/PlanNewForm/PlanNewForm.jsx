@@ -60,7 +60,6 @@ const PlanNewForm = ({ setShowCreatePlanModal }) => {
             planTypes.map(elm => {
                 if (elm._id == planData.typePlan) {
                     setPlanData({ ...planData, image: elm.picture })
-                    console.log('POS ME IMPRIMO', elm.picture)
                 }
             })
         }

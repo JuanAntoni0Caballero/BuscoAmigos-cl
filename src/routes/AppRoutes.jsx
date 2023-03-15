@@ -8,7 +8,7 @@ import PlanEditPage from "../pages/PlanEditPage/PlanEditPage"
 import PlanNewPage from "../pages/PlanNewPage/PlanNewPage"
 import ProfilePage from "../pages/ProfilePage/PofilePage"
 import EditUserPage from "../pages/EditUserPage/EditUserPage"
-import ProfilePost from "../components/ProfilePost/ProfilePost"
+// import ProfilePost from "../components/ProfilePost/ProfilePost"
 import ImboxPage from "../pages/InboxPage/InboxPage"
 import MyPlansPage from "../pages/MyPlansPage/MyPlansPage"
 import ContactPage from "../pages/ContactPage/ContactPage"
@@ -33,7 +33,7 @@ const AppRoutes = () => {
                 <Route path="/editUser" element={<EditUserPage />} />
                 <Route path="/deleteUser" element={<HomePage />} />
                 <Route path="/inbox" element={<ImboxPage />} />
-                <Route path="/inbox/:conversation_id" element={<ProfilePost />} />
+                {/* <Route path="/inbox/:conversation_id" element={<ProfilePost />} /> */}
                 <Route path="/myPlans" element={<MyPlansPage />} />
 
 
