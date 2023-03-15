@@ -6,7 +6,7 @@ import uploadServices from "../../services/upload.service"
 import FormError from "../FormError/FormError"
 
 
-const PlanEditForm = () => {
+const PlanEditForm = ({ setShowEditPlanModal }) => {
 
     const [plan, setPlan] = useState({
         title: '',
@@ -46,7 +46,7 @@ const PlanEditForm = () => {
 
         planService
             .editPlan(plan_id, plan)
-            .then(() => navigate(`/myPlans`))
+            .then(() => setShowEditPlanModal(false))
             .catch(err => setErrors(err.response.data.errorMessages))
     }
 
@@ -164,11 +164,9 @@ const PlanEditForm = () => {
                     <Button variant="dark" type="submit" disabled={loadinImage}>{loadinImage ? 'Cargando imagen...' : 'Guardar cambios'}</Button>
                 </div>
 
-                <Link to={`/planDetails/${plan_id}`}>
-                    <div className="d-grid">
-                        <Button as="figure" variant="dark">Volver</Button>
-                    </div>
-                </Link>
+                <div className="d-grid">
+                    <Button as="figure" variant="dark" onClick={() => setShowEditPlanModal(false)}>Volver</Button>
+                </div>
 
             </Form>
 

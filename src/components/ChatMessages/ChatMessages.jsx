@@ -6,7 +6,7 @@ import messageService from "../../services/message.service"
 import FormError from "../FormError/FormError"
 
 
-const PruebaMessages = ({ conversation, setConversation }) => {
+const ChatMessages = ({ conversation, setConversation }) => {
 
     const { user } = useContext(AuthContext)
 
@@ -94,6 +94,6 @@ const PruebaMessages = ({ conversation, setConversation }) => {
     )
 }
 
-export default PruebaMessages
+export default ChatMessages
 
 

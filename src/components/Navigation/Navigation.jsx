@@ -6,8 +6,7 @@ import { AuthContext } from '../../contexts/auth.context'
 import LoginForm from '../LoginForm/LoginForm'
 import SignupForm from '../SignupForm/SignupForm'
 import PlanNewForm from '../PlanNewForm/PlanNewForm'
-// import planService from '../../services/plan.service'
-
+import ProfilePage from '../../pages/ProfilePage/PofilePage'
 
 const Navigation = () => {
 
@@ -152,7 +151,7 @@ const Navigation = () => {
                         <Modal show={showProfileModal} onHide={() => setShowProfileModal(false)}>
                             <Modal.Header closeButton> <Modal.Title>Mi perfil</Modal.Title></Modal.Header>
                             <Modal.Body >
-                                <Profile setShowProfileModal={setShowProfileModal} fireFinalActions={fireFinalActions} />
+                                <ProfilePage setShowProfileModal={setShowProfileModal} fireFinalActions={fireFinalActions} />
                             </Modal.Body>
                         </Modal>
 

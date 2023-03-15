@@ -2,7 +2,7 @@ import { useEffect, useState, useContext } from "react"
 import { Button, Offcanvas } from "react-bootstrap"
 import Table from 'react-bootstrap/Table'
 import { Link } from "react-router-dom"
-import PruebaMessages from "../../components/ProfilePost/PruebaMessages"
+import ChatMessages from "../../components/ChatMessages/ChatMessages"
 import { AuthContext } from "../../contexts/auth.context"
 import conversationService from "../../services/conversation.service"
 
@@ -94,8 +94,7 @@ const ImboxPage = () => {
 
 
                                     <Offcanvas show={show} onHide={handleClose}>
-                                        <PruebaMessages conversation={conversation} setConversation={setConversation} />
-
+                                        <ChatMessages conversation={conversation} setConversation={setConversation} />
                                     </Offcanvas >
                                 </>
                             )
