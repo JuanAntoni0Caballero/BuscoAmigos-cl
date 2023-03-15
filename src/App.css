@@ -2,6 +2,10 @@
     font-family: 'Dosis', sans-serif;
 }
 
+img {
+    width: 100%;
+}
+
 nav img {
     width: 40px;
     border-radius: 10px;
@@ -15,4 +19,10 @@ a {
 
 .dropdown span {
     color: black;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
 }

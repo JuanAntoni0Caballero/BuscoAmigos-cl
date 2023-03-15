@@ -27,30 +27,34 @@ const Navigation = () => {
     }
 
     return (
+
+
         <Navbar className="me-auto" collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container>
                 <Link to='/'>
                     <Navbar.Brand as='span'>BUSCO AMIGOS</Navbar.Brand>
                 </Link>
+
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                <Navbar.Collapse className="me-auto" id="responsive-navbar-nav">
+                <Navbar.Collapse className="me-auto, justify-content-end" >
 
                     <Nav >
+
                         {
                             user
                             &&
                             <>
                                 <Navbar.Text>{user.username}</Navbar.Text>
                                 <Link>
-                                    <Nav.Link onClick={() => setShowProfileModal(true)} as='span'>
+                                    <Nav.Link onClick={() => setShowProfileModal(true)} as='span'   >
                                         <img src={user.avatar} alt="Avatar" />
                                     </Nav.Link>
                                 </Link>
                             </>
                         }
 
-                        <NavDropdown title="Menu" className='dropdown' id="collasible-nav-dropdown">
 
+                        <NavDropdown title="Menu" className='dropdown' id="collasible-nav-dropdown">
                             {
                                 !user
                                     ?
@@ -130,11 +134,10 @@ const Navigation = () => {
                                 <ProfilePage setShowProfileModal={setShowProfileModal} fireFinalActions={fireFinalActions} />
                             </Modal.Body>
                         </Modal>
-
                     </Nav>
                 </Navbar.Collapse>
             </Container>
-        </Navbar>
+        </Navbar >
     )
 }
 

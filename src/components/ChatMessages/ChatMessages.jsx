@@ -45,6 +45,7 @@ const ChatMessages = ({ conversation, setConversation }) => {
                 setConversation(data)
             })
             .catch(err => console.log(err))
+
     }
 
 
@@ -61,7 +62,7 @@ const ChatMessages = ({ conversation, setConversation }) => {
                     {
                         conversation.messages?.map(elm => {
 
-                            if (user._id === elm.owner) {
+                            if (user._id === elm.owner._id) {
                                 return (
                                     <div key={elm._id}>
                                         <p style={{ color: 'green', wordBreak: 'break-all' }}>{elm.owner.username}</p>

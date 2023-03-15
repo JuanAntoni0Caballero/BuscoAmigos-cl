@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import planService from "../../services/plan.service"
 import uploadServices from "../../services/upload.service"
 import FormError from "../FormError/FormError"
-
+import Loader from '../Loader/Loader'
 
 const PlanNewForm = ({ setShowCreatePlanModal }) => {
 
@@ -16,6 +16,7 @@ const PlanNewForm = ({ setShowCreatePlanModal }) => {
         origin: '',
         destination: '',
         date: '',
+        image: '',
         duration: '0',
         typePlan: ''
     })
@@ -50,26 +51,37 @@ const PlanNewForm = ({ setShowCreatePlanModal }) => {
     }
 
 
+
+
     const handleFormSubmit = e => {
 
         e.preventDefault()
 
-        // if (!planData.image) {
-        //     planTypes.map(elm => {
-        //         if (elm._id == planData.typePlan) {
-        //             setPlanData({ ...planData, image: elm.picture })
-        //         }
-        //     })
-        // }
+        let localPlanData = { ...planData }
+
+        if (!planData.image) {
+            planTypes.map(elm => {
+                if (elm._id == planData.typePlan) {
+
+                    localPlanData = { ...localPlanData, image: elm.picture }
+                }
+            })
+        }
+
 
         planService
-            .createPlan(planData)
+            .createPlan(localPlanData)
             .then(({ data }) => {
                 setShowCreatePlanModal(false)
                 navigate(`/planDetails/${data._id}`)
             })
             .catch(err => setErrors(err.response.data.errorMessages))
     }
+
+
+
+
+
 
     const handleFileUpload = e => {
 

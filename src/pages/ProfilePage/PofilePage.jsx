@@ -27,43 +27,39 @@ const Profile = () => {
 
     return (
 
-        <>
-            <Container>
+        < Container className="mx-auto" >
 
-                <h1>My profile</h1>
+            <h1>My profile</h1>
 
-                <hr />
+            <hr />
 
-                <Card style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src={user.avatar} />
-                    <Card.Body>
-                        <Card.Title>{user.username}</Card.Title>
-                        <Card.Text>
-                            {user.email}
-                        </Card.Text>
-                    </Card.Body>
-                </Card>
+            <Card style={{ width: '18rem' }}>
+                <Card.Img variant="top" src={user.avatar} />
+                <Card.Body>
+                    <Card.Title>{user.username}</Card.Title>
+                    <Card.Text>
+                        {user.email}
+                    </Card.Text>
+                </Card.Body>
+            </Card>
 
-                <Link to={`/editUser`}>
-                    <Button as="figure" variant="dark">Edit Profile</Button>
-                </Link>
-
-
-                <Button as="figure" variant="dark" onClick={handleShow}>
-                    Delete profile
-                </Button>
-
-                <Link to='/inbox'>
-                    <Button as="figure" variant="dark">Messages</Button>
-                </Link>
-
-                <Link to='/myPlans'>
-                    <Button as="figure" variant="dark">Mis planes</Button>
-                </Link>
+            <Link to={`/editUser`}>
+                <Button as="figure" variant="dark">Edit Profile</Button>
+            </Link>
 
 
+            <Button as="figure" variant="dark" onClick={handleShow}>
+                Delete profile
+            </Button>
 
-            </Container>
+            <Link to='/inbox'>
+                <Button as="figure" variant="dark">Messages</Button>
+            </Link>
+
+            <Link to='/myPlans'>
+                <Button as="figure" variant="dark">Mis planes</Button>
+            </Link>
+
 
 
             <Modal show={show} onHide={handleClose}>
@@ -81,8 +77,8 @@ const Profile = () => {
                 </Modal.Footer>
             </Modal>
 
-        </>
 
+        </Container>
     )
 }
 

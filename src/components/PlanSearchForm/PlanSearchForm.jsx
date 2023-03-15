@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { Container, Row, Col, Form, Button } from "react-bootstrap"
 import planService from "../../services/plan.service"
-
+import './PlanSearchForm.css'
 
 const PlanSearchForm = ({ getPlans }) => {
 
