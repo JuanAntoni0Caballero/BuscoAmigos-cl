@@ -5,33 +5,25 @@ import { useParams, Link } from "react-router-dom"
 import planService from "../../services/plan.service"
 import { useNavigate } from "react-router-dom"
 import conversationService from '../../services/conversation.service'
-import PruebaMessages from "../../components/ProfilePost/PruebaMessages"
+import ChatMessages from "../../components/ChatMessages/ChatMessages"
 import PlanEditForm from '../../components/PlanEditForm/PlanEditForm'
 
 
 const PlanDetailsPage = () => {
 
     const { user } = useContext(AuthContext)
+    const { plan_id } = useParams()
 
+    const [plan, setPlan] = useState({})
+    const [conversation, setConversation] = useState({ messages: [] })
+    const [show, setShow] = useState(false)
     const [showEditPlanModal, setShowEditPlanModal] = useState(false)
     const [showDeleteModal, setShowDeleteModal] = useState(false)
 
     const handleCloseDelete = () => setShowDeleteModal(false)
     const handleShowDelete = () => setShowDeleteModal(true)
 
-
-    const { plan_id } = useParams()
-
     const navigate = useNavigate()
-
-    const [messageData, setMessageData] = useState({
-        content: '',
-        owner: user._id
-    })
-
-    const [plan, setPlan] = useState({})
-    const [conversation, setConversation] = useState({ messages: [] })
-    const [show, setShow] = useState(false)
 
     useEffect(() => {
         loadPlanData()
@@ -46,11 +38,6 @@ const PlanDetailsPage = () => {
     const fireFinalActions = () => {
         setShowEditPlanModal(false)
     }
-
-
-    useEffect(() => {
-        loadPlanData()
-    }, [plan_id])
 
     const handleDeletePlan = e => {
 
@@ -92,22 +79,21 @@ const PlanDetailsPage = () => {
     return (
 
         <>
-
             <Container>
                 <h1 className="mb-4">{plan.title} </h1>
                 <hr />
                 <Row>
 
                     <Col md={{ span: 6, offset: 1 }}>
-                        <h6>Description</h6>
+                        <h6>Description:</h6>
                         <p>{plan.description}</p>
-                        <h6>Origen</h6>
+                        <h6>Origen:</h6>
                         <p>{plan.origin}</p>
-                        <h6>Destino</h6>
+                        <h6>Destino:</h6>
                         <p>{plan.destination}</p>
-                        <h6>Fecha</h6>
+                        <h6>Fecha:</h6>
                         <p>{plan.date}</p>
-                        <h6>Duración</h6>
+                        <h6>Duración:</h6>
                         <p>{plan.duration}</p>
                         <hr />
 
@@ -116,46 +102,40 @@ const PlanDetailsPage = () => {
                                 ?
                                 <>
                                     <Link >
-                                        <Button onClick={() => setShowEditPlanModal(true)} as="figure" variant="dark">Edit</Button>
+                                        <Button onClick={() => setShowEditPlanModal(true)} as="figure" variant="dark">Editar</Button>
                                     </Link>
 
                                     <Link>
-                                        <Button as="figure" onClick={handleShowDelete} variant="dark">Delete</Button>
+                                        <Button as="figure" onClick={handleShowDelete} variant="dark">Borrar</Button>
                                     </Link>
 
-                                    <Link to="/plan">
-                                        <Button as="figure" variant="dark">Volver</Button>
+                                    <Link onClick={handleShow}>
+                                        <Button as="figure" variant="dark">Inicio</Button>
                                     </Link>
                                 </>
                                 :
                                 <>
-                                    <Link to="/plan">
-                                        <Button as="figure" variant="dark">Volver</Button>
+                                    <Link onClick={handleShow}>
+                                        <Button as="figure" variant="dark" >Contactar</Button>
                                     </Link>
 
                                     <Link onClick={handleShow}>
-                                        <Button as="figure" variant="dark" >Contactar</Button>
+                                        <Button as="figure" variant="dark">Inicio</Button>
                                     </Link>
                                 </>
                         }
                     </Col >
 
                     <Col md={{ span: 4 }}>
-                        <img src={plan.image} style={{ width: '100%' }} alt='PlanImg' />
+                        <img src={plan.image} alt='PlanImg' />
                     </Col>
                 </Row >
-
-
             </Container >
 
 
             <Offcanvas show={show} onHide={handleClose}>
-
-                <PruebaMessages conversation={conversation} setConversation={setConversation} />
-
+                <ChatMessages conversation={conversation} setConversation={setConversation} />
             </Offcanvas >
-
-
 
             <Modal show={showDeleteModal} onHide={handleCloseDelete}>
                 <Modal.Header closeButton>
@@ -164,22 +144,20 @@ const PlanDetailsPage = () => {
                 <Modal.Body>¿Estás seguro de que lo quieres eliminar?</Modal.Body>
                 <Modal.Footer>
                     <Button variant="dark" onClick={handleCloseDelete}>
-                        Close
+                        Cerrar
                     </Button>
                     <Button variant="dark" onClick={handleDeletePlan} >
-                        Delete
+                        Borrar
                     </Button>
                 </Modal.Footer>
             </Modal>
 
-
             <Modal size="lg" centered show={showEditPlanModal} onHide={() => setShowEditPlanModal(false)}>
-                <Modal.Header closeButton> <Modal.Title>Edit Plan</Modal.Title></Modal.Header>
+                <Modal.Header closeButton> <Modal.Title>Editar Plan</Modal.Title></Modal.Header>
                 <Modal.Body>
                     <PlanEditForm setShowEditPlanModal={setShowEditPlanModal} fireFinalActions={fireFinalActions} />
                 </Modal.Body>
             </Modal>
-
         </>
     )
 }

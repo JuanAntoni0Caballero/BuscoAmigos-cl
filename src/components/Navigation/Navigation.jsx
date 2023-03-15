@@ -1,5 +1,5 @@
 
-import { useContext, useState, useEffect } from 'react'
+import { useContext, useState } from 'react'
 import { Nav, Navbar, Container, Modal, NavDropdown } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { AuthContext } from '../../contexts/auth.context'
@@ -7,7 +7,6 @@ import LoginForm from '../LoginForm/LoginForm'
 import SignupForm from '../SignupForm/SignupForm'
 import PlanNewForm from '../PlanNewForm/PlanNewForm'
 import ProfilePage from '../../pages/ProfilePage/PofilePage'
-// import planService from '../../services/plan.service'
 
 
 const Navigation = () => {
@@ -20,35 +19,12 @@ const Navigation = () => {
 
     const { user, logout } = useContext(AuthContext)
 
-    // const [plans, setPlans] = useState([])
-    // const [isLoading, setIsLoading] = useState(true)
-
-    // const { user } = useContext(AuthContext)
-
-    useEffect(() => {
-        // loadPanning()
-    }, [])
-
-    // const loadPanning = () => {
-    //     planService
-    //         .getPlan()
-    //         .then(({ data }) => {
-    //             setPlans(data)
-    //             // setIsLoading(false)
-    //         })
-    //         .catch(err => console.log(err))
-    // }
-
-
     const fireFinalActions = () => {
         setShowLoginModal(false)
         setShowSingUpModal(false)
         setShowCreatePlanModal(false)
         setShowProfileModal(false)
-        // loadPanning()
     }
-
-
 
     return (
         <Navbar className="me-auto" collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -58,9 +34,7 @@ const Navigation = () => {
                 </Link>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse className="me-auto" id="responsive-navbar-nav">
-                    {/* <Nav className="me-auto">
 
-                    </Nav> */}
                     <Nav >
                         {
                             user

@@ -17,7 +17,6 @@ const PlanNewForm = ({ setShowCreatePlanModal }) => {
         destination: '',
         date: '',
         duration: '0',
-        image: '',
         typePlan: ''
     })
 
@@ -55,14 +54,13 @@ const PlanNewForm = ({ setShowCreatePlanModal }) => {
 
         e.preventDefault()
 
-        console.log('la imagen', planData.image)
-        if (!planData.image) {
-            planTypes.map(elm => {
-                if (elm._id == planData.typePlan) {
-                    setPlanData({ ...planData, image: elm.picture })
-                }
-            })
-        }
+        // if (!planData.image) {
+        //     planTypes.map(elm => {
+        //         if (elm._id == planData.typePlan) {
+        //             setPlanData({ ...planData, image: elm.picture })
+        //         }
+        //     })
+        // }
 
         planService
             .createPlan(planData)
@@ -81,6 +79,7 @@ const PlanNewForm = ({ setShowCreatePlanModal }) => {
         uploadServices
             .uploadimage(formData)
             .then(({ data }) => {
+                console.log(data.cloudinary_url)
                 setPlanData({ ...planData, image: data.cloudinary_url })
             })
             .catch(err => console.log(err))
