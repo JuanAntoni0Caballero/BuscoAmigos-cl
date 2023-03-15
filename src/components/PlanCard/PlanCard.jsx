@@ -1,17 +1,23 @@
-import { Card } from 'react-bootstrap'
+import { Card, Image } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import './PlanCard.css'
 
-
-
-const PlanCard = ({ _id, title, origin, destination, date, duration, image, typePlan, description }) => {
+const PlanCard = ({ _id, title, origin, destination, date, duration, image, owner }) => {
+    console.log('here', owner.username)
 
     return (
 
         <Link to={`/planDetails/${_id}`}>
-            <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src={image} />
-                <Card.Body>
-                    <Card.Title>{title}</Card.Title>
+            <Card className='CardPlan'>
+                <Card.Header as="h5">
+                    <img className='CardPlanAvatar' src={owner.avatar} alt="Avatar" />
+                    {owner.username}
+                </Card.Header>
+
+                <Card.Img className='CardPlanImage' variant="top" src={image} />
+
+                <Card.Body className='CardPlanBody'>
+                    <Card.Title className='CardPlanTitle'>{title}</Card.Title>
                     <p>{origin} ~ {destination}</p>
                     {(duration == 0) ? <p>{date}</p> : <p>{date} ~ {duration} noche/es</p>}
                 </Card.Body>

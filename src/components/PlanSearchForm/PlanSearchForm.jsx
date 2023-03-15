@@ -53,6 +53,13 @@ const PlanSearchForm = ({ getPlans }) => {
         planService
             .getRandomPlans()
             .then(({ data }) => {
+                setPlanData({
+                    origin: '',
+                    destination: '',
+                    date: '',
+                    duration: '',
+                    typePlan: ''
+                })
                 getPlans(data)
             })
             .catch(err => console.log(err))
@@ -145,7 +152,7 @@ const PlanSearchForm = ({ getPlans }) => {
                     </Col>
                 </Row>
 
-                <Row>
+                <Row className="justify-content-center">
                     <Col md={{ span: 3 }}>
                         <Form.Group className="mb-3" controlId="sort">
                             <Form.Label>Ordenar por:</Form.Label>
@@ -163,10 +170,18 @@ const PlanSearchForm = ({ getPlans }) => {
                     </Col>
                 </Row>
 
-                <Row>
-                    <Col md={{ span: 2 }}>
+                <Row className="justify-content-center mt-3 mb-4">
+                    <Col md={{ span: 3 }}>
                         <div className="d-grid">
                             <Button variant="dark" type="submit">Buscar</Button>
+                        </div>
+                    </Col>
+
+                    <Col md={{ span: 1 }}></Col>
+
+                    <Col md={{ span: 3 }}>
+                        <div className="d-grid">
+                            <Button variant="dark" onClick={() => loadRandomPlans()}>Borrar filtros</Button>
                         </div>
                     </Col>
                 </Row>

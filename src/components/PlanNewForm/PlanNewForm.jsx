@@ -54,13 +54,13 @@ const PlanNewForm = ({ setShowCreatePlanModal }) => {
 
         e.preventDefault()
 
-        // if (!planData.image) {
-        //     planTypes.map(elm => {
-        //         if (elm._id == planData.typePlan) {
-        //             setPlanData({ ...planData, image: elm.picture })
-        //         }
-        //     })
-        // }
+        if (!planData.image) {
+            planTypes.map(elm => {
+                if (elm._id == planData.typePlan) {
+                    setPlanData({ ...planData, image: elm.picture })
+                }
+            })
+        }
 
         planService
             .createPlan(planData)
