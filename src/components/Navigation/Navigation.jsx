@@ -28,14 +28,15 @@ const Navigation = () => {
 
     return (
 
-        <Navbar className="me-auto, nav" collapseOnSelect expand="lg" >
+        <Navbar className="me-auto nav" collapseOnSelect expand="lg" >
 
             <Container>
 
                 <Link to='/'>
                     <Navbar.Brand as='span' className='navTitle'>BUSCO
-                        <img src="../../../../images/icon-transp-yellow.png" alt="icon" />
+                        <img className="d-inline-block align-top" src="../../../../images/icon-transp-yellow.png" alt="icon" />
                         AMIGOS</Navbar.Brand>
+
                 </Link>
 
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />

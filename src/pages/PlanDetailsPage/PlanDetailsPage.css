@@ -3,11 +3,22 @@
     justify-content: space-around;
 }
 
-img {
+.descriptionTitle {
+    font-weight: bold;
+}
+
+.DetailsImg {
     display: flex;
     justify-content: end;
     margin-top: 20px;
     border-radius: 10px;
     box-shadow: 16px 22px 51px rgba(0, 0, 0, 0.3);
-    width: 60%;
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+.DetailsButton {
+    padding: 10px 100px;
 }

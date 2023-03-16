@@ -84,8 +84,6 @@ const ChatMessages = ({ conversation, setConversation }) => {
                     }
                 </div>
 
-
-
             </Offcanvas.Body>
 
             {errors.length > 0 && <FormError>{errors.map(elm => <p key={elm._id}>{elm}</p>)}</FormError>}

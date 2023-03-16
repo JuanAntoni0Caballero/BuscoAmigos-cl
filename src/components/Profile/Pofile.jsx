@@ -53,7 +53,7 @@ const Profile = ({ setShowProfileModal }) => {
                     <hr />
 
                     <Link to='/' onClick={clickLogout}>
-                        <Button as="figure" variant="dark" className="w-100 mb-2">LogOut</Button>
+                        <Button as="figure" variant="dark" className="w-100 mb-2">Cerrar sesión</Button>
                     </Link>
 
                     <Link to='/editUser' onClick={() => setShowProfileModal(false)}>

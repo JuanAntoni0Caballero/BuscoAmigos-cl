@@ -80,6 +80,7 @@ const PlanSearchForm = ({ getPlans }) => {
     }
 
     const handleFormSubmit = e => {
+
         e.preventDefault()
 
         planService
