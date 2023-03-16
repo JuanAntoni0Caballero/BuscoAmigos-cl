@@ -8,6 +8,7 @@ import conversationService from '../../services/conversation.service'
 import ChatMessages from "../../components/ChatMessages/ChatMessages"
 import PlanEditForm from '../../components/PlanEditForm/PlanEditForm'
 import './PlanDetailsPage.css'
+import Loader from "../../components/Loader/Loader"
 
 
 
@@ -18,7 +19,6 @@ const PlanDetailsPage = () => {
 
     const [plan, setPlan] = useState({})
     const [conversation, setConversation] = useState({})
-    // const [conversation, setConversation] = useState({ messages: [] })
     const [show, setShow] = useState(false)
     const [showEditPlanModal, setShowEditPlanModal] = useState(false)
     const [showDeleteModal, setShowDeleteModal] = useState(false)
@@ -78,6 +78,12 @@ const PlanDetailsPage = () => {
             .catch(err => console.log(err))
     }
 
+
+    if (plan.length === 0) {
+        return (
+            <Loader />
+        )
+    }
 
     return (
 

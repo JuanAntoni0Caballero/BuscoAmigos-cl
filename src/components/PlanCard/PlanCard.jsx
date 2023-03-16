@@ -1,9 +1,17 @@
 import { Card, Image } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import Loader from '../Loader/Loader'
 import './PlanCard.css'
 
 
 const PlanCard = ({ _id, title, origin, destination, date, duration, image, owner }) => {
+
+    if (!PlanCard) {
+        return (
+            <Loader />
+        )
+    }
+
 
     return (
 

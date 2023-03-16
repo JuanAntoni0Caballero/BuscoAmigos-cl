@@ -3,6 +3,7 @@ import { Button, Col, Container, Offcanvas } from "react-bootstrap"
 import Table from 'react-bootstrap/Table'
 import { Link } from "react-router-dom"
 import ChatMessages from "../../components/ChatMessages/ChatMessages"
+import Loader from "../../components/Loader/Loader"
 import { AuthContext } from "../../contexts/auth.context"
 import conversationService from "../../services/conversation.service"
 import './InboxPage.css'
@@ -50,6 +51,13 @@ const ImboxPage = () => {
             .catch(err => console.log(err))
     }
 
+
+
+    if (!conversation) {
+        return (
+            <Loader />
+        )
+    }
 
     return (
         <Container className="mt-5">

@@ -4,6 +4,7 @@ import planService from "../../services/plan.service"
 import { Container, Card } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import './MyPlansPage.css'
+import Loader from "../../components/Loader/Loader"
 
 const MyPlansPage = () => {
 
@@ -23,6 +24,14 @@ const MyPlansPage = () => {
             .catch(err => console.log(err))
 
     }
+
+
+    if (plans.length === 0) {
+        return (
+            <Loader />
+        )
+    }
+
 
 
     return (

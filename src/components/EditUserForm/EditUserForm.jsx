@@ -1,5 +1,4 @@
 import { useContext, useState } from 'react'
-import { Link } from "react-router-dom"
 import { Container, Form, Button } from 'react-bootstrap'
 import userService from '../../services/user.service'
 import uploadServices from "../../services/upload.service"
@@ -7,6 +6,7 @@ import { AuthContext } from '../../contexts/auth.context'
 import FormError from '../FormError/FormError'
 import { useNavigate } from 'react-router-dom'
 import './EditUserForm.css'
+import Loader from '../Loader/Loader'
 
 const EditUserForm = () => {
 
@@ -59,6 +59,14 @@ const EditUserForm = () => {
                 setLoadingImage(false)
             })
     }
+
+    if (!userData) {
+        return (
+            <Loader />
+        )
+    }
+
+
 
 
     return (

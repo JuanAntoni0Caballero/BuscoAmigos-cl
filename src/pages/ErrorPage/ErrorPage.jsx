@@ -1,8 +1,12 @@
+import('./ErrorPage.css')
+
+
 const ErrorPage = () => {
 
     return (
-        <h1> Esto es un 404</h1>
+        <h1 className='err'>404</h1>
     )
+
 }
 
 

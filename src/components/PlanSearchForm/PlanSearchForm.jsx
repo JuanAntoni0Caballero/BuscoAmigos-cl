@@ -2,6 +2,8 @@ import { useEffect, useState } from "react"
 import { Container, Row, Col, Form, Button } from "react-bootstrap"
 import planService from "../../services/plan.service"
 import './PlanSearchForm.css'
+import Loader from "../Loader/Loader"
+
 
 const PlanSearchForm = ({ getPlans }) => {
 
@@ -88,6 +90,12 @@ const PlanSearchForm = ({ getPlans }) => {
             .catch(err => console.log(err))
     }
 
+
+    if (!planData) {
+        return (
+            <Loader />
+        )
+    }
 
     return (
         <Container>

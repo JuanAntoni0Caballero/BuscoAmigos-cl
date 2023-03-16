@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react"
 import { Container, Row, Col, Form, Button } from "react-bootstrap"
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import planService from "../../services/plan.service"
 import uploadServices from "../../services/upload.service"
 import FormError from "../FormError/FormError"
+import Loader from "../Loader/Loader"
 import './PlanEditForm.css'
 
 
@@ -84,6 +85,12 @@ const PlanEditForm = ({ setShowEditPlanModal }) => {
                 console.log(err)
                 setLoadingImage(false)
             })
+    }
+
+    if (plan.length === 0) {
+        return (
+            <Loader />
+        )
     }
 
 

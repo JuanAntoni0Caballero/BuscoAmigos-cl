@@ -4,6 +4,7 @@ import { useContext, useState } from 'react'
 import userService from '../../services/user.service'
 import { AuthContext } from '../../contexts/auth.context'
 import './Profile.css'
+import Loader from '../Loader/Loader'
 
 
 const Profile = ({ setShowProfileModal }) => {
@@ -28,6 +29,12 @@ const Profile = ({ setShowProfileModal }) => {
     const clickLogout = () => {
         setShowProfileModal(false)
         logout()
+    }
+
+    if (!user) {
+        return (
+            <Loader />
+        )
     }
 
 

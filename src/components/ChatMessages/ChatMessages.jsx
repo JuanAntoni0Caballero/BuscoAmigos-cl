@@ -1,11 +1,12 @@
 import { useContext, useEffect, useRef, useState } from "react"
-import { Offcanvas, Form, FloatingLabel } from "react-bootstrap"
+import { Offcanvas, Form, FloatingLabel, Button } from "react-bootstrap"
+import { Link } from "react-router-dom"
 import { AuthContext } from "../../contexts/auth.context"
 import conversationService from '../../services/conversation.service'
 import messageService from "../../services/message.service"
 import FormError from "../FormError/FormError"
 import './ChatMessages.css'
-
+import Loader from './../Loader/Loader'
 
 const ChatMessages = ({ conversation, setConversation }) => {
 
@@ -30,6 +31,13 @@ const ChatMessages = ({ conversation, setConversation }) => {
         }
     }
 
+    const sendMessage = (event) => {
+
+        createNewMessage()
+        setMessageData({ ...messageData, content: "" })
+
+    }
+
     const createNewMessage = () => {
 
         messageService
@@ -49,6 +57,13 @@ const ChatMessages = ({ conversation, setConversation }) => {
     }
 
 
+    if (!conversation) {
+        return (
+            <Loader />
+        )
+    }
+
+
     return (
         <>
             <Offcanvas.Header closeButton>
@@ -61,6 +76,12 @@ const ChatMessages = ({ conversation, setConversation }) => {
                         onChange={handleInputChange} name="content"
                         as="textarea" />
                 </FloatingLabel>
+
+                <Link>
+                    <Button variant='dark' className="sendButton" onClick={sendMessage}> Enviar</Button>
+                </Link>
+
+
 
                 <div className="Chat">
                     {
