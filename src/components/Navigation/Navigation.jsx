@@ -30,13 +30,11 @@ const Navigation = () => {
     }
 
     return (
-
-
         <Navbar className="me-auto, nav" collapseOnSelect expand="lg" >
             <Container>
                 <Link to='/'>
                     <Navbar.Brand as='span' className='navTitle'>BUSCO
-                        <img src="../../../../images/icon-transp-yellow.png" alt="" />
+                        <img src="../../../../images/icon-transp-yellow.png" alt="icon" />
                         AMIGOS</Navbar.Brand>
                 </Link>
 
@@ -49,22 +47,22 @@ const Navigation = () => {
                                 ?
                                 <>
                                     <Link >
-                                        <Nav.Link onClick={() => setShowLoginModal(true)} as='span'>LogIn</Nav.Link>
+                                        <Nav.Link className='acces' onClick={() => setShowLoginModal(true)} as='span'>Inicia sesión</Nav.Link>
                                     </Link>
 
                                     <Link>
-                                        <Nav.Link onClick={() => setShowSingUpModal(true)} as='span'>SignUp</Nav.Link>
+                                        <Nav.Link className='acces' onClick={() => setShowSingUpModal(true)} as='span'>Regístrate</Nav.Link>
                                     </Link>
                                 </>
                                 :
                                 <>
                                     <Link>
-                                        <Nav.Link onClick={() => setShowCreatePlanModal(true)} as='span'>Create plan</Nav.Link>
+                                        <Nav.Link className='acces' onClick={() => setShowCreatePlanModal(true)} as='span'>Crea tu plan</Nav.Link>
                                     </Link>
 
                                     <Link>
                                         <Nav.Link onClick={() => setShowProfileModal(true)} as='span'>
-                                            <img src={user.avatar} alt="Avatar" />
+                                            <img className='navAvatar' src={user.avatar} alt="Avatar" />
                                         </Nav.Link>
                                     </Link>
                                 </>

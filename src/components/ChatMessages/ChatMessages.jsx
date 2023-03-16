@@ -52,7 +52,7 @@ const ChatMessages = ({ conversation, setConversation }) => {
     return (
         <>
             <Offcanvas.Header closeButton>
-                <Offcanvas.Title>{conversation.plan.title}</Offcanvas.Title>
+                <Offcanvas.Title>{conversation.plan?.title}</Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
 

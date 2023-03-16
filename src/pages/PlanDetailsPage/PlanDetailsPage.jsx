@@ -1,4 +1,4 @@
-import { Container, Row, Col, Button, Offcanvas, Modal } from "react-bootstrap"
+import { Container, Col, Button, Offcanvas, Modal, Row, Table } from "react-bootstrap"
 import { useEffect, useState, useContext } from "react"
 import { AuthContext } from '../../contexts/auth.context'
 import { useParams, Link } from "react-router-dom"
@@ -8,6 +8,8 @@ import conversationService from '../../services/conversation.service'
 import ChatMessages from "../../components/ChatMessages/ChatMessages"
 import PlanEditForm from '../../components/PlanEditForm/PlanEditForm'
 import './PlanDetailsPage.css'
+
+
 
 const PlanDetailsPage = () => {
 
@@ -30,6 +32,7 @@ const PlanDetailsPage = () => {
     }, [plan_id])
 
     const handleClose = () => setShow(false)
+
     const handleShow = () => {
         createConversation()
         setShow(true)
@@ -79,26 +82,37 @@ const PlanDetailsPage = () => {
     return (
 
         <>
-            <Container>
-                <h1 className="mb-4">{plan.title} </h1>
-                <hr />
 
-                <div className="description" md={{ span: 6, offset: 1 }}>
-                    <h6>Description:</h6>
-                    <p>{plan.description}</p>
-                    <h6>Origen:</h6>
-                    <p>{plan.origin}</p>
-                    <h6>Destino:</h6>
-                    <p>{plan.destination}</p>
-                    <h6>Fecha:</h6>
-                    <p>{plan.date}</p>
-                    <h6>Duración:</h6>
-                    <p>{plan.duration}</p>
+            <Container>
+
+                <Row>
+                    <Col className="text-center" md={{ span: 12 }}>
+                        <img src={plan.image} alt='PlanImg' />
+                    </Col>
+                </Row>
+
+                <Row>
+                    <h1 className="mb-4">{plan.title} </h1>
                     <hr />
 
-                </div>
-                <div>
+                    <div className="description" md={{ span: 6, offset: 1 }}>
+                        <h6>Description:</h6>
+                        <p>{plan.description}</p>
+                        <h6>Origen:</h6>
+                        <p>{plan.origin}</p>
+                        <h6>Destino:</h6>
+                        <p>{plan.destination}</p>
+                        <h6>Fecha:</h6>
+                        <p>{plan.date}</p>
+                        <h6>Duración:</h6>
+                        <p>{plan.duration}</p>
+                        <hr />
 
+                    </div>
+
+                </Row>
+
+                <div>
                     <Link to={`/`}>
                         <Button as="figure" variant="dark">Inicio</Button>
                     </Link>
@@ -129,9 +143,7 @@ const PlanDetailsPage = () => {
                     }
                 </div >
 
-                <Col md={{ span: 4 }}>
-                    <img src={plan.image} alt='PlanImg' />
-                </Col>
+
             </Container >
 
 

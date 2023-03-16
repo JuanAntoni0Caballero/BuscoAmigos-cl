@@ -1,0 +1,9 @@
+.about {
+    display: flex;
+}
+
+.about h5 {
+    text-align: justify;
+    margin-top: 150px;
+    margin-right: 50px;
+}
