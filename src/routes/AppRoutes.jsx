@@ -8,6 +8,7 @@ import EditUserPage from "../pages/EditUserPage/EditUserPage"
 import ImboxPage from "../pages/InboxPage/InboxPage"
 import MyPlansPage from "../pages/MyPlansPage/MyPlansPage"
 import ContactPage from "../pages/ContactPage/ContactPage"
+import ErrorPage from "../pages/ErrorPage/ErrorPage"
 
 
 
@@ -18,22 +19,19 @@ const AppRoutes = () => {
             <Route path="/" element={<HomePage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/planDetails/:plan_id" element={<PlanDetailsPage />} />
+            <Route path="*" element={<ErrorPage />} />
 
             <Route element={<PrivateRoute />}>
 
                 <Route path="/planEdit/:plan_id" element={<PlanEditPage />} />
-                {/* <Route path="/profile" element={<ProfilePage />} /> */}
                 <Route path="/editUser" element={<EditUserPage />} />
                 <Route path="/deleteUser" element={<HomePage />} />
                 <Route path="/inbox" element={<ImboxPage />} />
                 <Route path="/myPlans" element={<MyPlansPage />} />
 
-
             </Route>
-
-
             {/* <Route path="/gift" element={<GiftPage />} /> */}
-            {/* <Route path="*" element={<p>404</p>} /> */}
+
         </Routes>
     )
 }

@@ -23,3 +23,14 @@
     border-radius: 50%;
     margin: 0;
 }
+
+.acces {
+    color: rgba(255, 236, 89, 0.801);
+    font-size: 1.4em;
+    margin-right: 20px;
+}
+
+
+.acces:hover {
+    color: rgba(255, 236, 89, 0.801);
+}

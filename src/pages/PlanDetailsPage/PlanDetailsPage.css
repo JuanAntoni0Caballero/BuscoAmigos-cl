@@ -1,5 +1,13 @@
 .description {
     display: flex;
     justify-content: space-around;
+}
 
+img {
+    display: flex;
+    justify-content: end;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 16px 22px 51px rgba(0, 0, 0, 0.3);
+    width: 60%;
 }

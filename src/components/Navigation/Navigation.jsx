@@ -47,17 +47,17 @@ const Navigation = () => {
                                 ?
                                 <>
                                     <Link >
-                                        <Nav.Link onClick={() => setShowLoginModal(true)} as='span'>LogIn</Nav.Link>
+                                        <Nav.Link className='acces' onClick={() => setShowLoginModal(true)} as='span'>Inicia sesión</Nav.Link>
                                     </Link>
 
                                     <Link>
-                                        <Nav.Link onClick={() => setShowSingUpModal(true)} as='span'>SignUp</Nav.Link>
+                                        <Nav.Link className='acces' onClick={() => setShowSingUpModal(true)} as='span'>Regístrate</Nav.Link>
                                     </Link>
                                 </>
                                 :
                                 <>
                                     <Link>
-                                        <Nav.Link onClick={() => setShowCreatePlanModal(true)} as='span'>Create plan</Nav.Link>
+                                        <Nav.Link className='acces' onClick={() => setShowCreatePlanModal(true)} as='span'>Crea tu plan</Nav.Link>
                                     </Link>
 
                                     <Link>
