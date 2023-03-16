@@ -61,6 +61,6 @@
 | /planEdit/:id    | Plan edit page                     | X                         |
 | /editUser        | Edit User page                     | X                         |
 | /inbox           | Inbox page  	                    | X                         |
-| /contact         | Contact page                       |                           |
+| /aboutUs         | About us page                      |                           |
 | /gift	           | Gift page 	                        | X                         |
 | *                | 404 page                           |                           |

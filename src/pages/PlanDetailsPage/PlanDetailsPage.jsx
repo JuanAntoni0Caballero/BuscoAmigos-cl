@@ -93,61 +93,74 @@ const PlanDetailsPage = () => {
 
                 <Row>
                     <Col className="text-center" md={{ span: 12 }}>
-                        <img src={plan.image} alt='PlanImg' />
+                        <img className="DetailsImg" src={plan.image} alt='PlanImg' />
                     </Col>
                 </Row>
 
-                <Row>
-                    <h1 className="mb-4">{plan.title} </h1>
+                <h1 className="mb-4">{plan.title} </h1>
+                <hr />
+
+                <div className="description" md={{ span: 6, offset: 1 }}>
+                    <h5 className="description">Descripción:</h5>
+                    <h5>{plan.description}</h5>
+                    <h5 className="description">Origen:</h5>
+                    <h5>{plan.origin}</h5>
+                    <h5 className="description">Destino:</h5>
+                    <h5>{plan.destination}</h5>
+                    <h5 className="description">Fecha:</h5>
+                    <h5>{plan.date}</h5>
+                    <h5 className="description">Noches:</h5>
+                    <h5>{plan.duration}</h5>
                     <hr />
 
-                    <div className="description" md={{ span: 6, offset: 1 }}>
-                        <h6>Description:</h6>
-                        <p>{plan.description}</p>
-                        <h6>Origen:</h6>
-                        <p>{plan.origin}</p>
-                        <h6>Destino:</h6>
-                        <p>{plan.destination}</p>
-                        <h6>Fecha:</h6>
-                        <p>{plan.date}</p>
-                        <h6>Duración:</h6>
-                        <p>{plan.duration}</p>
-                        <hr />
+                </div>
 
-                    </div>
 
-                </Row>
+                <Row className="d-flex justify-content-center mt-5">
 
-                <div>
-                    <Link to={`/`}>
-                        <Button as="figure" variant="dark">Inicio</Button>
-                    </Link>
+                    <Col md={1} className="mb-4">
+                        <Link to='/'>
+                            <Button as="figure" variant="dark">Inicio</Button>
+                        </Link>
+                    </Col>
 
                     {
                         user && (user._id === plan?.owner || user.role === 'ADMIN')
                         &&
                         <>
-                            <Link >
-                                <Button onClick={() => setShowEditPlanModal(true)} as="figure" variant="dark">Editar</Button>
-                            </Link>
+                            <Col md={1} className="mb-4">
+                                <Link >
+                                    <Button onClick={() => setShowEditPlanModal(true)} as="figure" variant="dark">Editar</Button>
+                                </Link>
+                            </Col>
 
-                            <Link>
-                                <Button as="figure" onClick={handleShowDelete} variant="dark">Borrar</Button>
-                            </Link>
-
+                            <Col md={1} className="mb-4">
+                                <Link>
+                                    <Button as="figure" onClick={handleShowDelete} variant="dark">Borrar</Button>
+                                </Link>
+                            </Col>
                         </>
                     }
                     {
                         user && (user._id !== plan?.owner)
                         &&
                         <>
-                            <Link onClick={handleShow}>
-                                <Button as="figure" variant="dark">Contactar</Button>
-                            </Link>
+                            <Col md={1} className="mb-4">
+                                <Link onClick={handleShow}>
+                                    <Button as="figure" variant="dark">Contactar</Button>
+                                </Link>
+                            </Col>
 
                         </>
                     }
-                </div >
+                </Row>
+
+
+
+
+
+
+
 
 
             </Container >
