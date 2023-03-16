@@ -1,0 +1,38 @@
+.Chat {
+    display: flex;
+    flex-direction: column;
+}
+
+.ChatText {
+    word-break: 'break-all'
+
+}
+
+.ChatSender {
+    /* color: green; */
+    text-align: end;
+    padding-left: 30px;
+}
+
+.ChatReciver {
+    padding-right: 30px;
+}
+
+.ChatName {
+    font-weight: bold;
+    margin: 15px 0 0 0;
+    padding: 0 10px;
+}
+
+.ChatText {
+    color: black;
+    background-color: rgb(229, 255, 200);
+    border-radius: 20px;
+    padding: 10px 20px;
+    margin: 0;
+    word-break: break-all;
+}
+
+.ChatForm {
+    margin: 0 0 10px 0;
+}

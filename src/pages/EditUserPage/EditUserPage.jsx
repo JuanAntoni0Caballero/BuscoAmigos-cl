@@ -12,10 +12,6 @@ const EditUserPage = () => {
 
                 <Col md={{ offset: 3, span: 6 }}>
 
-                    <h1>Editar usuario</h1>
-
-                    <hr />
-
                     <EditUserForm />
 
                 </Col>

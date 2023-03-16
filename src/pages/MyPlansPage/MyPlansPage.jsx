@@ -7,9 +7,6 @@ import './MyPlansPage.css'
 
 const MyPlansPage = () => {
 
-
-    // const navigate = useNavigate()
-
     const [plans, setPlans] = useState([])
 
     useEffect(() => {
@@ -28,20 +25,9 @@ const MyPlansPage = () => {
     }
 
 
-    // const handleDeletePlan = plan_id => {
-
-    //     planService
-    //         .deletePlan(plan_id)
-    //         .then(() => navigate('/myPlans'))
-    //         .catch(err => console.log(err))
-    // }
-
-
     return (
 
         <Container>
-
-
 
             {
                 plans?.map(elm => {
@@ -66,11 +52,7 @@ const MyPlansPage = () => {
             }
 
         </Container >
-
-
     )
-
-
 }
 
 export default MyPlansPage

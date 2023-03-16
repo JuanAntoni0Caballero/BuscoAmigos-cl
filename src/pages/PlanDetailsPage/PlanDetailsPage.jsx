@@ -15,7 +15,8 @@ const PlanDetailsPage = () => {
     const { plan_id } = useParams()
 
     const [plan, setPlan] = useState({})
-    const [conversation, setConversation] = useState({ messages: [] })
+    const [conversation, setConversation] = useState({})
+    // const [conversation, setConversation] = useState({ messages: [] })
     const [show, setShow] = useState(false)
     const [showEditPlanModal, setShowEditPlanModal] = useState(false)
     const [showDeleteModal, setShowDeleteModal] = useState(false)
@@ -55,8 +56,7 @@ const PlanDetailsPage = () => {
             .catch(err => console.log(err))
     }
 
-    const createConversation = e => {
-
+    const createConversation = () => {
         conversationService
             .createConversation(plan_id)
             .then(({ data }) => {
@@ -133,7 +133,6 @@ const PlanDetailsPage = () => {
                     <img src={plan.image} alt='PlanImg' />
                 </Col>
             </Container >
-
 
             <Offcanvas show={show} onHide={handleClose}>
                 <ChatMessages conversation={conversation} setConversation={setConversation} />

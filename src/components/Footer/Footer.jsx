@@ -7,7 +7,7 @@ const Footer = () => {
 
     return (
 
-        <footer>
+        <footer className='footer'>
             <hr />
             <h3>Juan Antoño y Cris</h3>
             <Link to="/contact">

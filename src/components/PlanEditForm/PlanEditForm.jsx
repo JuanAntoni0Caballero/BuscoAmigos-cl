@@ -7,7 +7,6 @@ import FormError from "../FormError/FormError"
 import './PlanEditForm.css'
 
 
-
 const PlanEditForm = ({ setShowEditPlanModal }) => {
 
     const [plan, setPlan] = useState({
@@ -172,13 +171,7 @@ const PlanEditForm = ({ setShowEditPlanModal }) => {
 
             </Form>
 
-
-
         </Container >
-
-
-
-
     )
 }
 

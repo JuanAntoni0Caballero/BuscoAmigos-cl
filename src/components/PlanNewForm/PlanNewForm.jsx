@@ -50,9 +50,6 @@ const PlanNewForm = ({ setShowCreatePlanModal }) => {
         setPlanData({ ...planData, [name]: value })
     }
 
-
-
-
     const handleFormSubmit = e => {
 
         e.preventDefault()
@@ -68,7 +65,6 @@ const PlanNewForm = ({ setShowCreatePlanModal }) => {
             })
         }
 
-
         planService
             .createPlan(localPlanData)
             .then(({ data }) => {
@@ -78,11 +74,6 @@ const PlanNewForm = ({ setShowCreatePlanModal }) => {
             .catch(err => setErrors(err.response.data.errorMessages))
     }
 
-
-
-
-
-
     const handleFileUpload = e => {
 
         const formData = new FormData()
@@ -91,7 +82,6 @@ const PlanNewForm = ({ setShowCreatePlanModal }) => {
         uploadServices
             .uploadimage(formData)
             .then(({ data }) => {
-                console.log(data.cloudinary_url)
                 setPlanData({ ...planData, image: data.cloudinary_url })
             })
             .catch(err => console.log(err))

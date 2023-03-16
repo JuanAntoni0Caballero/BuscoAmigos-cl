@@ -1,9 +1,10 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext, useEffect, useRef, useState } from "react"
 import { Offcanvas, Form, FloatingLabel } from "react-bootstrap"
 import { AuthContext } from "../../contexts/auth.context"
 import conversationService from '../../services/conversation.service'
 import messageService from "../../services/message.service"
 import FormError from "../FormError/FormError"
+import './ChatMessages.css'
 
 
 const ChatMessages = ({ conversation, setConversation }) => {
@@ -45,33 +46,37 @@ const ChatMessages = ({ conversation, setConversation }) => {
                 setConversation(data)
             })
             .catch(err => console.log(err))
-
     }
 
 
     return (
         <>
             <Offcanvas.Header closeButton>
-                <Offcanvas.Title>{conversation.plan.title}</Offcanvas.Title>
+                <Offcanvas.Title>{conversation.plan?.title}</Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
 
-                <div>
+                <FloatingLabel controlId="message" label="New message" className="ChatForm">
+                    <Form.Control value={messageData.content} onKeyDown={handleFormSubmit}
+                        onChange={handleInputChange} name="content"
+                        as="textarea" />
+                </FloatingLabel>
+
+                <div className="Chat">
                     {
                         conversation.messages?.map(elm => {
-
                             if (user._id === elm.owner._id) {
                                 return (
-                                    <div key={elm._id}>
-                                        <p style={{ color: 'green', wordBreak: 'break-all' }}>{elm.owner.username}</p>
-                                        <p>{elm.content}</p>
+                                    <div key={elm._id} className="ChatSender">
+                                        <p className="ChatName">{elm.owner.username}</p>
+                                        <p className="ChatText">{elm.content}</p>
                                     </div>
                                 )
                             } else {
                                 return (
-                                    <div key={elm._id}>
-                                        <p style={{ color: 'red', wordBreak: 'break-all' }}>{elm.owner.username}</p>
-                                        <p> {elm.content}</p>
+                                    <div key={elm._id} className="ChatReciver">
+                                        <p className="ChatName">{elm.owner.username}</p>
+                                        <p className="ChatText">{elm.content}</p>
                                     </div>
                                 )
                             }
@@ -79,12 +84,7 @@ const ChatMessages = ({ conversation, setConversation }) => {
                     }
                 </div>
 
-                <FloatingLabel controlId="message" label="New message">
-                    <Form.Control value={messageData.content} onKeyDown={handleFormSubmit}
-                        onChange={handleInputChange} name="content"
-                        as="textarea"
-                    />
-                </FloatingLabel>
+
 
             </Offcanvas.Body>
 

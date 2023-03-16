@@ -30,7 +30,10 @@ const HomePage = () => {
                                 <PlanCard {...elm} />
                             </Col>
                         ))
-                        : <p>No matches....</p>
+                        :
+                        <Col className="NotMatches">
+                            <p>Sin resultados...</p>
+                        </Col>
                     }
 
                 </Row>

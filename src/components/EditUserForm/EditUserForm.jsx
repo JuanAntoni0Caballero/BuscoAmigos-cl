@@ -6,6 +6,7 @@ import uploadServices from "../../services/upload.service"
 import { AuthContext } from '../../contexts/auth.context'
 import FormError from '../FormError/FormError'
 import { useNavigate } from 'react-router-dom'
+import './EditUserForm.css'
 
 const EditUserForm = () => {
 
@@ -35,7 +36,7 @@ const EditUserForm = () => {
             .then(({ data }) => {
                 localStorage.setItem('authToken', data.authToken)
                 authenticateUser()
-                navigate('/profile')
+                navigate('/')
             })
             .catch(err => setErrors(err.response.data.errorMessages))
     }
@@ -63,11 +64,10 @@ const EditUserForm = () => {
     return (
 
         <Container onSubmit={handleFormSubmit}>
-            <h1>Edit Form</h1>
 
             <Form >
 
-                <img src={userData.avatar} alt="Avatar" />
+                <img className='Avatar mt-4 mb-3' src={userData.avatar} alt="Avatar" />
 
                 <Form.Group className="mb-3" controlId="avatar">
                     <Form.Label>Avatar</Form.Label>
@@ -89,12 +89,6 @@ const EditUserForm = () => {
                 <div className="d-grid">
                     <Button variant="dark" type="submit" disabled={loadinImage}>{loadinImage ? 'Cargando imagen...' : 'Guardar cambios'}</Button>
                 </div>
-
-                <Link to={`/profile`}>
-                    <div className="d-grid">
-                        <Button as="figure" variant="dark">Volver al perfil</Button>
-                    </div>
-                </Link>
 
             </Form>
 

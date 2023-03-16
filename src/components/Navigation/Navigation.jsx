@@ -12,15 +12,12 @@ import './Navigation.css'
 
 const Navigation = () => {
 
-
     const [showLogInModal, setShowLoginModal] = useState(false)
     const [showSingUpModal, setShowSingUpModal] = useState(false)
     const [showCreatePlanModal, setShowCreatePlanModal] = useState(false)
     const [showProfileModal, setShowProfileModal] = useState(false)
-    const [showProfileCanvas, setShowProfileCanvas] = useState(false)
 
-
-    const { user, logout } = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
 
     const fireFinalActions = () => {
         setShowLoginModal(false)
@@ -31,12 +28,13 @@ const Navigation = () => {
 
     return (
 
-
         <Navbar className="me-auto, nav" collapseOnSelect expand="lg" >
+
             <Container>
+
                 <Link to='/'>
                     <Navbar.Brand as='span' className='navTitle'>BUSCO
-                        <img src="../../../../images/icon-transp-yellow.png" alt="" />
+                        <img src="../../../../images/icon-transp-yellow.png" alt="icon" />
                         AMIGOS</Navbar.Brand>
                 </Link>
 
@@ -64,28 +62,28 @@ const Navigation = () => {
 
                                     <Link>
                                         <Nav.Link onClick={() => setShowProfileModal(true)} as='span'>
-                                            <img src={user.avatar} alt="Avatar" />
+                                            <img className='navAvatar' src={user.avatar} alt="Avatar" />
                                         </Nav.Link>
                                     </Link>
                                 </>
                         }
 
                         <Modal show={showLogInModal} onHide={() => setShowLoginModal(false)}>
-                            <Modal.Header closeButton> <Modal.Title> LogIn</Modal.Title></Modal.Header>
+                            <Modal.Header closeButton> <Modal.Title>Inicio de sesión</Modal.Title></Modal.Header>
                             <Modal.Body>
                                 <LoginForm setShowLoginModal={setShowLoginModal} fireFinalActions={fireFinalActions} />
                             </Modal.Body>
                         </Modal>
 
                         <Modal size="lg" show={showSingUpModal} onHide={() => setShowSingUpModal(false)}>
-                            <Modal.Header closeButton> <Modal.Title> SignUp</Modal.Title></Modal.Header>
+                            <Modal.Header closeButton> <Modal.Title>Registro</Modal.Title></Modal.Header>
                             <Modal.Body>
                                 <SignupForm setShowSingUpModal={setShowSingUpModal} setShowLoginModal={setShowLoginModal} fireFinalActions={fireFinalActions} />
                             </Modal.Body>
                         </Modal>
 
                         <Modal size="lg" centered show={showCreatePlanModal} onHide={() => setShowCreatePlanModal(false)}>
-                            <Modal.Header closeButton> <Modal.Title>Create Plan</Modal.Title></Modal.Header>
+                            <Modal.Header closeButton> <Modal.Title>Crear plan</Modal.Title></Modal.Header>
                             <Modal.Body >
                                 <PlanNewForm setShowCreatePlanModal={setShowCreatePlanModal} fireFinalActions={fireFinalActions} />
                             </Modal.Body>
@@ -100,6 +98,7 @@ const Navigation = () => {
 
                     </Nav>
                 </Navbar.Collapse>
+
             </Container>
         </Navbar >
     )

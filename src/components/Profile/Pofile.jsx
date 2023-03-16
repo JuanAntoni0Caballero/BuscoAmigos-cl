@@ -35,35 +35,35 @@ const Profile = ({ setShowProfileModal }) => {
 
         < Container className="mx-auto" >
 
-            <img className='Avatar mb-5' src={user?.avatar} alt="Avatar" />
+            <img className='Avatar mb-3' src={user?.avatar} alt="Avatar" />
 
-            <h3 className="mb-5 text-center">{user?.email}</h3>
+            <h3 className="mb-4 text-center">{user?.email}</h3>
 
             <Row className="justify-content-center">
                 <Col sm={10} md={6} className="mb-3">
 
                     <Link to='/inbox' onClick={() => setShowProfileModal(false)}>
-                        <Button as="figure" variant="dark" className="w-100 mb-3">Mis mensajes</Button>
+                        <Button as="figure" variant="dark" className="w-100 mb-2">Mis mensajes</Button>
                     </Link>
 
                     <Link to='/myPlans' onClick={() => setShowProfileModal(false)}>
-                        <Button as="figure" variant="dark" className="w-100 mb-3">Mis planes</Button>
+                        <Button as="figure" variant="dark" className="w-100 mb-1">Mis planes</Button>
                     </Link>
 
-                    <hr className="mb-3" />
+                    <hr />
 
                     <Link to='/' onClick={clickLogout}>
-                        <Button as="figure" variant="dark" className="w-100 mb-3">LogOut</Button>
+                        <Button as="figure" variant="dark" className="w-100 mb-2">LogOut</Button>
                     </Link>
 
-                    <Link to={`/editUser`}>
-                        <Button as="figure" variant="dark" className="w-100 mb-3">Editar perfil</Button>
+                    <Link to='/editUser' onClick={() => setShowProfileModal(false)}>
+                        <Button as="figure" variant="dark" className="w-100 mb-1">Editar perfil</Button>
                     </Link>
 
-                    <hr className="mb-3" />
+                    <hr />
 
                     <Link>
-                        <Button as="figure" variant="dark" className="w-100 mb-3 mt-3" onClick={handleShow}>
+                        <Button as="figure" variant="dark" className="w-100" onClick={handleShow}>
                             Borrar perfil
                         </Button>
                     </Link>

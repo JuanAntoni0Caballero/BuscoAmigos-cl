@@ -1,10 +1,11 @@
 import { useEffect, useState, useContext } from "react"
-import { Button, Offcanvas } from "react-bootstrap"
+import { Button, Col, Container, Offcanvas } from "react-bootstrap"
 import Table from 'react-bootstrap/Table'
 import { Link } from "react-router-dom"
 import ChatMessages from "../../components/ChatMessages/ChatMessages"
 import { AuthContext } from "../../contexts/auth.context"
 import conversationService from "../../services/conversation.service"
+import './InboxPage.css'
 
 
 const ImboxPage = () => {
@@ -18,6 +19,10 @@ const ImboxPage = () => {
     useEffect(() => {
         loadConversations()
     }, [])
+
+    useEffect(() => {
+        loadConversations()
+    }, [conversation])
 
     const handleClose = () => setShow(false)
     const handleShow = (conversation_id) => {
@@ -47,30 +52,33 @@ const ImboxPage = () => {
 
 
     return (
-        <>
-            <h1>Mis conversaciones</h1>
+        <Container className="mt-5">
 
-            <Table striped bordered hover>
+            <Table striped className="table">
                 <thead>
                     <tr>
-                        <th>Plan</th>
-                        <th>Nombre</th>
-                        <th>Ver mensajes</th>
+                        <th className="tablePlan">Título del plan</th>
+                        <th className="tableName">Nombre del usuario</th>
+                        <th className="tableMsg">Mensajes</th>
                     </tr>
                 </thead>
 
                 <tbody>
                     {
+
                         conversations?.map(({ messages, members, plan, _id }) => {
 
                             const [member1, member2] = members
                             let conversationStyle = {}
+                            let conversationButton = {}
                             let conversationUser = ""
 
-                            if (messages?.some(elm => elm.read)) {
-                                conversationStyle = { backgroundColor: 'grey' }
+                            if (messages?.some(elm => !elm.read)) {
+                                conversationStyle = 'success'
+                                conversationButton = 'Mensaje nuevo'
                             } else {
-                                conversationStyle = { backgroundColor: 'green' }
+                                conversationStyle = 'dark'
+                                conversationButton = 'Ver mensajes'
                             }
 
                             if (member2._id === user._id) {
@@ -84,10 +92,10 @@ const ImboxPage = () => {
                                 <>
                                     <tr key={_id}>
                                         <td>{plan?.title}</td>
-                                        <td>{conversationUser}</td>
-                                        <td>
+                                        <td className="tableName">{conversationUser}</td>
+                                        <td className="tableMsg">
                                             <Link onClick={() => handleShow(_id)}>
-                                                <Button style={conversationStyle} as="figure" variant="dark">Mensajes</Button>
+                                                <Button variant={conversationStyle} as="figure">{conversationButton}</Button>
                                             </Link>
                                         </td>
                                     </tr>
@@ -102,7 +110,7 @@ const ImboxPage = () => {
                     }
                 </tbody>
             </Table>
-        </>
+        </Container>
     )
 }
 

@@ -1,0 +1,22 @@
+.table {
+    width: 100%;
+}
+
+.tablePlan {
+    width: 50%;
+}
+
+.tableName {
+    width: 30%;
+    text-align: center;
+}
+
+.tableMsg {
+    width: 20%;
+    text-align: center;
+}
+
+.NotMatches {
+    padding-top: 50px;
+    text-align: center;
+}
