@@ -52,11 +52,9 @@ const ChatMessages = ({ conversation, setConversation }) => {
     return (
         <>
             <Offcanvas.Header closeButton>
-                <Offcanvas.Title>plan.title</Offcanvas.Title>
+                <Offcanvas.Title>{conversation.plan.title}</Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
-
-                <h3>Messages</h3>
 
                 <div>
                     {

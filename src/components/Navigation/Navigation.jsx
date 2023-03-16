@@ -1,12 +1,12 @@
 
 import { useContext, useState } from 'react'
-import { Nav, Navbar, Container, Modal, NavDropdown } from 'react-bootstrap'
+import { Nav, Navbar, Container, Modal, NavDropdown, Offcanvas } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { AuthContext } from '../../contexts/auth.context'
 import LoginForm from '../LoginForm/LoginForm'
 import SignupForm from '../SignupForm/SignupForm'
 import PlanNewForm from '../PlanNewForm/PlanNewForm'
-import ProfilePage from '../../pages/ProfilePage/PofilePage'
+import ProfilePage from '../Profile/Pofile'
 import './Navigation.css'
 
 
@@ -17,6 +17,8 @@ const Navigation = () => {
     const [showSingUpModal, setShowSingUpModal] = useState(false)
     const [showCreatePlanModal, setShowCreatePlanModal] = useState(false)
     const [showProfileModal, setShowProfileModal] = useState(false)
+    const [showProfileCanvas, setShowProfileCanvas] = useState(false)
+
 
     const { user, logout } = useContext(AuthContext)
 
@@ -42,73 +44,31 @@ const Navigation = () => {
                 <Navbar.Collapse className="me-auto, justify-content-end" >
 
                     <Nav >
-
                         {
-                            user
-                            &&
-                            <>
-                                <Navbar.Text>{user.username}</Navbar.Text>
-                                <Link>
-                                    <Nav.Link onClick={() => setShowProfileModal(true)} as='span'   >
-                                        <img src={user.avatar} alt="Avatar" />
-                                    </Nav.Link>
-                                </Link>
-                            </>
+                            !user
+                                ?
+                                <>
+                                    <Link >
+                                        <Nav.Link onClick={() => setShowLoginModal(true)} as='span'>LogIn</Nav.Link>
+                                    </Link>
+
+                                    <Link>
+                                        <Nav.Link onClick={() => setShowSingUpModal(true)} as='span'>SignUp</Nav.Link>
+                                    </Link>
+                                </>
+                                :
+                                <>
+                                    <Link>
+                                        <Nav.Link onClick={() => setShowCreatePlanModal(true)} as='span'>Create plan</Nav.Link>
+                                    </Link>
+
+                                    <Link>
+                                        <Nav.Link onClick={() => setShowProfileModal(true)} as='span'>
+                                            <img src={user.avatar} alt="Avatar" />
+                                        </Nav.Link>
+                                    </Link>
+                                </>
                         }
-
-
-                        <NavDropdown title="Menu" className='dropdown' id="collasible-nav-dropdown">
-                            {
-                                !user
-                                    ?
-                                    <>
-                                        <NavDropdown.Item >
-                                            <Link >
-                                                <Nav.Link onClick={() => setShowLoginModal(true)} as='span'>LogIn</Nav.Link>
-                                            </Link>
-
-
-                                        </NavDropdown.Item>
-
-                                        <NavDropdown.Divider />
-
-                                        <NavDropdown.Item >
-
-                                            <Link>
-                                                <Nav.Link onClick={() => setShowSingUpModal(true)} as='span'>SignUp</Nav.Link>
-                                            </Link>
-
-                                        </NavDropdown.Item>
-
-                                    </>
-                                    :
-                                    <>
-
-                                        <NavDropdown.Item >
-                                            <Link>
-                                                <Nav.Link onClick={() => setShowCreatePlanModal(true)} as='span'>Create plan</Nav.Link>
-                                            </Link>
-
-                                        </NavDropdown.Item>
-
-                                        <NavDropdown.Item >
-                                            <Link to='/profile'>
-                                                <Nav.Link as='span'>Profile</Nav.Link>
-                                            </Link>
-                                        </NavDropdown.Item>
-
-                                        <NavDropdown.Divider />
-
-                                        <NavDropdown.Item >
-                                            <Link to='/'>
-                                                <Nav.Link onClick={logout} as='span'>LogOut</Nav.Link>
-                                            </Link>
-
-                                        </NavDropdown.Item>
-                                    </>
-                            }
-
-                        </NavDropdown>
 
                         <Modal show={showLogInModal} onHide={() => setShowLoginModal(false)}>
                             <Modal.Header closeButton> <Modal.Title> LogIn</Modal.Title></Modal.Header>
@@ -131,14 +91,12 @@ const Navigation = () => {
                             </Modal.Body>
                         </Modal>
 
-
                         <Modal show={showProfileModal} onHide={() => setShowProfileModal(false)}>
-                            <Modal.Header closeButton> <Modal.Title>Mi perfil</Modal.Title></Modal.Header>
+                            <Modal.Header closeButton> <Modal.Title>Perfil de {user?.username}</Modal.Title></Modal.Header>
                             <Modal.Body >
                                 <ProfilePage className='profileModal' setShowProfileModal={setShowProfileModal} fireFinalActions={fireFinalActions} />
                             </Modal.Body>
                         </Modal>
-
 
                     </Nav>
                 </Navbar.Collapse>

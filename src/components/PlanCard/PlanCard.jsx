@@ -10,7 +10,7 @@ const PlanCard = ({ _id, title, origin, destination, date, duration, image, owne
         <Link to={`/planDetails/${_id}`}>
             <Card className='CardPlan'>
                 <Card.Header as="h5">
-                    <img className='CardPlanAvatar' src={owner?.avatar} alt="Avatar" />
+                    <img className='CardPlanAvatar' src={owner ? owner.avatar : '/images/icon-yellow-2.png'} alt="Avatar" />
                     {owner?.username}
                 </Card.Header>
 
