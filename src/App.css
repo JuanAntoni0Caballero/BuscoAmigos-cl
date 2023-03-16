@@ -24,8 +24,16 @@ nav img {
 
 a {
     text-decoration: none;
+    color: black;
+}
+
+a:hover {
     color: inherit;
 }
+
+/* a:active {
+    color: blue;
+} */
 
 .dropdown span {
     color: black;

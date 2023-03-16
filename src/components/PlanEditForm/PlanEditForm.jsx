@@ -4,6 +4,8 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import planService from "../../services/plan.service"
 import uploadServices from "../../services/upload.service"
 import FormError from "../FormError/FormError"
+import './PlanEditForm.css'
+
 
 
 const PlanEditForm = ({ setShowEditPlanModal }) => {

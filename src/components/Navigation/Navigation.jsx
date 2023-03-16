@@ -30,7 +30,7 @@ const Navigation = () => {
     return (
 
 
-        <Navbar className="me-auto" collapseOnSelect expand="lg" bg="dark" variant="dark">
+        <Navbar className="me-auto, nav" collapseOnSelect expand="lg" >
             <Container>
                 <Link to='/'>
                     <Navbar.Brand as='span' className='navTitle'>BUSCO
@@ -131,12 +131,15 @@ const Navigation = () => {
                             </Modal.Body>
                         </Modal>
 
+
                         <Modal show={showProfileModal} onHide={() => setShowProfileModal(false)}>
                             <Modal.Header closeButton> <Modal.Title>Mi perfil</Modal.Title></Modal.Header>
                             <Modal.Body >
-                                <ProfilePage setShowProfileModal={setShowProfileModal} fireFinalActions={fireFinalActions} />
+                                <ProfilePage className='profileModal' setShowProfileModal={setShowProfileModal} fireFinalActions={fireFinalActions} />
                             </Modal.Body>
                         </Modal>
+
+
                     </Nav>
                 </Navbar.Collapse>
             </Container>

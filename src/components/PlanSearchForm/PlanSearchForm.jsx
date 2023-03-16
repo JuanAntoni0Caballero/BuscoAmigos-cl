@@ -97,7 +97,7 @@ const PlanSearchForm = ({ getPlans }) => {
                 <Row>
                     <Col md={{ span: 3 }}>
                         <Form.Group className="mb-3" controlId="origin">
-                            <Form.Label>Origen</Form.Label>
+                            <Form.Label className="title">Origen</Form.Label>
                             <Form.Select value={planData.origin} onChange={handleInputChange} name="origin" >
                                 <option value=''>Seleccionar...</option>
                                 {
@@ -111,7 +111,7 @@ const PlanSearchForm = ({ getPlans }) => {
 
                     <Col md={{ span: 3 }}>
                         <Form.Group className="mb-3" controlId="destination">
-                            <Form.Label>Destino</Form.Label>
+                            <Form.Label className="title">Destino</Form.Label>
                             <Form.Select value={planData.destination} onChange={handleInputChange} name="destination" >
                                 <option value=''>Seleccionar...</option>
                                 {
@@ -125,7 +125,7 @@ const PlanSearchForm = ({ getPlans }) => {
 
                     <Col md={{ span: 3 }}>
                         <Form.Group className="mb-3" controlId="typePlan">
-                            <Form.Label>Tipo de viaje</Form.Label>
+                            <Form.Label className="title">Tipo de viaje</Form.Label>
                             <Form.Select value={planData.typePlan} onChange={handleInputChange} name="typePlan">
                                 <option value=''>Seleccionar...</option>
                                 {
@@ -139,14 +139,14 @@ const PlanSearchForm = ({ getPlans }) => {
 
                     <Col md={{ span: 2 }}>
                         <Form.Group className="mb-3" controlId="date">
-                            <Form.Label>Fecha de ida</Form.Label>
+                            <Form.Label className="title">Fecha de ida</Form.Label>
                             <Form.Control type="date" value={planData.date} onChange={handleInputChange} name="date" min={new Date().toISOString().split("T")[0]} />
                         </Form.Group>
                     </Col>
 
                     <Col md={{ span: 1 }}>
                         <Form.Group className="mb-3" controlId="duration">
-                            <Form.Label>Noches</Form.Label>
+                            <Form.Label className="title">Noches</Form.Label>
                             <Form.Control type="number" value={planData.duration} onChange={handleInputChange} name="duration" />
                         </Form.Group>
                     </Col>
@@ -155,7 +155,7 @@ const PlanSearchForm = ({ getPlans }) => {
                 <Row className="justify-content-center">
                     <Col md={{ span: 3 }}>
                         <Form.Group className="mb-3" controlId="sort">
-                            <Form.Label>Ordenar por:</Form.Label>
+                            <Form.Label className="title">Ordenar por:</Form.Label>
                             <Form.Select value={planSort} onChange={handleInputSortChange} name="sort" >
                                 <option value='sortOrigin=1'>Origen ascendente</option>
                                 <option value='sortOrigin=%2D1'>Origen descendente</option>

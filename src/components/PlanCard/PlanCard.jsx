@@ -2,16 +2,16 @@ import { Card, Image } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import './PlanCard.css'
 
+
 const PlanCard = ({ _id, title, origin, destination, date, duration, image, owner }) => {
-    console.log('here', owner.username)
 
     return (
 
         <Link to={`/planDetails/${_id}`}>
             <Card className='CardPlan'>
                 <Card.Header as="h5">
-                    <img className='CardPlanAvatar' src={owner.avatar} alt="Avatar" />
-                    {owner.username}
+                    <img className='CardPlanAvatar' src={owner?.avatar} alt="Avatar" />
+                    {owner?.username}
                 </Card.Header>
 
                 <Card.Img className='CardPlanImage' variant="top" src={image} />

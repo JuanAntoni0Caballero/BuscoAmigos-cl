@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom"
 import conversationService from '../../services/conversation.service'
 import ChatMessages from "../../components/ChatMessages/ChatMessages"
 import PlanEditForm from '../../components/PlanEditForm/PlanEditForm'
-
+import './PlanDetailsPage.css'
 
 const PlanDetailsPage = () => {
 
@@ -82,55 +82,56 @@ const PlanDetailsPage = () => {
             <Container>
                 <h1 className="mb-4">{plan.title} </h1>
                 <hr />
-                <Row>
 
-                    <Col md={{ span: 6, offset: 1 }}>
-                        <h6>Description:</h6>
-                        <p>{plan.description}</p>
-                        <h6>Origen:</h6>
-                        <p>{plan.origin}</p>
-                        <h6>Destino:</h6>
-                        <p>{plan.destination}</p>
-                        <h6>Fecha:</h6>
-                        <p>{plan.date}</p>
-                        <h6>Duración:</h6>
-                        <p>{plan.duration}</p>
-                        <hr />
+                <div className="description" md={{ span: 6, offset: 1 }}>
+                    <h6>Description:</h6>
+                    <p>{plan.description}</p>
+                    <h6>Origen:</h6>
+                    <p>{plan.origin}</p>
+                    <h6>Destino:</h6>
+                    <p>{plan.destination}</p>
+                    <h6>Fecha:</h6>
+                    <p>{plan.date}</p>
+                    <h6>Duración:</h6>
+                    <p>{plan.duration}</p>
+                    <hr />
 
-                        <Link to={`/`}>
-                            <Button as="figure" variant="dark">Inicio</Button>
-                        </Link>
+                </div>
+                <div>
 
-                        {
-                            user && (user._id === plan?.owner || user.role === 'ADMIN')
-                            &&
-                            <>
-                                <Link >
-                                    <Button onClick={() => setShowEditPlanModal(true)} as="figure" variant="dark">Editar</Button>
-                                </Link>
+                    <Link to={`/`}>
+                        <Button as="figure" variant="dark">Inicio</Button>
+                    </Link>
 
-                                <Link>
-                                    <Button as="figure" onClick={handleShowDelete} variant="dark">Borrar</Button>
-                                </Link>
+                    {
+                        user && (user._id === plan?.owner || user.role === 'ADMIN')
+                        &&
+                        <>
+                            <Link >
+                                <Button onClick={() => setShowEditPlanModal(true)} as="figure" variant="dark">Editar</Button>
+                            </Link>
 
-                            </>
-                        }
-                        {
-                            user && (user._id !== plan?.owner)
-                            &&
-                            <>
-                                <Link onClick={handleShow}>
-                                    <Button as="figure" variant="dark">Contactar</Button>
-                                </Link>
+                            <Link>
+                                <Button as="figure" onClick={handleShowDelete} variant="dark">Borrar</Button>
+                            </Link>
 
-                            </>
-                        }
-                    </Col >
+                        </>
+                    }
+                    {
+                        user && (user._id !== plan?.owner)
+                        &&
+                        <>
+                            <Link onClick={handleShow}>
+                                <Button as="figure" variant="dark">Contactar</Button>
+                            </Link>
 
-                    <Col md={{ span: 4 }}>
-                        <img src={plan.image} alt='PlanImg' />
-                    </Col>
-                </Row >
+                        </>
+                    }
+                </div >
+
+                <Col md={{ span: 4 }}>
+                    <img src={plan.image} alt='PlanImg' />
+                </Col>
             </Container >
 
 

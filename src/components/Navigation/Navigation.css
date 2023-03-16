@@ -2,8 +2,17 @@
     color: rgba(255, 236, 89, 0.801);
 }
 
+.navTitle:hover {
+    color: rgba(255, 236, 89, 0.801);
+}
+
 .navTitle img {
     width: 60px;
     padding: 0;
     margin: 0 5px;
+}
+
+.nav {
+
+    background-color: rgb(53, 60, 68);
 }

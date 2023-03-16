@@ -15,26 +15,30 @@ const HomePage = () => {
 
     return (
 
-        <Container className="Home">
+        <div className='SearchForm'>
 
-            <Row className='SearchForm'>
-                <PlanSearchForm getPlans={getPlans} />
-            </Row>
+            <Container className="Home">
 
-            <Row>
-                {plansFounded.length >= 1
-                    ? plansFounded.map(elm => (
-                        <Col md={6} lg={4} xxl={3} className='CardPlanCol' key={elm._id}>
-                            <PlanCard {...elm} />
-                        </Col>
-                    ))
-                    : <p>No matches....</p>
-                }
+                <Row >
+                    <PlanSearchForm getPlans={getPlans} />
+                </Row>
 
-            </Row>
+                <Row>
+                    {plansFounded.length >= 1
+                        ? plansFounded.map(elm => (
+                            <Col md={6} lg={4} xxl={3} className='CardPlanCol' key={elm._id}>
+                                <PlanCard {...elm} />
+                            </Col>
+                        ))
+                        : <p>No matches....</p>
+                    }
+
+                </Row>
 
 
-        </Container >
+            </Container >
+
+        </div>
     )
 }
 

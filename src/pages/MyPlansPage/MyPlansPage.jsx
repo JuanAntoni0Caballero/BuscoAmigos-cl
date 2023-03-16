@@ -1,15 +1,14 @@
 import { useEffect, useState, useContext } from "react"
 import { AuthContext } from "../../contexts/auth.context"
 import planService from "../../services/plan.service"
-import { Container, Row, Col, Button } from "react-bootstrap"
-import { Link, useNavigate } from "react-router-dom"
-
-
+import { Container, Card } from "react-bootstrap"
+import { Link } from "react-router-dom"
+import './MyPlansPage.css'
 
 const MyPlansPage = () => {
 
 
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
 
     const [plans, setPlans] = useState([])
 
@@ -29,65 +28,43 @@ const MyPlansPage = () => {
     }
 
 
-    const handleDeletePlan = plan_id => {
+    // const handleDeletePlan = plan_id => {
 
-        planService
-            .deletePlan(plan_id)
-            .then(() => navigate('/myPlans'))
-            .catch(err => console.log(err))
-    }
+    //     planService
+    //         .deletePlan(plan_id)
+    //         .then(() => navigate('/myPlans'))
+    //         .catch(err => console.log(err))
+    // }
+
 
     return (
 
         <Container>
 
-            <Row>
-
-                <Col md={{ span: 6, offset: 1 }}>
 
 
-                    {
-                        plans?.map(elm => {
-                            return (
-                                <Container>
+            {
+                plans?.map(elm => {
+                    return (
 
-                                    < h6 > Título</h6>
-                                    <p>{elm.title}</p>
-                                    < h6 > Description</h6>
-                                    <p>{elm.description}</p>
-                                    <h6>Origen</h6>
-                                    <p>{elm.origin}</p>
-                                    <h6>Destino</h6>
-                                    <p>{elm.destination}</p>
-                                    <h6>Fecha</h6>
-                                    <p>{elm.date}</p>
-                                    <h6>Duración</h6>
-                                    <p>{elm.duration}</p>
-                                    <hr />
+                        <div className="card" key='elm.id'>
+                            <Link to={`/planDetails/${elm._id}`}>
+                                <Card className='CardPlan'>
 
-                                    <img src={elm.typePlan?.picture} style={{ width: '100%' }} alt='PlanImg' />
+                                    <Card.Img className='CardPlanImage' variant="top" src={elm.image} />
 
-                                    <Link to={`/planEdit/${elm._id}`}>
-                                        <Button as="figure" variant="dark">Edit</Button>
-                                    </Link>
+                                    <Card.Body className='CardPlanBody'>
+                                        <Card.Title className='CardPlanTitle'>{elm.title}</Card.Title>
+                                        <p>{elm.origin} ~ {elm.destination}</p>
+                                        {(elm.duration == 0) ? <p>{elm.date}</p> : <p>{elm.date} ~ {elm.duration} noche/es</p>}
+                                    </Card.Body>
+                                </Card>
+                            </Link>
+                        </div>
+                    )
+                })
+            }
 
-                                    <Link to='/plan'>
-                                        <Button as="figure" onClick={() => handleDeletePlan(elm._id)} variant="dark">Delete</Button>
-                                    </Link>
-
-                                    <Link to="/profile">
-                                        <Button as="figure" variant="dark">Go back</Button>
-                                    </Link>
-                                </Container>
-                            )
-                        })
-                    }
-
-
-
-
-                </Col>
-            </Row>
         </Container >
 
 
