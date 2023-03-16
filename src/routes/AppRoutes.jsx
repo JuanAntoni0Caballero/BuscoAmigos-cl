@@ -3,7 +3,7 @@ import PrivateRoute from "./PrivateRoute"
 import HomePage from "../pages/HomePage/HomePage"
 import PlanDetailsPage from "../pages/PlanDetailsPage/PlanDetailsPage"
 import PlanEditPage from "../pages/PlanEditPage/PlanEditPage"
-import ProfilePage from "../pages/ProfilePage/PofilePage"
+// import ProfilePage from "../pages/ProfilePage/PofilePage"
 import EditUserPage from "../pages/EditUserPage/EditUserPage"
 import ImboxPage from "../pages/InboxPage/InboxPage"
 import MyPlansPage from "../pages/MyPlansPage/MyPlansPage"
@@ -22,7 +22,7 @@ const AppRoutes = () => {
             <Route element={<PrivateRoute />}>
 
                 <Route path="/planEdit/:plan_id" element={<PlanEditPage />} />
-                <Route path="/profile" element={<ProfilePage />} />
+                {/* <Route path="/profile" element={<ProfilePage />} /> */}
                 <Route path="/editUser" element={<EditUserPage />} />
                 <Route path="/deleteUser" element={<HomePage />} />
                 <Route path="/inbox" element={<ImboxPage />} />
