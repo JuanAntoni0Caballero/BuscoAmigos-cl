@@ -78,7 +78,7 @@ const PlanDetailsPage = () => {
             .catch(err => console.log(err))
     }
 
-    if (plan.length === 0) {
+    if (!plan) {
         return (
             <Loader />
         )
