@@ -6,7 +6,10 @@ import { Link } from "react-router-dom"
 import './MyPlansPage.css'
 import Loader from "../../components/Loader/Loader"
 
+
 const MyPlansPage = () => {
+
+    const { user } = useContext(AuthContext)
 
     const [plans, setPlans] = useState([])
 
@@ -14,7 +17,6 @@ const MyPlansPage = () => {
         loadPlans()
     }, [])
 
-    const { user } = useContext(AuthContext)
 
     const loadPlans = () => {
 
@@ -22,9 +24,7 @@ const MyPlansPage = () => {
             .getMyPlans(user._id)
             .then(({ data }) => setPlans(data))
             .catch(err => console.log(err))
-
     }
-
 
     if (plans.length === 0) {
         return (
@@ -32,12 +32,9 @@ const MyPlansPage = () => {
         )
     }
 
-
-
     return (
 
         <Container>
-
             {
                 plans?.map(elm => {
                     return (
@@ -51,7 +48,7 @@ const MyPlansPage = () => {
                                     <Card.Body className='CardPlanBody'>
                                         <Card.Title className='CardPlanTitle'>{elm.title}</Card.Title>
                                         <p>{elm.origin} ~ {elm.destination}</p>
-                                        {(elm.duration == 0) ? <p>{elm.date}</p> : <p>{elm.date} ~ {elm.duration} noche/es</p>}
+                                        {(elm.duration === 0) ? <p>{elm.date}</p> : <p>{elm.date} ~ {elm.duration} noche/es</p>}
                                     </Card.Body>
                                 </Card>
                             </Link>

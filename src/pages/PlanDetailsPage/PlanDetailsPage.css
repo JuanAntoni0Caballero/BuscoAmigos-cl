@@ -3,22 +3,26 @@
     justify-content: space-around;
 }
 
-.descriptionTitle {
+.tripTitle {
     font-weight: bold;
+}
+
+.descriptionText {
+    word-break: break-all;
 }
 
 .DetailsImg {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     margin-top: 20px;
     border-radius: 10px;
     box-shadow: 16px 22px 51px rgba(0, 0, 0, 0.3);
     width: 100%;
-    height: 300px;
+    height: 200px;
     object-fit: cover;
     margin-bottom: 20px;
 }
 
-.DetailsButton {
-    padding: 10px 100px;
+.detailsButton {
+    width: 100px;
 }

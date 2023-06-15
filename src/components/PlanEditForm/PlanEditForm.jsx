@@ -48,7 +48,10 @@ const PlanEditForm = ({ setShowEditPlanModal }) => {
 
         planService
             .editPlan(plan_id, plan)
-            .then(() => setShowEditPlanModal(false))
+            .then(() => {
+                setShowEditPlanModal(false)
+                navigate(`/myPlans`)
+            })
             .catch(err => setErrors(err.response.data.errorMessages))
     }
 
@@ -102,7 +105,7 @@ const PlanEditForm = ({ setShowEditPlanModal }) => {
 
                 <img src={plan.image} alt="Image" />
 
-                <Form.Group className="mb-3" controlId="title">
+                <Form.Group className="mb-3 mt-3" controlId="title">
                     <Form.Label>Título</Form.Label>
                     <Form.Control type="text" value={plan.title} onChange={handleInputChange} name="title" />
                 </Form.Group>
@@ -169,10 +172,10 @@ const PlanEditForm = ({ setShowEditPlanModal }) => {
                 {errors.length > 0 && <FormError>{errors.map(elm => <p key={elm._id}>{elm}</p>)}</FormError>}
 
                 <div className="d-grid">
-                    <Button variant="dark" type="submit" disabled={loadinImage}>{loadinImage ? 'Cargando imagen...' : 'Guardar cambios'}</Button>
+                    <Button variant="success" type="submit" disabled={loadinImage}>{loadinImage ? 'Cargando imagen...' : 'Guardar cambios'}</Button>
                 </div>
 
-                <div className="d-grid">
+                <div className="d-grid mt-2">
                     <Button as="figure" variant="dark" onClick={() => setShowEditPlanModal(false)}>Volver</Button>
                 </div>
 

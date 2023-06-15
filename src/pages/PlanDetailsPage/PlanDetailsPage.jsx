@@ -1,4 +1,4 @@
-import { Container, Col, Button, Offcanvas, Modal, Row, Table } from "react-bootstrap"
+import { Container, Col, Button, Offcanvas, Modal, Row } from "react-bootstrap"
 import { useEffect, useState, useContext } from "react"
 import { AuthContext } from '../../contexts/auth.context'
 import { useParams, Link } from "react-router-dom"
@@ -9,7 +9,6 @@ import ChatMessages from "../../components/ChatMessages/ChatMessages"
 import PlanEditForm from '../../components/PlanEditForm/PlanEditForm'
 import './PlanDetailsPage.css'
 import Loader from "../../components/Loader/Loader"
-
 
 
 const PlanDetailsPage = () => {
@@ -60,6 +59,7 @@ const PlanDetailsPage = () => {
     }
 
     const createConversation = () => {
+
         conversationService
             .createConversation(plan_id)
             .then(({ data }) => {
@@ -78,7 +78,6 @@ const PlanDetailsPage = () => {
             .catch(err => console.log(err))
     }
 
-
     if (plan.length === 0) {
         return (
             <Loader />
@@ -86,11 +85,8 @@ const PlanDetailsPage = () => {
     }
 
     return (
-
         <>
-
             <Container>
-
                 <Row>
                     <Col className="text-center" md={{ span: 12 }}>
                         <img className="DetailsImg" src={plan.image} alt='PlanImg' />
@@ -100,27 +96,60 @@ const PlanDetailsPage = () => {
                 <h1 className="mb-4">{plan.title} </h1>
                 <hr />
 
-                <div className="description" md={{ span: 6, offset: 1 }}>
-                    <h5 className="description">Descripción:</h5>
-                    <h5>{plan.description}</h5>
-                    <h5 className="description">Origen:</h5>
-                    <h5>{plan.origin}</h5>
-                    <h5 className="description">Destino:</h5>
-                    <h5>{plan.destination}</h5>
-                    <h5 className="description">Fecha:</h5>
-                    <h5>{plan.date}</h5>
-                    <h5 className="description">Noches:</h5>
-                    <h5>{plan.duration}</h5>
-                    <hr />
+                <Row>
+                    <Col md={{ span: 6 }}>
+                        <Row>
+                            <Col lg={{ span: 2 }}>
+                                <h5 className="tripTitle">Origen:</h5>
+                            </Col>
+                            <Col lg={{ span: 10 }}>
+                                <h5>{plan.origin}</h5>
+                            </Col>
+                        </Row>
 
-                </div>
+                        <Row>
+                            <Col lg={{ span: 2 }}>
+                                <h5 className="tripTitle">Destino:</h5>
+                            </Col>
+                            <Col lg={{ span: 10 }}>
+                                <h5>{plan.destination}</h5>
+                            </Col>
+                        </Row>
 
+                        <Row>
+                            <Col lg={{ span: 2 }}>
+                                <h5 className="tripTitle">Fecha:</h5>
+                            </Col>
+                            <Col lg={{ span: 10 }}>
+                                <h5>{plan.date}</h5>
+                            </Col>
+                        </Row>
+
+                        <Row>
+                            <Col lg={{ span: 2 }}>
+                                <h5 className="tripTitle">Noches:</h5>
+                            </Col>
+                            <Col lg={{ span: 10 }}>
+                                <h5>{plan.duration}</h5>
+                            </Col>
+                        </Row>
+                    </Col>
+
+                    <Col md={{ span: 6 }}>
+                        <Row>
+                            <h5 className="tripTitle">Descripción:</h5>
+                            <Col md={{ span: 12 }}>
+                                <h5 className="descriptionText">{plan.description}</h5>
+                            </Col>
+                        </Row>
+                    </Col>
+                </Row>
 
                 <Row className="d-flex justify-content-center mt-5">
 
-                    <Col md={1} className="mb-4">
+                    <Col md={2} xxl={1} className="mb-1">
                         <Link to='/'>
-                            <Button as="figure" variant="dark">Inicio</Button>
+                            <Button className="detailsButton" as="figure" variant="dark">Inicio</Button>
                         </Link>
                     </Col>
 
@@ -128,15 +157,15 @@ const PlanDetailsPage = () => {
                         user && (user._id === plan?.owner || user.role === 'ADMIN')
                         &&
                         <>
-                            <Col md={1} className="mb-4">
+                            <Col md={2} xxl={1} className="mb-1">
                                 <Link >
-                                    <Button onClick={() => setShowEditPlanModal(true)} as="figure" variant="dark">Editar</Button>
+                                    <Button className="detailsButton" onClick={() => setShowEditPlanModal(true)} as="figure" variant="secondary">Editar</Button>
                                 </Link>
                             </Col>
 
-                            <Col md={1} className="mb-4">
+                            <Col md={2} xxl={1} className="mb-1">
                                 <Link>
-                                    <Button as="figure" onClick={handleShowDelete} variant="dark">Borrar</Button>
+                                    <Button className="detailsButton" as="figure" onClick={handleShowDelete} variant="danger">Borrar</Button>
                                 </Link>
                             </Col>
                         </>
@@ -145,24 +174,15 @@ const PlanDetailsPage = () => {
                         user && (user._id !== plan?.owner)
                         &&
                         <>
-                            <Col md={1} className="mb-4">
+                            <Col md={2} xxl={1} className="mb-1">
                                 <Link onClick={handleShow}>
-                                    <Button as="figure" variant="dark">Contactar</Button>
+                                    <Button className="detailsButton" as="figure" variant="success">Contactar</Button>
                                 </Link>
                             </Col>
 
                         </>
                     }
                 </Row>
-
-
-
-
-
-
-
-
-
             </Container >
 
             <Offcanvas show={show} onHide={handleClose}>
@@ -175,7 +195,7 @@ const PlanDetailsPage = () => {
                 </Modal.Header>
                 <Modal.Body>¿Estás seguro de que lo quieres eliminar?</Modal.Body>
                 <Modal.Footer>
-                    <Button variant="dark" onClick={handleDeletePlan} >
+                    <Button variant="danger" onClick={handleDeletePlan} >
                         Borrar
                     </Button>
                     <Button variant="dark" onClick={handleCloseDelete}>

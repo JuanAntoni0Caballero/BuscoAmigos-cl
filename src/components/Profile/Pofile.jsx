@@ -1,4 +1,4 @@
-import { Container, Button, Modal, Col, Row, ButtonGroup } from 'react-bootstrap'
+import { Container, Button, Modal, Col, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { useContext, useState } from 'react'
 import userService from '../../services/user.service'
@@ -49,28 +49,28 @@ const Profile = ({ setShowProfileModal }) => {
             <Row className="justify-content-center">
                 <Col sm={10} md={6} className="mb-3">
 
+                    <Link to='/editUser' onClick={() => setShowProfileModal(false)}>
+                        <Button as="figure" variant="secondary" className="w-100 mb-1">Editar perfil</Button>
+                    </Link>
+
+                    <hr />
+
                     <Link to='/inbox' onClick={() => setShowProfileModal(false)}>
-                        <Button as="figure" variant="dark" className="w-100 mb-2">Mis mensajes</Button>
+                        <Button as="figure" variant="success" className="w-100 mb-2">Mis mensajes</Button>
                     </Link>
 
                     <Link to='/myPlans' onClick={() => setShowProfileModal(false)}>
-                        <Button as="figure" variant="dark" className="w-100 mb-1">Mis planes</Button>
+                        <Button as="figure" variant="secondary" className="w-100 mb-1">Mis planes</Button>
                     </Link>
 
                     <hr />
 
                     <Link to='/' onClick={clickLogout}>
-                        <Button as="figure" variant="dark" className="w-100 mb-2">Cerrar sesión</Button>
+                        <Button as="figure" variant="secondary" className="w-100 mb-2">Cerrar sesión</Button>
                     </Link>
-
-                    <Link to='/editUser' onClick={() => setShowProfileModal(false)}>
-                        <Button as="figure" variant="dark" className="w-100 mb-1">Editar perfil</Button>
-                    </Link>
-
-                    <hr />
 
                     <Link>
-                        <Button as="figure" variant="dark" className="w-100" onClick={handleShow}>
+                        <Button as="figure" variant="danger" className="w-100" onClick={handleShow}>
                             Borrar perfil
                         </Button>
                     </Link>
@@ -84,11 +84,11 @@ const Profile = ({ setShowProfileModal }) => {
                 </Modal.Header>
                 <Modal.Body>¿Estás seguro de que no te quieres quedar?</Modal.Body>
                 <Modal.Footer>
+                    <Button variant="danger" onClick={handleDeleteProfile} >
+                        Borrar
+                    </Button>
                     <Button variant="dark" onClick={handleClose}>
                         Cerrar
-                    </Button>
-                    <Button variant="dark" onClick={handleDeleteProfile} >
-                        Borrar
                     </Button>
                 </Modal.Footer>
             </Modal>
@@ -99,5 +99,4 @@ const Profile = ({ setShowProfileModal }) => {
 }
 
 export default Profile
-
 

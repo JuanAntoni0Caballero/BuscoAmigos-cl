@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import planService from "../../services/plan.service"
 import uploadServices from "../../services/upload.service"
 import FormError from "../FormError/FormError"
-import Loader from '../Loader/Loader'
+
 
 const PlanNewForm = ({ setShowCreatePlanModal }) => {
 
@@ -58,10 +58,10 @@ const PlanNewForm = ({ setShowCreatePlanModal }) => {
 
         if (!planData.image) {
             planTypes.map(elm => {
-                if (elm._id == planData.typePlan) {
-
+                if (elm._id === planData.typePlan) {
                     localPlanData = { ...localPlanData, image: elm.picture }
                 }
+                return localPlanData
             })
         }
 
