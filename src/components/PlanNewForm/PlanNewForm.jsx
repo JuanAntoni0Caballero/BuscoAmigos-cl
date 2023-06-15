@@ -70,6 +70,7 @@ const PlanNewForm = ({ setShowCreatePlanModal }) => {
             .then(({ data }) => {
                 setShowCreatePlanModal(false)
                 navigate(`/planDetails/${data._id}`)
+                console.log(data)
             })
             .catch(err => setErrors(err.response.data.errorMessages))
     }
